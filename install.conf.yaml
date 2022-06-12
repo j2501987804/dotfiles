@@ -1,0 +1,19 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.tmux.conf: tmux.conf
+    ~/.config/nvim/lua/custom: custom
+    ~/.zshrc: zshrc
+
+- create:
+    - ~/.local/share/zinit
+    - ~/.config/nvim
+
+- shell:
+    - [git clone https://github.com/zdharma-continuum/zinit.git ~/.local/share/zinit/zinit.git]
+    - [git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1]
+
