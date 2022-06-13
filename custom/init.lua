@@ -1,7 +1,6 @@
 -- example file i.e lua/custom/init.lua
-
 -- gui change;bufreload
-vim.cmd [[
+vim.cmd([[
    augroup checktime
    au!
        if !has("gui_running")
@@ -15,5 +14,12 @@ vim.cmd [[
            autocmd CursorMovedI    * silent! checktime
        endif
    augroup END
-]]
+]])
 
+vim.cmd([[
+    if OSX()
+        let g:im_select_default = 'com.apple.keylayout.ABC'
+    elseif WINDOWS()
+        let g:im_select_default = '1033'
+    endif
+]])
