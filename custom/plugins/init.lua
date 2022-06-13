@@ -99,7 +99,7 @@ return {
          require("core.utils").packer_lazy_load "toggleterm.nvim"
       end,
       config = function()
-         require("custom.plugins.others").toggleterm()
+         require("custom.plugins.toggleterm")
       end,
    },
 
