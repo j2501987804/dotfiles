@@ -134,7 +134,6 @@ ins_left {
 
 -- ins_left { 'location' }
 
-ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
 ins_left {
     -- Lsp server name .
@@ -209,6 +208,8 @@ ins_right {
     },
     cond = conditions.hide_in_width,
 }
+
+ins_right { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
 ins_right {
     function()

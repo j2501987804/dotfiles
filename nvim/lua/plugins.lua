@@ -11,9 +11,6 @@ local plugins = {
 
     ["kyazdani42/nvim-web-devicons"] = {
         after = "github-nvim-theme",
-        config = function()
-            -- require "conf.icons"
-        end,
     },
 
     -- line
@@ -66,6 +63,13 @@ local plugins = {
         config = function()
             require("conf.others").signature()
         end,
+    },
+
+    ["tami5/lspsaga.nvim"] = {
+        after = "lsp_signature.nvim",
+        config = function()
+            require "conf.lspsaga"
+        end
     },
 
     -- cmp
