@@ -10,6 +10,7 @@
     ~/.config/lazygit: lazygit
     ~/.zshrc: zshrc
     ~/.config/nvim: nvim
+    ~/.config/alacritty: alacritty
 
 - create:
     - ~/.local/share/zinit

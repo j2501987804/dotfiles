@@ -94,9 +94,6 @@ telescope.setup {
         -- builtin picker
     },
     extensions = {
-        ["ui-select"] = {
-            require("telescope.themes").get_dropdown {},
-        },
         fzf = {
             fuzzy = true, -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
@@ -109,4 +106,3 @@ telescope.setup {
 
 telescope.load_extension("fzf")
 telescope.load_extension("dap")
-telescope.load_extension("ui-select")

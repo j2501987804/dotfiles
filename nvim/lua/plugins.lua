@@ -6,17 +6,19 @@ local plugins = {
     ["nvim-lua/plenary.nvim"] = {},
 
     ["projekt0n/github-nvim-theme"] = {
-        config = [[require('github-theme').setup()]]
+        config = function()
+            require("github-theme").setup()
+        end
     },
 
-    ["kyazdani42/nvim-web-devicons"] = {
-        after = "github-nvim-theme",
-    },
+    ["kyazdani42/nvim-web-devicons"] = {},
 
     -- line
     ["nvim-lualine/lualine.nvim"] = {
         after = "nvim-web-devicons",
-        config = [[require("conf.lualine")]]
+        config = function()
+            require("conf.lualine")
+        end
     },
 
     ["akinsho/bufferline.nvim"] = {
@@ -54,7 +56,7 @@ local plugins = {
         module = "lspconfig",
         config = function()
             require("nvim-lsp-installer").setup {}
-            require "conf.lspconfig"
+            require("conf.lspconfig")
         end,
     },
 
@@ -68,7 +70,7 @@ local plugins = {
     ["tami5/lspsaga.nvim"] = {
         after = "lsp_signature.nvim",
         config = function()
-            require "conf.lspsaga"
+            require("conf.others").lspsaga()
         end
     },
 
@@ -81,7 +83,7 @@ local plugins = {
     ["hrsh7th/nvim-cmp"] = {
         after = "friendly-snippets",
         config = function()
-            require "conf.cmp"
+            require("conf.cmp")
         end,
     },
 
@@ -176,19 +178,12 @@ local plugins = {
         end,
     },
 
-    ["nvim-telescope/telescope-ui-select.nvim"] = {
-        setup = function()
-            require("pack").packer_lazy_load("telescope-ui-select.nvim")
-        end,
-    },
-
     ["nvim-telescope/telescope-fzf-native.nvim"] = {
         run = "make",
         setup = function()
             require("pack").packer_lazy_load("telescope-fzf-native.nvim")
         end,
     },
-
 
     -- dap --
     ["theHamsta/nvim-dap-virtual-text"] = {
@@ -293,10 +288,15 @@ local plugins = {
     },
 
     ["brglng/vim-im-select"] = {
-        event = { "BufRead", "BufNewFile" },
+        event = { "InsertEnter" },
     },
 
-    ["vimpostor/vim-tpipeline"] = {},
+    -- vim and tmux statusline merge
+    ["vimpostor/vim-tpipeline"] = {
+        setup = function()
+            require("pack").packer_lazy_load("vim-tpipeline")
+        end
+    },
 
     -- lang --
     ["ray-x/go.nvim"] = {
