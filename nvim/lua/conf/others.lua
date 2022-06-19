@@ -1,48 +1,26 @@
 return {
     autopairs = function()
-        local present1, autopairs = pcall(require, "nvim-autopairs")
-        local present2, cmp = pcall(require, "cmp")
-
-        if not present1 and present2 then
-            return
-        end
-
-        local options = {
+        require("nvim-autopairs").setup({
             fast_wrap = {},
             disable_filetype = { "TelescopePrompt", "vim" },
-        }
-        autopairs.setup(options)
+        })
 
         local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 
-        cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+        require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,
 
     luasnip = function()
-        local present, luasnip = pcall(require, "luasnip")
-
-        if not present then
-            return
-        end
-
-        local options = {
+        require("luasnip").config.set_config({
             history = true,
             updateevents = "TextChanged,TextChangedI",
-        }
-
-        luasnip.config.set_config(options)
+        })
 
         require("luasnip.loaders.from_vscode").lazy_load()
     end,
 
     signature = function()
-        local present, lsp_signature = pcall(require, "lsp_signature")
-
-        if not present then
-            return
-        end
-
-        local options = {
+        require("lsp_signature").setup({
             bind = true,
             doc_lines = 0,
             floating_window = true,
@@ -58,19 +36,11 @@ return {
             },
             zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
             padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
-        }
-
-        lsp_signature.setup(options)
+        })
     end,
 
     colorizer = function()
-        local present, colorizer = pcall(require, "colorizer")
-
-        if not present then
-            return
-        end
-
-        local options = {
+        require("colorizer").setup({
             filetypes = {
                 "*",
             },
@@ -87,9 +57,7 @@ return {
                 -- Available modes: foreground, background
                 mode = "background", -- Set the display mode.
             },
-        }
-
-        colorizer.setup(options["filetypes"], options["user_default_options"])
+        })
         vim.cmd "ColorizerReloadAllBuffers"
     end,
 
@@ -116,5 +84,11 @@ return {
 
         local options = {}
         nvim_comment.setup(options)
+    end,
+
+    blankline = function()
+        require("indent_blankline").setup({
+            show_current_context = true,
+        })
     end,
 }

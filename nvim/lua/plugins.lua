@@ -32,7 +32,7 @@ local plugins = {
     ["akinsho/bufferline.nvim"] = {
         after = "nvim-web-devicons",
         config = function()
-            require "conf.bufferline"
+            require("bufferline").setup()
         end,
     },
 
@@ -43,7 +43,7 @@ local plugins = {
     ["lukas-reineke/indent-blankline.nvim"] = {
         event = "BufRead",
         config = function()
-            require("conf.indentline")
+            require("conf.others").blankline()
         end,
     },
 
