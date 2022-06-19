@@ -8,6 +8,7 @@
     ~/.tmux.conf: tmux.conf
     # ~/.config/nvim/lua/custom: custom
     ~/.config/lazygit: lazygit
+
     ~/.zshrc: zshrc
     ~/.config/nvim: nvim
     ~/.config/alacritty: alacritty
@@ -15,6 +16,7 @@
 - create:
     - ~/.local/share/zinit
     - ~/.config/nvim
+    - ~/Library/Application\ Support/lazygit
 
 - shell:
     - [git clone https://github.com/zdharma-continuum/zinit.git ~/.local/share/zinit/zinit.git]

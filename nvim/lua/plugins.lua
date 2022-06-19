@@ -5,6 +5,9 @@ local plugins = {
     ["wbthomason/packer.nvim"] = {},
     ["nvim-lua/plenary.nvim"] = {},
 
+    -----------------------------------------------------------
+    -- UI
+    -----------------------------------------------------------
     ["projekt0n/github-nvim-theme"] = {
         config = function()
             require("github-theme").setup()
@@ -13,7 +16,12 @@ local plugins = {
 
     ["kyazdani42/nvim-web-devicons"] = {},
 
-    -- line
+    ["goolord/alpha-nvim"] = {
+        config = function()
+            require("conf.alpha")
+        end
+    },
+
     ["nvim-lualine/lualine.nvim"] = {
         after = "nvim-web-devicons",
         config = function()
@@ -39,7 +47,24 @@ local plugins = {
         end,
     },
 
-    -- lsp
+    ["nvim-treesitter/nvim-treesitter"] = {
+        event = { "BufRead", "BufNewFile" },
+        run = ":TSUpdate",
+        config = function()
+            require "conf.treesitter"
+        end,
+    },
+
+    -- vim and tmux statusline merge
+    ["vimpostor/vim-tpipeline"] = {
+        setup = function()
+            require("pack").packer_lazy_load("vim-tpipeline")
+        end
+    },
+
+    -----------------------------------------------------------
+    -- LSP
+    -----------------------------------------------------------
     ["williamboman/nvim-lsp-installer"] = {
         opt = true,
         setup = function()
@@ -74,7 +99,9 @@ local plugins = {
         end
     },
 
-    -- cmp
+    -----------------------------------------------------------
+    -- CMP
+    -----------------------------------------------------------
     ["rafamadriz/friendly-snippets"] = {
         module = "cmp_nvim_lsp",
         event = { "InsertEnter", "CmdlineEnter" },
@@ -124,7 +151,16 @@ local plugins = {
         run = "./install.sh"
     },
 
+    ["windwp/nvim-autopairs"] = {
+        after = "nvim-cmp",
+        config = function()
+            require("conf.others").autopairs()
+        end,
+    },
+
+    -----------------------------------------------------------
     -- git stuff
+    -----------------------------------------------------------
     ["lewis6991/gitsigns.nvim"] = {
         config = function()
             require('gitsigns').setup()
@@ -141,30 +177,9 @@ local plugins = {
     },
 
 
-    ["windwp/nvim-autopairs"] = {
-        after = "nvim-cmp",
-        config = function()
-            require("conf.others").autopairs()
-        end,
-    },
-
-    ["kyazdani42/nvim-tree.lua"] = {
-        cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-        config = function()
-            require "conf.nvimtree"
-        end,
-    },
-
-    ["folke/which-key.nvim"] = {
-        setup = function()
-            require("pack").packer_lazy_load "which-key.nvim"
-        end,
-        config = function()
-            require "conf.whichkey"
-        end,
-    },
-
+    -----------------------------------------------------------
     -- telescope
+    -----------------------------------------------------------
     ["nvim-telescope/telescope.nvim"] = {
         cmd = "Telescope",
         config = function()
@@ -185,7 +200,9 @@ local plugins = {
         end,
     },
 
-    -- dap --
+    -----------------------------------------------------------
+    -- Dubug
+    -----------------------------------------------------------
     ["theHamsta/nvim-dap-virtual-text"] = {
         module = "dap",
     },
@@ -197,39 +214,13 @@ local plugins = {
         config = [[require "conf.nvim-dap"]],
     },
 
-
-
-    ["NvChad/nvim-colorizer.lua"] = {
-        event = "BufRead",
+    -----------------------------------------------------------
+    -- navigation
+    -----------------------------------------------------------
+    ["kyazdani42/nvim-tree.lua"] = {
+        cmd = { "NvimTreeToggle", "NvimTreeFocus" },
         config = function()
-            require("conf.others").colorizer()
-        end,
-    },
-
-    ["nvim-treesitter/nvim-treesitter"] = {
-        event = { "BufRead", "BufNewFile" },
-        run = ":TSUpdate",
-        config = function()
-            require "conf.treesitter"
-        end,
-    },
-
-    ["Pocco81/AutoSave.nvim"] = {
-        event = { "TextChanged", "TextChangedI" },
-        config = [[require("autosave").setup()]]
-    },
-
-    -- 光标恢复
-    ["ethanholz/nvim-lastplace"] = {
-        event = { "BufRead", "BufNewFile" },
-        config = [[require("conf.others").lastplace()]]
-    },
-
-    -- 注释
-    ["numToStr/Comment.nvim"] = {
-        module = "Comment",
-        config = function()
-            require("conf.others").comment()
+            require "conf.nvimtree"
         end,
     },
 
@@ -247,6 +238,59 @@ local plugins = {
         config = [[require("trouble").setup()]],
     },
 
+    ["stevearc/aerial.nvim"] = {
+        cmd = "AerialToggle",
+        config = [[require("aerial").setup()]],
+    },
+
+    ["windwp/nvim-spectre"] = {
+        module = "spectre",
+        config = [[require 'spectre'.setup()]],
+    },
+
+    ["mbbill/undotree"] = {
+        cmd = "UndotreeToggle",
+        config = require("conf.others").undotree,
+    },
+
+
+    -----------------------------------------------------------
+    -- others
+    -----------------------------------------------------------
+    ["folke/which-key.nvim"] = {
+        setup = function()
+            require("pack").packer_lazy_load "which-key.nvim"
+        end,
+        config = function()
+            require "conf.whichkey"
+        end,
+    },
+
+    ["NvChad/nvim-colorizer.lua"] = {
+        event = "BufRead",
+        config = function()
+            require("conf.others").colorizer()
+        end,
+    },
+
+    ["Pocco81/AutoSave.nvim"] = {
+        event = { "TextChanged", "TextChangedI" },
+        config = [[require("autosave").setup()]]
+    },
+
+    -- last read
+    ["ethanholz/nvim-lastplace"] = {
+        event = { "BufRead", "BufNewFile" },
+        config = [[require("conf.others").lastplace()]]
+    },
+
+    ["numToStr/Comment.nvim"] = {
+        module = "Comment",
+        config = function()
+            require("conf.others").comment()
+        end,
+    },
+
     ["rcarriga/nvim-notify"] = {
         setup = function()
             require("pack").packer_lazy_load("nvim-notify")
@@ -254,11 +298,6 @@ local plugins = {
         config = function()
             vim.notify = require("notify")
         end,
-    },
-
-    ["stevearc/aerial.nvim"] = {
-        cmd = "AerialToggle",
-        config = [[require("aerial").setup()]],
     },
 
     ["karb94/neoscroll.nvim"] = {
@@ -277,28 +316,13 @@ local plugins = {
 
     ["dstein64/vim-startuptime"] = { cmd = "StartupTime" },
 
-    ["windwp/nvim-spectre"] = {
-        module = "spectre",
-        config = [[require 'spectre'.setup()]],
-    },
-
-    ["mbbill/undotree"] = {
-        cmd = "UndotreeToggle",
-        config = require("conf.others").undotree,
-    },
-
     ["brglng/vim-im-select"] = {
         event = { "InsertEnter" },
     },
 
-    -- vim and tmux statusline merge
-    ["vimpostor/vim-tpipeline"] = {
-        setup = function()
-            require("pack").packer_lazy_load("vim-tpipeline")
-        end
-    },
-
-    -- lang --
+    -----------------------------------------------------------
+    -- lang
+    -----------------------------------------------------------
     ["ray-x/go.nvim"] = {
         ft = "go",
         config = function()
