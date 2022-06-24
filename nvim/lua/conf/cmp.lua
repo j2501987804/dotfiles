@@ -7,50 +7,53 @@ end
 vim.opt.completeopt = "menuone,noselect"
 
 local icons = {
-    Text = "",
-    Method = "",
-    Function = "",
-    Constructor = "",
-    Field = "ﰠ",
-    Variable = "",
-    Class = "ﴯ",
-    Interface = "",
-    Module = "",
-    Property = "ﰠ",
-    Unit = "塞",
-    Value = "",
-    Enum = "",
-    Keyword = "",
-    Snippet = "",
-    Color = "",
-    File = "",
-    Reference = "",
-    Folder = "",
-    EnumMember = "",
-    Constant = "",
-    Struct = "פּ",
-    Event = "",
-    Operator = "",
-    TypeParameter = "",
-    Table = " ",
-    Object = "",
-    Tag = " ",
-    Array = " ",
-    Boolean = "蘒",
-    Number = "",
-    String = "",
-    Calendar = " ",
-    Watch = "",
+    Namespace = "",
+    Text = " ",
+    Method = " ",
+    Function = " ",
+    Constructor = " ",
+    Field = "ﰠ ",
+    Variable = " ",
+    Class = "ﴯ ",
+    Interface = " ",
+    Module = " ",
+    Property = "ﰠ ",
+    Unit = "塞 ",
+    Value = " ",
+    Enum = " ",
+    Keyword = " ",
+    Snippet = " ",
+    Color = " ",
+    File = " ",
+    Reference = " ",
+    Folder = " ",
+    EnumMember = " ",
+    Constant = " ",
+    Struct = "פּ ",
+    Event = " ",
+    Operator = " ",
+    TypeParameter = " ",
+    Table = "",
+    Object = " ",
+    Tag = "",
+    Array = "[]",
+    Boolean = " ",
+    Number = " ",
+    Null = "ﳠ",
+    String = " ",
+    Calendar = "",
+    Watch = " ",
+    Package = "",
 }
 
--- local cmp_window = require "cmp.utils.window"
+local cmp_window = require "cmp.utils.window"
 
--- cmp_window.info_ = cmp_window.info
--- cmp_window.info = function(self)
---    local info = self:info_()
---    info.scrollable = false
---    return info
--- end
+cmp_window.info_ = cmp_window.info
+cmp_window.info = function(self)
+    local info = self:info_()
+    info.scrollable = false
+    return info
+end
 
 local options = {
     window = {

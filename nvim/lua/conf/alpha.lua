@@ -1,13 +1,3 @@
------------------------------------------------------------
--- Dashboard configuration file
------------------------------------------------------------
-
--- Plugin: alpha-nvim
--- url: https://github.com/goolord/alpha-nvim
-
--- For configuration examples see: https://github.com/goolord/alpha-nvim/discussions/16
-
-
 local status_ok, alpha = pcall(require, 'alpha')
 if not status_ok then
     return
@@ -40,9 +30,9 @@ dashboard.section.header.val = banner
 
 -- Menu
 dashboard.section.buttons.val = {
-    dashboard.button('e', '  New file', ':ene <BAR> startinsert<CR>'),
     dashboard.button('f', '  Find file', ':Telescope find_files previewer=false theme=dropdown<CR>'),
     dashboard.button('F', '  Find Text', '<cmd>Telescope live_grep theme=ivy<cr>'),
+    dashboard.button('e', '  New file', ':ene <BAR> startinsert<CR>'),
     dashboard.button('s', '  Settings', ':e $MYVIMRC<CR>'),
     dashboard.button('u', '  Update plugins', ':PackerUpdate<CR>'),
     dashboard.button('q', '  Quit', ':qa<CR>'),

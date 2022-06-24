@@ -37,15 +37,17 @@ alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd
 alias v='nvim'
 alias k='kubectl'
 alias go="go"
+alias lg="lazygit"
+alias setproxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
+alias unproxy='unset http_proxy && unset https_proxy && unset all_proxy'
 
 # 环境变量
 export EDITOR='nvim'
 export HOMEBREW_NO_AUTO_UPDATE=true #关闭brew自动更新
-export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 export PATH=$PATH:~/go/bin
 
 # 公司配置
-# export GOPRIVATE=*.91160.com,*.github.com
+export GOPRIVATE=*.91160.com,*.github.com
 export GO_RUNMODE=dev #160开发环境配置变量
 setopt no_nomatch
 
