@@ -120,7 +120,7 @@ local mappings = {
         b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
         c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
         d = {
-            "<cmd>Gitsigns diffthis HEAD<cr>",
+            "<cmd>DiffviewOpen<cr>",
             "Diff",
         },
     },
@@ -185,36 +185,6 @@ local mappings = {
         f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
         h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
         v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
-    },
-
-    d = {
-        name = "Debug",
-        b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "toggle breakpoint" },
-        B = {
-            "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>",
-            "set breakpoint",
-        },
-        l = {
-            "<cmd>lua require'dap'.attach()<cr>",
-            "attach",
-        },
-        g = {
-            "<cmd>lua require'dap'.goto_()<cr>",
-            "goto",
-        },
-        r = {
-            "<cmd>lua require'dap'.continue()<cr>",
-            "continue",
-        },
-        i = {
-            "<cmd>lua require'dap'.step_into()<cr>",
-            "step into",
-        },
-        c = {
-
-            "<cmd>lua require'dap'.terminate()<cr>",
-            "dap close",
-        },
     },
 }
 

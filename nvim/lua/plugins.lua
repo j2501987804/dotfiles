@@ -1,7 +1,4 @@
 local plugins = {
-    ["lewis6991/impatient.nvim"] = {
-        config = [[require("impatient").enable_profile()]]
-    },
     ["wbthomason/packer.nvim"] = {},
     ["nvim-lua/plenary.nvim"] = {},
 
@@ -30,7 +27,7 @@ local plugins = {
     },
 
     ["akinsho/bufferline.nvim"] = {
-        after = "nvim-web-devicons",
+        event = "BufRead",
         config = function()
             require("bufferline").setup()
         end,
@@ -162,11 +159,9 @@ local plugins = {
     -- git stuff
     -----------------------------------------------------------
     ["lewis6991/gitsigns.nvim"] = {
+        event = { "BufRead", "BufNewFile" },
         config = function()
             require('gitsigns').setup()
-        end,
-        setup = function()
-            require("pack").packer_lazy_load "gitsigns.nvim"
         end,
     },
 
@@ -187,31 +182,11 @@ local plugins = {
         end,
     },
 
-    ["nvim-telescope/telescope-dap.nvim"] = {
-        setup = function()
-            require("pack").packer_lazy_load("telescope-dap.nvim")
-        end,
-    },
-
     ["nvim-telescope/telescope-fzf-native.nvim"] = {
         run = "make",
         setup = function()
             require("pack").packer_lazy_load("telescope-fzf-native.nvim")
         end,
-    },
-
-    -----------------------------------------------------------
-    -- Dubug
-    -----------------------------------------------------------
-    ["theHamsta/nvim-dap-virtual-text"] = {
-        module = "dap",
-    },
-    ["rcarriga/nvim-dap-ui"] = {
-        after = "nvim-dap-virtual-text",
-    },
-    ["mfussenegger/nvim-dap"] = {
-        after = "nvim-dap-ui",
-        config = [[require "conf.nvim-dap"]],
     },
 
     -----------------------------------------------------------
@@ -301,9 +276,7 @@ local plugins = {
     },
 
     ["karb94/neoscroll.nvim"] = {
-        setup = function()
-            require("pack").packer_lazy_load("neoscroll.nvim")
-        end,
+        event = { "BufRead", "BufNewFile" },
         config = [[require 'neoscroll'.setup()]],
     },
 
