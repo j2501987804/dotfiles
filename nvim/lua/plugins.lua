@@ -285,8 +285,6 @@ local plugins = {
         config = "require 'hop'.setup{}",
     },
 
-    ["kevinhwang91/nvim-hlslens"] = { event = "CmdlineEnter" },
-
     ["dstein64/vim-startuptime"] = { cmd = "StartupTime" },
 
     ["brglng/vim-im-select"] = {
