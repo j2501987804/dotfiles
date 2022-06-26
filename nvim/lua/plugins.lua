@@ -241,11 +241,9 @@ local plugins = {
         end,
     },
 
-    ["NvChad/nvim-colorizer.lua"] = {
+    ["norcalli/nvim-colorizer.lua"] = {
         event = "BufRead",
-        config = function()
-            require("conf.others").colorizer()
-        end,
+        config = [[require'colorizer'.setup()]],
     },
 
     ["Pocco81/AutoSave.nvim"] = {

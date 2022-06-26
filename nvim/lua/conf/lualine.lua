@@ -101,7 +101,7 @@ ins_left {
 -- Sep
 ins_left {
     function()
-        return ""
+        return ""
     end,
     color = { fg = colors.blue, bg = colors.grey }, -- Sets highlighting of component
     padding = { left = 0, right = 1 }, -- We don't need space before this
@@ -119,7 +119,7 @@ ins_left {
 -- Sep
 ins_left {
     function()
-        return ""
+        return ""
     end,
     color = { fg = colors.grey, bg = colors.statusline_bg }, -- Sets highlighting of component
     padding = { left = 0, right = 1 }, -- We don't need space before this
@@ -202,7 +202,8 @@ ins_right {
 
 -- git branch
 ins_right {
-    "b:gitsigns_head",
+    "branch",
+    icons_enabled = false,
     color = { fg = colors.blue, bg = colors.grey },
 }
 
