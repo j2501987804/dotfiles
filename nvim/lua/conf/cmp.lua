@@ -4,8 +4,6 @@ if not present then
     return
 end
 
-vim.opt.completeopt = "menuone,noselect"
-
 local icons = {
     Namespace = "",
     Text = " ",
@@ -56,9 +54,17 @@ cmp_window.info = function(self)
 end
 
 local options = {
+    preselect = cmp.PreselectMode.None,
+    confirm_opts = {
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = false,
+    },
     window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
+    },
+    experimental = {
+        ghost_text = true,
     },
     snippet = {
         expand = function(args)
