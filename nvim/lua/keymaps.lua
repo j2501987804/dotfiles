@@ -25,7 +25,7 @@ keymap("n", "H", "^", opts)
 keymap("v", "H", "^", opts)
 keymap("n", "L", "$", opts)
 keymap("v", "L", "$", opts)
-keymap("n", "p", "_dp", opts)
+keymap("v", "p", "_dp", opts)
 
 -- Modes
 --   normal_mode = "n",

@@ -16,8 +16,8 @@ configs.setup {
         keymaps = {
             init_selection = "<CR>",
             node_incremental = "<CR>",
-            scope_incremental = "<bs>",
-            node_decremental = "<tab>",
+            scope_incremental = "<tab>",
+            node_decremental = "<bs>",
         },
     },
 }
