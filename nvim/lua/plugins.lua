@@ -1,3 +1,4 @@
+local pack = require("pack")
 local plugins = {
 	["wbthomason/packer.nvim"] = {},
 	["nvim-lua/plenary.nvim"] = {},
@@ -289,6 +290,7 @@ local plugins = {
 
 	["brglng/vim-im-select"] = {
 		event = { "InsertEnter" },
+		cond = pack.is_mac,
 	},
 
 	-----------------------------------------------------------
@@ -302,4 +304,4 @@ local plugins = {
 	},
 }
 
-require("pack").run(plugins)
+pack.run(plugins)

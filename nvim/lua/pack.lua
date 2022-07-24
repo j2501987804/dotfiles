@@ -39,5 +39,14 @@ return {
         vim.defer_fn(function()
             require("packer").loader(plugin)
         end, 0)
-    end
+    end,
+
+	is_linux = function()
+		return vim.fn.has("linux") == 1
+	end,
+
+	-- mac
+	is_mac = function()
+		return vim.fn.has("mac") == 1
+	end,
 }
