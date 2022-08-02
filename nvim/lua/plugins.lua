@@ -78,9 +78,14 @@ local plugins = {
 		end,
 	},
 
+	["hrsh7th/cmp-nvim-lsp"] = {
+		after = "nvim-lsp-installer",
+	},
+
+
 	-- automatically highlighting other uses
 	["rrethy/vim-illuminate"] = {
-		after = "nvim-lsp-installer",
+		after = "cmp-nvim-lsp",
 	},
 
 	["neovim/nvim-lspconfig"] = {
@@ -137,12 +142,8 @@ local plugins = {
 		after = "cmp_luasnip",
 	},
 
-	["hrsh7th/cmp-nvim-lsp"] = {
-		after = "cmp-nvim-lua",
-	},
-
 	["hrsh7th/cmp-buffer"] = {
-		after = "cmp-nvim-lsp",
+		after = "cmp-nvim-lua",
 	},
 
 	["hrsh7th/cmp-path"] = {
