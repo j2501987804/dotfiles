@@ -1,148 +1,81 @@
 return {
-	-- lsp extra --
-	["jose-elias-alvarez/null-ls.nvim"] = {
-		after = "nvim-lspconfig",
-		config = function()
-			require("custom.plugins.null-ls").setup()
-		end,
-	},
+  ["goolord/alpha-nvim"] = {
+    disable = false,
+    config = function()
+      require "custom.plugins.alpha"
+    end,
+  },
 
-	-- cmp extra --
-	["rafamadriz/friendly-snippets"] = {
-		module = "cmp_nvim_lsp",
-		event = { "InsertEnter", "CmdlineEnter" },
-	},
+  ["neovim/nvim-lspconfig"] = {
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.plugins.lspconfig"
+    end,
+  },
+  ["nvim-telescope/telescope-fzf-native.nvim"] = {
+    run = "make",
+  },
 
-	["hrsh7th/cmp-cmdline"] = {
-		after = "cmp-path",
-	},
+  ["jose-elias-alvarez/null-ls.nvim"] = {
+    after = "nvim-lspconfig",
+    config = function()
+      require "custom.plugins.null-ls"
+    end,
+  },
 
-	["tzachar/cmp-tabnine"] = {
-		after = "cmp-cmdline",
-		run = "./install.sh",
-	},
+  ["hrsh7th/cmp-cmdline"] = {
+    -- after = "nvim-cmp",
+  },
 
-	-- telescope extra --
-	-- ["nvim-telescope/telescope.nvim"] = {
-	--     cmd = "Telescope",
-	--     config = function()
-	--         require "plugins.configs.telescope"
-	--     end,
-	--     requires = {
-	--         "nvim-telescope/telescope-dap.nvim",
-	--         "nvim-telescope/telescope-ui-select.nvim",
-	--     },
-	-- },
-	["nvim-telescope/telescope-dap.nvim"] = {
-		setup = function()
-			require("core.utils").packer_lazy_load("telescope-dap.nvim")
-		end,
-	},
-	["nvim-telescope/telescope-ui-select.nvim"] = {
-		setup = function()
-			require("core.utils").packer_lazy_load("telescope-ui-select.nvim")
-		end,
-	},
-	["nvim-telescope/telescope-fzf-native.nvim"] = {
-		run = "make",
-		setup = function()
-			require("core.utils").packer_lazy_load("telescope-fzf-native.nvim")
-		end,
-	},
+  ["folke/trouble.nvim"] = {
+    cmd = { "TroubleToggle" },
+    config = [[require("trouble").setup()]],
+  },
 
-	-- git --
-	["sindrets/diffview.nvim"] = { cmd = { "DiffviewOpen", "DiffviewFileHistory" } },
+  -----------------------------------------------------------
+  -- git stuff
+  -----------------------------------------------------------
+  ["sindrets/diffview.nvim"] = { cmd = { "DiffviewOpen", "DiffviewFileHistory" } },
 
-	["f-person/git-blame.nvim"] = {
-		event = { "BufRead", "BufNewFile" },
-	},
+  ["f-person/git-blame.nvim"] = {
+    event = { "BufRead", "BufNewFile" },
+  },
 
-	-- dap --
-	["theHamsta/nvim-dap-virtual-text"] = {
-		module = "dap",
-	},
-	["rcarriga/nvim-dap-ui"] = {
-		after = "nvim-dap-virtual-text",
-	},
-	["mfussenegger/nvim-dap"] = {
-		after = "nvim-dap-ui",
-		config = [[require "custom.plugins.nvim-dap"]],
-	},
+  -----------------------------------------------------------
+  -- others
+  -----------------------------------------------------------
+  ["Pocco81/AutoSave.nvim"] = {
+    event = { "TextChanged", "TextChangedI" },
+  },
 
-	-- other --
-	["Pocco81/AutoSave.nvim"] = {
-		event = { "TextChanged", "TextChangedI" },
-		config = [[require("autosave").setup()]],
-	},
+  -- last read
+  ["ethanholz/nvim-lastplace"] = {
+    event = { "BufRead", "BufNewFile" },
+    config = [[require("custom.plugins.others").lastplace()]],
+  },
 
-	["ethanholz/nvim-lastplace"] = {
-		event = { "BufRead", "BufNewFile" },
-		config = [[require("custom.plugins.others").lastplace()]],
-	},
+  ["karb94/neoscroll.nvim"] = {
+    event = { "BufRead", "BufNewFile" },
+    config = [[require 'neoscroll'.setup()]],
+  },
 
-	["folke/trouble.nvim"] = {
-		cmd = { "TroubleToggle" },
-		config = [[require("trouble").setup()]],
-	},
+  ["phaazon/hop.nvim"] = {
+    cmd = "HopWord",
+    config = "require 'hop'.setup{}",
+  },
 
-	["rcarriga/nvim-notify"] = {
-		setup = function()
-			require("core.utils").packer_lazy_load("nvim-notify")
-		end,
-		config = function()
-			vim.notify = require("notify")
-		end,
-	},
+  ["brglng/vim-im-select"] = {
+    event = { "InsertEnter" },
+    cond = [[vim.fn.has("mac") == 1]],
+  },
 
-	["akinsho/toggleterm.nvim"] = {
-		setup = function()
-			require("core.utils").packer_lazy_load("toggleterm.nvim")
-		end,
-		config = function()
-			require("custom.plugins.toggleterm")
-		end,
-	},
-
-	["stevearc/aerial.nvim"] = {
-		cmd = "AerialToggle",
-		config = [[require("aerial").setup()]],
-	},
-
-	["karb94/neoscroll.nvim"] = {
-		setup = function()
-			require("core.utils").packer_lazy_load("neoscroll.nvim")
-		end,
-		config = [[require 'neoscroll'.setup()]],
-	},
-
-	["phaazon/hop.nvim"] = {
-		cmd = "HopWord",
-		config = "require 'hop'.setup{}",
-	},
-
-	["kevinhwang91/nvim-hlslens"] = { event = "CmdlineEnter" },
-
-	["dstein64/vim-startuptime"] = { cmd = "StartupTime" },
-
-	["windwp/nvim-spectre"] = {
-		module = "spectre",
-		config = [[require 'spectre'.setup()]],
-	},
-
-	["mbbill/undotree"] = {
-		cmd = "UndotreeToggle",
-		config = require("custom.plugins.others").undotree,
-	},
-
-	["brglng/vim-im-select"] = {
-		event = { "BufRead", "BufNewFile" },
-	},
-
-	-- lang --
-	["ray-x/go.nvim"] = {
-		ft = "go",
-		config = function()
-			require("go").setup()
-		end,
-	},
+  -----------------------------------------------------------
+  -- lang
+  -----------------------------------------------------------
+  ["ray-x/go.nvim"] = {
+    ft = "go",
+    config = function()
+      require("go").setup()
+    end,
+  },
 }

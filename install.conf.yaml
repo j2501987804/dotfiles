@@ -6,11 +6,10 @@
 
 - link:
     ~/.tmux.conf: tmux.conf
-    # ~/.config/nvim/lua/custom: custom
+    ~/.config/nvim/lua/custom: custom
     ~/.config/lazygit: lazygit
-
     ~/.zshrc: zshrc
-    ~/.config/nvim: nvim
+    # ~/.config/nvim: nvim
     ~/.config/alacritty: alacritty
 
 - create:
