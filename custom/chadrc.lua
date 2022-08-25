@@ -22,7 +22,7 @@ M.mappings = require "custom.mappings"
 -- example of changing theme:
 
 M.ui = {
-  theme = "tokyonight",
+  theme = "onedark",
   transparency = false,
 }
 
