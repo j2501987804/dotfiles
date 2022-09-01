@@ -23,17 +23,33 @@ M.mason = {
 		"lua-language-server",
 		"stylua",
 
+		-- go
+		"gopls",
+		"goimports",
+		"golines",
+
+		-- rust
+		"rust-analyzer",
+
+		-- yaml
+		"yaml-language-server",
+		"yamlfmt",
+		"yamllint",
+
 		-- web dev
-		"css-lsp",
-		"html-lsp",
-		"typescript-language-server",
-		"deno",
-		"emmet-ls",
-		"json-lsp",
+		-- "css-lsp",
+		-- "html-lsp",
+		-- "typescript-language-server",
+		-- "deno",
+		-- "emmet-ls",
+		-- "json-lsp",
 
 		-- shell
 		"shfmt",
 		"shellcheck",
+
+		-- bash
+		"bash-language-server",
 	},
 }
 

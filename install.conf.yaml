@@ -14,7 +14,7 @@
 
 - create:
     - ~/.local/share/zinit
-    - ~/.config/nvim
+    - ~/.config/nvim/custom
     - ~/Library/Application\ Support/lazygit
 
 - shell:
