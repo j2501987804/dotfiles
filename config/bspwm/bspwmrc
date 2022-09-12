@@ -57,6 +57,7 @@ exec mpd &
 utools &
 fcitx5 &
 dunst &
+picgo &
 picom &
 flameshot &
 xfce4-power-manager &

@@ -7,8 +7,8 @@ super + Return
 	wezterm
 
 # Terminal Apps
-super + {e,t,n}
-	wezterm start {ranger,htop,nvim}
+super + {e,n}
+	wezterm start {ranger,nvim}
 
 
 # program launcher
