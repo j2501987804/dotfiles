@@ -46,9 +46,9 @@ lspconfig.util.default_config = vim.tbl_extend(
 )
 
 -- lspservers with default config
-local servers = require 'nvim-lsp-installer.servers'.get_installed_server_names()
+local servers = { "gopls", "sumneko_lua", "bashls", "intelephense", "rust-analyzer", "pyright" }
 
-for _, lsp in ipairs(servers) do
+for _, lsp in pairs(servers) do
 	local options = {
 		-- on_attach = on_attach,
 	}

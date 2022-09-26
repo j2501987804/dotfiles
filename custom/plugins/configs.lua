@@ -28,6 +28,9 @@ M.mason = {
 		"goimports",
 		"golines",
 
+		-- php
+		"intelephense",
+
 		-- rust
 		"rust-analyzer",
 

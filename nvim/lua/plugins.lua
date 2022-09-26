@@ -55,9 +55,6 @@ local plugins = {
 
 	-- vim and tmux statusline merge
 	["vimpostor/vim-tpipeline"] = {
-		setup = function()
-			require("pack").packer_lazy_load("vim-tpipeline")
-		end
 	},
 
 	-- quickfix ui
@@ -67,21 +64,7 @@ local plugins = {
 	-----------------------------------------------------------
 	-- LSP
 	-----------------------------------------------------------
-	["williamboman/nvim-lsp-installer"] = {
-		opt = true,
-		setup = function()
-			require("pack").packer_lazy_load "nvim-lsp-installer"
-			-- reload the current file so lsp actually starts for it
-			vim.defer_fn(function()
-				vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-			end, 0)
-		end,
-	},
-
-	["hrsh7th/cmp-nvim-lsp"] = {
-		after = "nvim-lsp-installer",
-	},
-
+	["hrsh7th/cmp-nvim-lsp"] = {},
 
 	-- automatically highlighting other uses
 	["rrethy/vim-illuminate"] = {
@@ -90,9 +73,7 @@ local plugins = {
 
 	["neovim/nvim-lspconfig"] = {
 		after = "vim-illuminate",
-		module = "lspconfig",
 		config = function()
-			require("nvim-lsp-installer").setup {}
 			require("conf.lspconfig")
 		end,
 	},
@@ -203,6 +184,18 @@ local plugins = {
 	-----------------------------------------------------------
 	-- navigation
 	-----------------------------------------------------------
+	["williamboman/mason.nvim"] = {
+		config = function()
+
+		end
+	},
+
+	["WhoIsSethDaniel/mason-tool-installer.nvim"] = {
+		config = function()
+			require("conf.mason")
+		end
+	},
+
 	["kyazdani42/nvim-tree.lua"] = {
 		cmd = { "NvimTreeToggle", "NvimTreeFocus" },
 		config = function()
@@ -258,10 +251,9 @@ local plugins = {
 	},
 
 	["Pocco81/AutoSave.nvim"] = {
-		event = { "TextChanged", "TextChangedI" },
 		config = function()
-			require("autosave").setup({ write_all_buffers = true })
-		end
+			require("auto-save").setup {}
+		end,
 	},
 
 	-- last read
