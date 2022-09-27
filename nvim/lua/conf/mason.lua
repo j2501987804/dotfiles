@@ -24,7 +24,7 @@ require('mason-tool-installer').setup {
 		'intelephense',
 		'rust-analyzer',
 		'lua-language-server',
-		{ 'bash-language-server', auto_update = true },
+		'bash-language-server',
 		'gopls',
 	},
 

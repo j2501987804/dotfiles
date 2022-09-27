@@ -42,23 +42,25 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-lspconfig.util.default_config = vim.tbl_extend(
-	"force",
-	lspconfig.util.default_config,
-	{
-		on_attach = on_attach,
-		capabilities = capabilities,
-		lsp_flags = lsp_flags,
-
-	}
-)
+-- lspconfig.util.default_config = vim.tbl_extend(
+-- 	"force",
+-- 	lspconfig.util.default_config,
+-- 	{
+-- 		on_attach = on_attach,
+-- 		capabilities = capabilities,
+-- 		lsp_flags = lsp_flags,
+--
+-- 	}
+-- )
 
 -- lspservers with default config
 local servers = { "gopls", "sumneko_lua", "bashls", "intelephense", "rust_analyzer", "pyright" }
 
 for _, lsp in pairs(servers) do
 	local options = {
-		-- on_attach = on_attach,
+		on_attach = on_attach,
+		capabilities = capabilities,
+		lsp_flags = lsp_flags,
 	}
 	if lsp == "sumneko_lua" then
 		options.settings = {

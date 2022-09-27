@@ -35,6 +35,7 @@ zinit light romkatv/powerlevel10k
 # alias
 alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias v='nvim'
+alias tmux='tmux at'
 alias k='kubectl'
 alias go="go"
 alias lg="lazygit"

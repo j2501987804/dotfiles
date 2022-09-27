@@ -28,18 +28,17 @@ return {
         }
 
         packer.startup(function(use)
-            for key, value in pairs(plugins) do
-                value[1] = key
+            for _, value in pairs(plugins) do
                 use(value)
             end
         end)
     end,
 
-    packer_lazy_load = function(plugin)
-        vim.defer_fn(function()
-            require("packer").loader(plugin)
-        end, 0)
-    end,
+    -- packer_lazy_load = function(plugin)
+    --     vim.defer_fn(function()
+    --         require("packer").loader(plugin)
+    --     end, 0)
+    -- end,
 
 	is_linux = function()
 		return vim.fn.has("linux") == 1
