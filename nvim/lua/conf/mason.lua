@@ -8,13 +8,9 @@ require('mason-tool-installer').setup {
 	ensure_installed = {
 		'stylua',
 		'shellcheck',
-		'editorconfig-checker',
-		'gofumpt',
-		'golines',
 		'gomodifytags',
 		'gotests',
 		'impl',
-		'json-to-struct',
 		'luacheck',
 		'misspell',
 		'revive',
@@ -28,8 +24,8 @@ require('mason-tool-installer').setup {
 		'intelephense',
 		'rust-analyzer',
 		'lua-language-server',
-		'gopls',
 		{ 'bash-language-server', auto_update = true },
+		'gopls',
 	},
 
 	-- if set to true this will check each tool for updates. If updates

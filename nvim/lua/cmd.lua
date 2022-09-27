@@ -1,4 +1,3 @@
-
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
@@ -25,3 +24,12 @@ vim.cmd([[
 	autocmd BufEnter *  :silent !fcitx5-remote -c
 	autocmd BufLeave *  :silent !fcitx5-remote -c
 ]])
+
+vim.cmd [[
+try
+  colorscheme darkplus
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme default
+  set background=dark
+endtry
+]]

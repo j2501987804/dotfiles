@@ -6,11 +6,12 @@ local plugins = {
 	-----------------------------------------------------------
 	-- UI
 	-----------------------------------------------------------
-	["projekt0n/github-nvim-theme"] = {
-		config = function()
-			require("github-theme").setup()
-		end
-	},
+	-- theme
+	["projekt0n/github-nvim-theme"] = {},
+	["folke/tokyonight.nvim"] = {},
+	["tomasiser/vim-code-dark"] = {},
+	["lunarvim/darkplus.nvim"] = {},
+	["sainnhe/sonokai"] = {},
 
 	["kyazdani42/nvim-web-devicons"] = {},
 

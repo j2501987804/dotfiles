@@ -24,6 +24,14 @@ end
 local function on_attach(client, bufnr)
 	lsp_keymaps(bufnr)
 	require("illuminate").on_attach(client)
+	-- if client.server_capabilities.documentFormattingProvider then
+	-- 	vim.api.nvim_create_autocmd('BufWritePre', {
+	-- 		buffer = bufnr,
+	-- 		callback = function()
+	-- 			vim.lsp.buf.formatting()
+	-- 		end
+	-- 	})
+	-- end
 end
 
 local lsp_flags = {
@@ -46,7 +54,7 @@ lspconfig.util.default_config = vim.tbl_extend(
 )
 
 -- lspservers with default config
-local servers = { "gopls", "sumneko_lua", "bashls", "intelephense", "rust-analyzer", "pyright" }
+local servers = { "gopls", "sumneko_lua", "bashls", "intelephense", "rust_analyzer", "pyright" }
 
 for _, lsp in pairs(servers) do
 	local options = {
