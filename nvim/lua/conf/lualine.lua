@@ -47,7 +47,7 @@ local config = {
 	options = {
 		component_separators = "",
 		section_separators = "",
-		disabled_filetypes = { "NvimTree", "Outline", "AerialTree", "Dap" },
+		disabled_filetypes = { "NvimTree", "Outline", "AerialTree", "Dap", "Trouble", "undotree", "toggleterm" },
 		theme = {
 			normal = { c = { fg = colors.fg, bg = colors.statusline_bg } },
 			inactive = {
@@ -97,6 +97,8 @@ ins_left {
 	color = { fg = colors.grey, bg = colors.blue }, -- Sets highlighting of component
 	icon = ""
 }
+
+-- ins_left { "filetype" }
 
 -- Sep
 ins_left {

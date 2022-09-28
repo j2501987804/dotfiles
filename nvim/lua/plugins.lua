@@ -16,11 +16,11 @@ local plugins = {
 	"sainnhe/sonokai",
 
 	"kyazdani42/nvim-web-devicons",
-	"goolord/alpha-nvim",
 	"nvim-lualine/lualine.nvim",
 	"akinsho/bufferline.nvim",
 	"moll/vim-bbye",
 	"lukas-reineke/indent-blankline.nvim",
+	"goolord/alpha-nvim",
 	{
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
@@ -52,12 +52,10 @@ local plugins = {
 	"hrsh7th/cmp-buffer",
 	"hrsh7th/cmp-path",
 	"hrsh7th/cmp-cmdline",
-
 	{
 		"tzachar/cmp-tabnine",
 		run = "./install.sh"
 	},
-
 	"hrsh7th/nvim-cmp",
 	"windwp/nvim-autopairs",
 
@@ -120,7 +118,7 @@ local plugins = {
 pack.run(plugins)
 
 -- load config
-local defualt = { 'hop', 'neoscroll', 'bufferline', 'colorizer', 'auto-save' }
+local defualt = { 'hop', 'neoscroll', 'bufferline', 'colorizer', 'auto-save', 'aerial', 'gitsigns' }
 for _, value in pairs(defualt) do
 	require(value).setup()
 end
