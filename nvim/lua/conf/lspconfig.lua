@@ -62,6 +62,7 @@ for _, lsp in pairs(servers) do
 		capabilities = capabilities,
 		lsp_flags = lsp_flags,
 	}
+
 	if lsp == "sumneko_lua" then
 		options.settings = {
 			Lua = {
@@ -76,6 +77,10 @@ for _, lsp in pairs(servers) do
 				},
 			},
 		}
+	end
+
+	if lsp == 'gopls' then
+		options.cmd = { 'gopls', '--remote=auto' }
 	end
 	lspconfig[lsp].setup(options)
 end

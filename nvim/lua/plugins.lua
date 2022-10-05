@@ -14,10 +14,13 @@ local plugins = {
 	"tomasiser/vim-code-dark",
 	"lunarvim/darkplus.nvim",
 	"sainnhe/sonokai",
+	'olimorris/onedarkpro.nvim',
 
 	"kyazdani42/nvim-web-devicons",
 	"nvim-lualine/lualine.nvim",
-	"akinsho/bufferline.nvim",
+	-- "akinsho/bufferline.nvim",
+	'fgheng/winbar.nvim',
+	'SmiteshP/nvim-gps',
 	"moll/vim-bbye",
 	"lukas-reineke/indent-blankline.nvim",
 	"goolord/alpha-nvim",
@@ -118,13 +121,16 @@ local plugins = {
 pack.run(plugins)
 
 -- load config
-local defualt = { 'hop', 'neoscroll', 'bufferline', 'colorizer', 'auto-save', 'aerial', 'gitsigns' }
+local defualt = { 'hop', 'neoscroll', 'bufferline', 'colorizer', 'auto-save', 'aerial', 'gitsigns', 'nvim-gps' }
 for _, value in pairs(defualt) do
-	require(value).setup()
+	local ok, plugin = pcall(require, value)
+	if ok then
+		plugin.setup()
+	end
 end
 
 local conf_names = { "alpha", "cmp", "lspconfig", "lualine", "mason", "nvimtree", "telescope",
-	"toggleterm", "treesitter", "whichkey" }
+	"toggleterm", "treesitter", "whichkey", 'winbar' }
 for _, value in pairs(conf_names) do
 	require("conf." .. value)
 end
