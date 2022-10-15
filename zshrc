@@ -19,6 +19,7 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
 
 # autojump
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
 # Plugin history-search-multi-word loaded with investigating.
 zinit load zdharma-continuum/history-search-multi-word
@@ -38,7 +39,7 @@ alias v='nvim'
 alias k='kubectl'
 alias go="go"
 alias lg="lazygit"
-alias setproxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
+export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 alias unproxy='unset http_proxy && unset https_proxy && unset all_proxy'
 
 # 环境变量

@@ -18,6 +18,7 @@
     - ~/Library/Application\ Support/lazygit
 
 - shell:
-    #- [git clone https://github.com/zdharma-continuum/zinit.git ~/.local/share/zinit/zinit.git]
-    - [git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1]
+    - [git clone https://github.com/zdharma-continuum/zinit.git ~/.local/share/zinit/zinit.git]
+      #- [git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1]
+    - [source ~/.zshrc]
 

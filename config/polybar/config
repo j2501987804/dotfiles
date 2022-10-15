@@ -82,8 +82,8 @@ font-8 = "unifont:fontformat=truetype:size=9;3"
 font-9 = "Iosevka:style=bold:size=15;4"
 
 modules-left   = menu sep LD mod RD space LD bspwm RD space LD info-cava RD space sep xkeyboard 
-modules-center = LDmpd space mpd space space music space RDmpd  
-modules-right  = space LD cpu RD space volume space cpuTemp space network  backlight space LD date RD space sysmenu
+; modules-center = LDmpd space mpd space space music space RDmpd  
+modules-right  = space LD cpu RD space volume space cpuTemp space LD date RD space sysmenu
  
 separator =
 spacing = 0

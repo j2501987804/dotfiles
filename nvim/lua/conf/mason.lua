@@ -7,17 +7,11 @@ require("mason").setup({
 require('mason-tool-installer').setup {
 	ensure_installed = {
 		'stylua',
-		'shellcheck',
-		'gomodifytags',
-		'gotests',
-		'impl',
-		'luacheck',
 		'misspell',
 		'revive',
 		'shellcheck',
 		'shfmt',
 		'staticcheck',
-		'vint',
 
 		-- lsp server
 		'pyright',
