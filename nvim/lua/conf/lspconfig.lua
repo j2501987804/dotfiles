@@ -38,8 +38,8 @@ local lsp_flags = {
 	debounce_text_changes = 150,
 }
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 -- lspconfig.util.default_config = vim.tbl_extend(

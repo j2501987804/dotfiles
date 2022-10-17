@@ -83,6 +83,7 @@ function _QUICK_RUN()
 	Terminal:new({
 		cmd = run_command(),
 		hidden = true,
+		close_on_exit = false,
 		on_open = on_open,
 	}):toggle()
 end
