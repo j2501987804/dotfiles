@@ -54,7 +54,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- )
 
 -- lspservers with default config
-local servers = { "gopls", "sumneko_lua", "bashls", "intelephense", "rust_analyzer", "pyright" }
+local servers = { "gopls", "sumneko_lua", "bashls", "intelephense", "rust_analyzer", "pyright", "clangd"}
 
 for _, lsp in pairs(servers) do
 	local options = {

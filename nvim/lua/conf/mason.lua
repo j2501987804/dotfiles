@@ -20,6 +20,7 @@ require('mason-tool-installer').setup {
 		'lua-language-server',
 		'bash-language-server',
 		'gopls',
+		'clangd',
 	},
 
 	-- if set to true this will check each tool for updates. If updates
