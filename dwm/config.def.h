@@ -13,7 +13,7 @@ static const int showbar            = 1;     /* 0 means no bar */
 static const int topbar             = 1;     /* 0 means bottom bar */
 static const char *fonts[]          = { 
 	"monospace:size=18", 
-    "FiraCode Nerd Font Mono:style=Regular:pixelsize=24:automatic=true",
+    "FiraCode Nerd Font Mono:style=Regular:pixelsize=60:automatic=true",
 	"WenQuanYi Micro Hei,文泉驛微米黑,文泉驿微米黑:style=Regular:size=16:autoautomatic=true",
 };
 static const char dmenufont[]       = "monospace:size=10";
