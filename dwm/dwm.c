@@ -234,7 +234,7 @@ static void sendmon(Client *c, Monitor *m);
 static void setclientstate(Client *c, long state);
 static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
-static void setgaps(const Arg *arg);
+// static void setgaps(const Arg *arg);
 static void setlayout(const Arg *arg);
 static void setmfact(const Arg *arg);
 static void setup(void);
@@ -831,8 +831,8 @@ drawbar(Monitor *m)
 {
 	// int x, w, tw = 0, stw = 0;
 	int x, w, tw = 0, n = 0,stw = 0, scm;
-	int boxs = drw->fonts->h / 9;
-	int boxw = drw->fonts->h / 6 + 2;
+	// int boxs = drw->fonts->h / 9;
+	// int boxw = drw->fonts->h / 6 + 2;
 	unsigned int i, occ = 0, urg = 0;
 	Client *c;
 
@@ -1813,15 +1813,15 @@ setfullscreen(Client *c, int fullscreen)
 	}
 }
 
-void
-setgaps(const Arg *arg)
-{
-	if ((arg->i == 0) || (selmon->gappx + arg->i < 0))
-		selmon->gappx = 0;
-	else
-		selmon->gappx += arg->i;
-	arrange(selmon);
-}
+// void
+// setgaps(const Arg *arg)
+// {
+// 	if ((arg->i == 0) || (selmon->gappx + arg->i < 0))
+// 		selmon->gappx = 0;
+// 	else
+// 		selmon->gappx += arg->i;
+// 	arrange(selmon);
+// }
 
 void
 setlayout(const Arg *arg)
