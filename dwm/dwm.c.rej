@@ -1,0 +1,22 @@
+***************
+*** 1097,1102 ****
+  	static XWindowAttributes wa;
+  	XMapRequestEvent *ev = &e->xmaprequest;
+  
+  	if (!XGetWindowAttributes(dpy, ev->window, &wa))
+  		return;
+  	if (wa.override_redirect)
+--- 1216,1228 ----
+  	static XWindowAttributes wa;
+  	XMapRequestEvent *ev = &e->xmaprequest;
+  
++ 	Client *i;
++ 	if ((i = wintosystrayicon(ev->window))) {
++ 		sendevent(i->win, netatom[Xembed], StructureNotifyMask, CurrentTime, XEMBED_WINDOW_ACTIVATE, 0, systray->win, XEMBED_EMBEDDED_VERSION);
++ 		resizebarwin(selmon);
++ 		updatesystray();
++ 	}
++ 
+  	if (!XGetWindowAttributes(dpy, ev->window, &wa))
+  		return;
+  	if (wa.override_redirect)
