@@ -32,8 +32,12 @@ GLFW_IM_MODULE=ibus
 # 安装软件
 ``` sh
 # 安装输入法
-paru -S fcitx5-im fcitx5-chinese-addons fcitx5-qt fcitx5-gtk fcitx5-pinyin-zhwiki fcitx5-pinyin-sougou 
+paru -S fcitx5-im fcitx5-chinese-addons fcitx5-qt fcitx5-gtk fcitx5-pinyin-zhwiki fcitx5-pinyin-sougou fcitx5-skin-material
 
 # 字体
-paru -s ttf-fira-code noto-fonts-emoji wqy-microhei ttf-symbola nerd-fonts-fira-code
+paru -S ttf-fira-code noto-fonts-emoji wqy-microhei ttf-symbola nerd-fonts-fira-code
+
+# 
+paru -S clash-for-windows-chinese everforest-gtk-theme-git lx-music-desktop-bin ly microsoft-edge-stable-bin picom-jonaburg-git telegram-desktop-bin rofi 
+wezterm wqy-microhei lazygit nitrogen neovim autojump betterlockscreen alsa-utils 
 ```
