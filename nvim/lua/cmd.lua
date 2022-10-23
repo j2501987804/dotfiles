@@ -33,7 +33,7 @@ vim.cmd([[
 
 vim.cmd [[
 	try
-		colorscheme github_dimmed "darkplus
+		colorscheme tokyonight "darkplus
 	catch /^Vim\%((\a\+)\)\=:E185/
 		colorscheme default
 		set background=dark

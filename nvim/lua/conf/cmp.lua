@@ -70,7 +70,7 @@ local options = {
 		native_menu = false,
 	},
 	window = {
-		-- completion = cmp.config.window.bordered(),
+		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
 	},
 	snippet = {

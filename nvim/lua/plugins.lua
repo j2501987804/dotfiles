@@ -18,7 +18,7 @@ local plugins = {
 
 	"kyazdani42/nvim-web-devicons",
 	"nvim-lualine/lualine.nvim",
-	-- "akinsho/bufferline.nvim",
+	"akinsho/bufferline.nvim",
 	'fgheng/winbar.nvim',
 	'SmiteshP/nvim-gps',
 	"moll/vim-bbye",
