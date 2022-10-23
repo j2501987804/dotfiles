@@ -31,6 +31,7 @@ dashboard.section.header.val = banner
 -- Menu
 dashboard.section.buttons.val = {
 	dashboard.button('f', '  Find file', ':Telescope find_files previewer=false theme=dropdown<CR>'),
+	dashboard.button('P', '  Find project', ':Telescope projects previewer=false theme=dropdown<CR>'),
 	dashboard.button('F', '  Find Text', '<cmd>Telescope live_grep theme=ivy<cr>'),
 	dashboard.button('e', '  New file', ':ene <BAR> startinsert<CR>'),
 	dashboard.button('s', '  Settings', ':e $MYVIMRC<CR>'),

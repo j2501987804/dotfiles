@@ -4,40 +4,46 @@ require("mason").setup({
 	}
 })
 
-require('mason-tool-installer').setup {
-	ensure_installed = {
-		'stylua',
-		'misspell',
-		'revive',
-		'shellcheck',
-		'shfmt',
-		'staticcheck',
+local servers = { "gopls", "sumneko_lua", "bashls", "intelephense", "rust_analyzer", "pyright", "clangd" }
 
-		-- lsp server
-		'pyright',
-		'intelephense',
-		'rust-analyzer',
-		'lua-language-server',
-		'bash-language-server',
-		'gopls',
-		'clangd',
-	},
+require("mason-lspconfig").setup({
+	ensure_installed = servers,
+	automatic_installation = true,
+})
 
-	-- if set to true this will check each tool for updates. If updates
-	-- are available the tool will be updated. This setting does not
-	-- affect :MasonToolsUpdate or :MasonToolsInstall.
-	-- Default: false
-	auto_update = false,
+local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status_ok then
+	return
+end
 
-	-- automatically install / update on startup. If set to false nothing
-	-- will happen on startup. You can use :MasonToolsInstall or
-	-- :MasonToolsUpdate to install tools and check for updates.
-	-- Default: true
-	run_on_start = true,
+local opts = {}
 
-	-- set a delay (in ms) before the installation starts. This is only
-	-- effective if run_on_start is set to true.
-	-- e.g.: 5000 = 5 second delay, 10000 = 10 second delay, etc...
-	-- Default: 0
-	start_delay = 3000, -- 3 second delay
-}
+for _, server in pairs(servers) do
+	opts = {
+		on_attach = require("conf.lsp").on_attach,
+		capabilities = require("conf.lsp").capabilities,
+	}
+
+	server = vim.split(server, "@")[1]
+
+	if server == "sumneko_lua" then
+		opts = vim.tbl_deep_extend("force", {
+			settings = {
+
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+					workspace = {
+						library = {
+							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+							[vim.fn.stdpath("config") .. "/lua"] = true,
+						},
+					},
+				},
+			}
+		}, opts)
+	end
+
+	lspconfig[server].setup(opts)
+end

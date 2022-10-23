@@ -16,6 +16,12 @@ vim.cmd([[
            autocmd CursorMovedI    * silent! checktime
        endif
    augroup END
+
+   augroup _git
+	autocmd!
+		autocmd FileType gitcommit setlocal wrap
+		autocmd FileType gitcommit setlocal spell
+	augroup end
 ]])
 
 vim.cmd([[

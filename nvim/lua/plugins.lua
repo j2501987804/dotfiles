@@ -44,6 +44,8 @@ local plugins = {
 	"neovim/nvim-lspconfig",
 	"ray-x/lsp_signature.nvim",
 	"tami5/lspsaga.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	"williamboman/mason.nvim",
 
 	-----------------------------------------------------------
 	-- CMP
@@ -77,11 +79,11 @@ local plugins = {
 		run = "make",
 	},
 	"nvim-telescope/telescope.nvim",
+	"ahmedkhalf/project.nvim",
 
 	-----------------------------------------------------------
 	-- navigation
 	-----------------------------------------------------------
-	"williamboman/mason.nvim",
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
 	"kyazdani42/nvim-tree.lua",
 	"akinsho/toggleterm.nvim",
@@ -129,10 +131,10 @@ for _, value in pairs(defualt) do
 	end
 end
 
-local conf_names = { "alpha", "cmp", "lspconfig", "lualine", "mason", "nvimtree", "telescope",
-	"toggleterm", "treesitter", "whichkey", 'winbar' }
+local conf_names = { "alpha", "cmp", "lualine", "mason", "nvimtree", "telescope",
+	"toggleterm", "treesitter", "whichkey", 'winbar', 'project' }
 for _, value in pairs(conf_names) do
-	require("conf." .. value)
+	pcall(require, "conf." .. value)
 end
 
 local common = require("conf.common")
