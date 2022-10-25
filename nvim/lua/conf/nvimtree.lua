@@ -64,4 +64,10 @@ nvim_tree.setup {
 			},
 		},
 	},
+	git = {
+		enable = true,
+		ignore = false,
+		show_on_dirs = true,
+		timeout = 400,
+	},
 }
