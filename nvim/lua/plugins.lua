@@ -15,6 +15,7 @@ local plugins = {
 	"lunarvim/darkplus.nvim",
 	"sainnhe/sonokai",
 	'olimorris/onedarkpro.nvim',
+	'catppuccin/nvim',
 
 	"kyazdani42/nvim-web-devicons",
 	"nvim-lualine/lualine.nvim",
