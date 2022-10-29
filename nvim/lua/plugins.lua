@@ -124,7 +124,8 @@ local plugins = {
 pack.run(plugins)
 
 -- load config
-local defualt = { 'hop', 'neoscroll', 'bufferline', 'colorizer', 'auto-save', 'aerial', 'gitsigns', 'nvim-gps' }
+local defualt = { 'hop', 'neoscroll', 'bufferline', 'colorizer', 'auto-save', 'aerial', 'gitsigns', 'nvim-gps',
+	'project_nvim' }
 for _, value in pairs(defualt) do
 	local ok, plugin = pcall(require, value)
 	if ok then
@@ -133,7 +134,7 @@ for _, value in pairs(defualt) do
 end
 
 local conf_names = { "alpha", "cmp", "lualine", "mason", "nvimtree", "telescope",
-	"toggleterm", "treesitter", "whichkey", 'winbar', 'project' }
+	"toggleterm", "treesitter", "whichkey", 'winbar' }
 for _, value in pairs(conf_names) do
 	pcall(require, "conf." .. value)
 end
