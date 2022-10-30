@@ -44,6 +44,7 @@ end
 
 local lock_command = function()
 	awesome.emit_signal("module::exit_screen:hide")
+	awful.spawn.with_shell("betterlockscreen -l")
 	--lock_screen_show()
 end
 

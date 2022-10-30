@@ -68,6 +68,7 @@ ruled.client.connect_signal("request::rules", function()
 					"blueberry.py",
 					"Blueberry.py",
 					"fcitx5-config-qt",
+					"copyq",
                 },
                 instance = {
                     "xfce",

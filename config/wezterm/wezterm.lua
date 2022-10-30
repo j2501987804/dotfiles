@@ -8,12 +8,12 @@
 local wezterm = require("wezterm")
 
 local function font_with_fallback(name, params)
-	local names = { name, "Apple Color Emoji", "azuki_font","WenQuanYi Zen Hei Mono" }
+	local names = { name, "WenQuanYi Zen Hei Mono", "Apple Color Emoji", "azuki_font" }
 	return wezterm.font_with_fallback(names, params)
 end
 
--- local font_name = "AestheticIosevka Nerd Font Mono"
-local font_name = "FiraCode Nerd Font"
+local font_name = "AestheticIosevka Nerd Font Mono"
+-- local font_name = "FiraCode Nerd Font"
 
 return {
 	-- OpenGL for GPU acceleration, Software for CPU

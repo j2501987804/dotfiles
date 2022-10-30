@@ -10,11 +10,17 @@
     ~/.config/lazygit: lazygit
     ~/.zshrc: zshrc
     ~/.config/nvim: nvim
-    ~/.config/alacritty: alacritty
+    ~/.config/alacritty: config/alacritty
+    ~/.config/wezterm: config/wezterm
+    ~/.config/picom.conf: config/picom.conf
+    ~/.config/ranger: config/ranger
+    ~/.config/rofi: config/rofi
+    ~/.config/neofetch: config/neofetch
+    ~/.config/awesome: config/awesome
 
 - create:
     - ~/.local/share/zinit
-    - ~/.config/nvim/custom
+    # - ~/.config/nvim/custom
     - ~/Library/Application\ Support/lazygit
 
 - shell:

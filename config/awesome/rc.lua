@@ -20,8 +20,11 @@ require "signals"
 require "ui"
 
 -- Autostart --
-awful.spawn.with_shell("picom")
-awful.spawn.with_shell("utools")
+awful.spawn.with_shell("input-remapper-control --command autoload")
+run.run_once_grep("utools")
+run.run_once_grep("flameshot")
+run.run_once_grep("copyq")
+run.run_once_grep("picom")
 run.run_once_grep("blueberry")
 run.run_once_grep("nm-applet")
 run.run_once_grep("fcitx5")
