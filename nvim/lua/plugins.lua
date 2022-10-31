@@ -47,6 +47,7 @@ local plugins = {
 	"tami5/lspsaga.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"williamboman/mason.nvim",
+	"jose-elias-alvarez/null-ls.nvim",
 
 	-----------------------------------------------------------
 	-- CMP
@@ -134,9 +135,9 @@ for _, value in pairs(defualt) do
 end
 
 local conf_names = { "alpha", "cmp", "lualine", "mason", "nvimtree", "telescope",
-	"toggleterm", "treesitter", "whichkey", 'winbar' }
+	"toggleterm", "treesitter", "whichkey", 'winbar', 'null-ls' }
 for _, value in pairs(conf_names) do
-	pcall(require, "conf." .. value)
+	require("conf." .. value)
 end
 
 local common = require("conf.common")
