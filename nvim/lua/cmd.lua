@@ -29,7 +29,7 @@ vim.cmd([[
 
 vim.cmd [[
 	try
-		colorscheme catppuccin "darkplus
+		colorscheme tokyonight "darkplus
 	catch /^Vim\%((\a\+)\)\=:E185/
 		colorscheme default
 		set background=dark
