@@ -81,7 +81,10 @@ local function format()
 	end
 	for value in rsfile:lines() do
 		local path = string.sub(value, 3, -1)
-		-- local ext = vim.fn.fnamemodify(vim.fn.expand(path), ':e')
+		local ext = vim.fn.fnamemodify(vim.fn.expand(path), ':e')
+		if ext == "php" then
+			return
+		end
 		local bufnr = vim.fn.bufadd(path)
 		vim.lsp.buf.format({ buffer = bufnr })
 	end
