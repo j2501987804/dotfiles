@@ -60,7 +60,7 @@ local check_backspace = function()
 end
 
 local options = {
-	preselect = cmp.PreselectMode.None,
+	-- preselect = cmp.PreselectMode.None,
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,
@@ -80,7 +80,7 @@ local options = {
 	},
 	formatting = {
 		format = function(_, vim_item)
-			vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
+			vim_item.kind = string.format("    %s%s", icons[vim_item.kind], vim_item.kind)
 
 			return vim_item
 		end,
@@ -130,6 +130,13 @@ local options = {
 		{ name = "path" },
 		{ name = "cmp_tabnine" },
 	},
+	PmenuSel = { bg = "#282C34", fg = "NONE" },
+	Pmenu = { fg = "#C5CDD9", bg = "#22252A" },
+
+	CmpItemAbbrDeprecated = { fg = "#7E8294", bg = "NONE", fmt = "strikethrough" },
+	CmpItemAbbrMatch = { fg = "#82AAFF", bg = "NONE", fmt = "bold" },
+	CmpItemAbbrMatchFuzzy = { fg = "#82AAFF", bg = "NONE", fmt = "bold" },
+	CmpItemMenu = { fg = "#C792EA", bg = "NONE", fmt = "italic" },
 }
 
 cmp.setup(options)

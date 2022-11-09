@@ -111,6 +111,7 @@ local plugins = {
 		"brglng/vim-im-select",
 		cond = pack.is_mac,
 	},
+	"folke/todo-comments.nvim",
 
 	-----------------------------------------------------------
 	-- lang
@@ -126,7 +127,7 @@ pack.run(plugins)
 
 -- load config
 local defualt = { 'hop', 'neoscroll', 'bufferline', 'colorizer', 'auto-save', 'aerial', 'gitsigns', 'nvim-gps',
-	'project_nvim' }
+	'project_nvim','todo-comments' }
 for _, value in pairs(defualt) do
 	local ok, plugin = pcall(require, value)
 	if ok then
