@@ -1,15 +1,18 @@
-local M = {}
-
 local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_cmp_ok then
 	return
 end
 
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
-M.setup = function()
+local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status_ok then
+	return
+end
+
+lspconfig.setup = function()
 	local signs = {
 
 		{ name = "DiagnosticSignError", text = "" },
@@ -72,7 +75,7 @@ local function lsp_keymaps(bufnr)
 	keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 end
 
-M.on_attach = function(client, bufnr)
+local on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
@@ -89,4 +92,36 @@ M.on_attach = function(client, bufnr)
 	illuminate.on_attach(client)
 end
 
-return M
+local servers = { "gopls", "sumneko_lua", "bashls", "intelephense", "rust_analyzer", "pyright", "clangd" }
+
+local opts = {}
+
+for _, server in pairs(servers) do
+	opts = {
+		on_attach = on_attach,
+		capabilities = capabilities,
+	}
+
+	server = vim.split(server, "@")[1]
+
+	if server == "sumneko_lua" then
+		opts = vim.tbl_deep_extend("force", {
+			settings = {
+
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+					workspace = {
+						library = {
+							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+							[vim.fn.stdpath("config") .. "/lua"] = true,
+						},
+					},
+				},
+			}
+		}, opts)
+	end
+
+	lspconfig[server].setup(opts)
+end

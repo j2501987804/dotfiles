@@ -128,7 +128,7 @@ local options = {
 		{ name = "buffer" },
 		{ name = "nvim_lua" },
 		{ name = "path" },
-		{ name = "cmp_tabnine" },
+		-- { name = "cmp_tabnine" },
 	},
 	PmenuSel = { bg = "#282C34", fg = "NONE" },
 	Pmenu = { fg = "#C5CDD9", bg = "#22252A" },

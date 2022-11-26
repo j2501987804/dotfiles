@@ -45,8 +45,9 @@ local plugins = {
 	"neovim/nvim-lspconfig",
 	"ray-x/lsp_signature.nvim",
 	"tami5/lspsaga.nvim",
-	"williamboman/mason-lspconfig.nvim",
+	-- "williamboman/mason-lspconfig.nvim",
 	"williamboman/mason.nvim",
+	"WhoIsSethDaniel/mason-tool-installer.nvim",
 	"jose-elias-alvarez/null-ls.nvim",
 
 	-----------------------------------------------------------
@@ -59,10 +60,10 @@ local plugins = {
 	"hrsh7th/cmp-buffer",
 	"hrsh7th/cmp-path",
 	"hrsh7th/cmp-cmdline",
-	{
-		"tzachar/cmp-tabnine",
-		run = "./install.sh"
-	},
+	-- {
+	-- 	"tzachar/cmp-tabnine",
+	-- 	run = "./install.sh"
+	-- },
 	"hrsh7th/nvim-cmp",
 	"windwp/nvim-autopairs",
 
@@ -86,7 +87,6 @@ local plugins = {
 	-----------------------------------------------------------
 	-- navigation
 	-----------------------------------------------------------
-	"WhoIsSethDaniel/mason-tool-installer.nvim",
 	"kyazdani42/nvim-tree.lua",
 	"akinsho/toggleterm.nvim",
 	"folke/trouble.nvim",
@@ -127,7 +127,7 @@ pack.run(plugins)
 
 -- load config
 local defualt = { 'hop', 'neoscroll', 'bufferline', 'colorizer', 'auto-save', 'aerial', 'gitsigns', 'nvim-gps',
-	'project_nvim','todo-comments' }
+	'project_nvim', 'todo-comments' }
 for _, value in pairs(defualt) do
 	local ok, plugin = pcall(require, value)
 	if ok then
@@ -136,7 +136,7 @@ for _, value in pairs(defualt) do
 end
 
 local conf_names = { "alpha", "cmp", "lualine", "mason", "nvimtree", "telescope",
-	"toggleterm", "treesitter", "whichkey", 'winbar', 'null-ls' }
+	"toggleterm", "treesitter", "whichkey", 'winbar', 'null-ls', 'lsp' }
 for _, value in pairs(conf_names) do
 	require("conf." .. value)
 end
