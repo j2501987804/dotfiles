@@ -203,13 +203,13 @@ ins_right {
 }
 
 -- Sep
-ins_right {
-	function()
-		return ""
-	end,
-	color = { fg = colors.grey, bg = colors.blue }, -- Sets highlighting of component
-	padding = { left = 0, right = 0 }, -- We don't need space before this
-}
+-- ins_right {
+-- 	function()
+-- 		return ""
+-- 	end,
+-- 	color = { fg = colors.grey, bg = colors.blue }, -- Sets highlighting of component
+-- 	padding = { left = 0, right = 0 }, -- We don't need space before this
+-- }
 
 -- git branch
 ins_right {
