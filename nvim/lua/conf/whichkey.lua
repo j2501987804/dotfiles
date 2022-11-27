@@ -36,7 +36,7 @@ local mappings = {
 	["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
 	["P"] = { "<cmd>Telescope projects previewer=false theme=dropdown<cr>", "Projects" },
 	["2"] = { ":UndotreeToggle<cr>", "Undo" },
-	["3"] = { "<cmd>AerialToggle<cr>", "aerial" },
+	["3"] = { "<cmd>LSoutlineToggle<cr>", "outline" },
 
 	p = {
 		name = "Packer",
@@ -70,9 +70,9 @@ local mappings = {
 		},
 	},
 
-	-- l = {
-	--     name = "LSP",
-	--     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+	l = {
+	    name = "LSP",
+	    a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
 	--     d = {
 	--         "<cmd>Telescope lsp_document_diagnostics<cr>",
 	--         "Document Diagnostics",
@@ -81,10 +81,10 @@ local mappings = {
 	--         "<cmd>Telescope lsp_workspace_diagnostics<cr>",
 	--         "Workspace Diagnostics",
 	--     },
-	--     f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+	    f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
 	--     i = { "<cmd>LspInfo<cr>", "Info" },
 	--     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
-	--     s = { "<cmd>LspRestart<cr>", "LspRestart" },
+	    s = { "<cmd>LspRestart<cr>", "LspRestart" },
 	--     j = {
 	--         "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
 	--         "Next Diagnostic",
@@ -94,14 +94,14 @@ local mappings = {
 	--         "Prev Diagnostic",
 	--     },
 	--     l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-	--     q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-	--     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+	    q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
+	    r = { "<cmd>Lspsaga rename<CR>", "Rename" },
 	--     S = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
 	--     -- s = {
 	--     --     "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
 	--     --     "Workspace Symbols",
 	--     -- },
-	-- },
+	},
 	s = {
 		name = "Search",
 		b = { "<cmd>Telescope git_branches previewer=false theme=dropdown<cr>", "Checkout branch" },

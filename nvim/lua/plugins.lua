@@ -20,7 +20,7 @@ local plugins = {
 	"kyazdani42/nvim-web-devicons",
 	"nvim-lualine/lualine.nvim",
 	"akinsho/bufferline.nvim",
-	'fgheng/winbar.nvim',
+	-- 'fgheng/winbar.nvim',
 	'SmiteshP/nvim-gps',
 	"moll/vim-bbye",
 	"lukas-reineke/indent-blankline.nvim",
@@ -44,7 +44,7 @@ local plugins = {
 	"rrethy/vim-illuminate",
 	"neovim/nvim-lspconfig",
 	"ray-x/lsp_signature.nvim",
-	"tami5/lspsaga.nvim",
+	"glepnir/lspsaga.nvim",
 	-- "williamboman/mason-lspconfig.nvim",
 	"williamboman/mason.nvim",
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -105,7 +105,8 @@ local plugins = {
 	"ethanholz/nvim-lastplace",
 	"numToStr/Comment.nvim",
 	"karb94/neoscroll.nvim",
-	"phaazon/hop.nvim",
+	-- "phaazon/hop.nvim",
+	"ggandor/leap.nvim",
 	"dstein64/vim-startuptime",
 	{
 		"brglng/vim-im-select",
@@ -136,7 +137,7 @@ for _, value in pairs(defualt) do
 end
 
 local conf_names = { "alpha", "cmp", "lualine", "mason", "nvimtree", "telescope",
-	"toggleterm", "treesitter", "whichkey", 'winbar', 'null-ls', 'lsp' }
+	"toggleterm", "treesitter", "whichkey", 'null-ls', 'lsp','lspsaga' }
 for _, value in pairs(conf_names) do
 	require("conf." .. value)
 end

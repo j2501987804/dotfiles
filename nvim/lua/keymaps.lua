@@ -20,7 +20,6 @@ vim.g.maplocalleader = " "
 -- keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 -- keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
-keymap("n", "f", ":HopWord<cr>", opts)
 keymap("n", "H", "^", opts)
 keymap("v", "H", "^", opts)
 keymap("n", "L", "$", opts)

@@ -47,12 +47,6 @@ return {
 		}
 	end,
 
-	lspsaga = function()
-		require("lspsaga").setup { -- defaults ...
-			border_style = "round", -- single
-		}
-	end,
-
 	comment = function()
 		local nvim_comment = require "Comment"
 		nvim_comment.setup {}
@@ -64,4 +58,8 @@ return {
 		})
 	end,
 
+	leap = function()
+		vim.keymap.set({ 'x', 'o', 'n' }, 'f', '<Plug>(leap-forward-to)')
+		vim.keymap.set({ 'x', 'o', 'n' }, 'F', '<Plug>(leap-backward-to)')
+	end
 }
