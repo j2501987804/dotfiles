@@ -1,9 +1,7 @@
 return {
 	["goolord/alpha-nvim"] = {
 		disable = false,
-		config = function()
-			require("custom.plugins.alpha")
-		end,
+		config = require("custom.plugins.alpha")
 	},
 
 	["neovim/nvim-lspconfig"] = {
@@ -23,9 +21,7 @@ return {
 		end,
 	},
 
-	["hrsh7th/cmp-cmdline"] = {
-		-- after = "nvim-cmp",
-	},
+	["hrsh7th/cmp-cmdline"] = {},
 
 	["folke/trouble.nvim"] = {
 		cmd = { "TroubleToggle" },

@@ -3,9 +3,13 @@ local saga = require('lspsaga')
 
 saga.init_lsp_saga({
 	border_style = "rounded",
-	symbol_in_winbar = {
-		in_custom = true
-	}
+	-- symbol_in_winbar = {
+	-- 	in_custom = true
+	-- }
+	code_action_lightbulb = {
+		enable = false,
+	},
+
 })
 
 -- Lsp finder find the symbol definition implement reference
