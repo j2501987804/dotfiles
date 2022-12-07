@@ -160,17 +160,17 @@ return {
 		ansi = { "#232526", "#df5b61", "#78b892", "#de8f78", "#6791c9", "#bc83e3", "#67afc1", "#e4e6e7" },
 		brights = { "#2c2e2f", "#e8646a", "#81c19b", "#e79881", "#709ad2", "#c58cec", "#70b8ca", "#f2f4f5" },
 		indexed = { [136] = "#edeff0" },
-		-- tab_bar = {
-		-- 	active_tab = {
-		-- 		bg_color = "#0c0e0f",
-		-- 		fg_color = "#edeff0",
-		-- 		italic = true,
-		-- 	},
-		-- 	inactive_tab = { bg_color = "#090909", fg_color = "#0c0e0f" },
-		-- 	inactive_tab_hover = { bg_color = "#151515", fg_color = "#090909" },
-		-- 	new_tab = { bg_color = "#151515", fg_color = "#090909" },
-		-- 	new_tab_hover = { bg_color = "#6791c9", fg_color = "#090909" },
-		-- },
+		tab_bar = {
+			active_tab = {
+				bg_color = "#0c0e0f",
+				fg_color = "#edeff0",
+				italic = true,
+			},
+			inactive_tab = { bg_color = "#090909", fg_color = "#0c0e0f" },
+			inactive_tab_hover = { bg_color = "#151515", fg_color = "#090909" },
+			new_tab = { bg_color = "#151515", fg_color = "#090909" },
+			new_tab_hover = { bg_color = "#6791c9", fg_color = "#090909" },
+		},
 	},
 
 	-- Padding
@@ -189,8 +189,8 @@ return {
 
 	-- General
 	automatically_reload_config = true,
-	-- inactive_pane_hsb = { saturation = 1.0, brightness = 1.0 },
+	inactive_pane_hsb = { saturation = 1.0, brightness = 1.0 },
 	window_background_opacity = 1,
-	-- window_close_confirmation = "NeverPrompt",
-	-- window_frame = { active_titlebar_bg = "#090909", font = font_with_fallback(font_name, { bold = true }) },
+	window_close_confirmation = "NeverPrompt",
+	window_frame = { active_titlebar_bg = "#090909", font = font_with_fallback(font_name, { bold = true }) },
 }

@@ -86,7 +86,11 @@ sudo pacamn -S paru
 安装软件
 
 ```sh
-paru -S awesome-git wqy-microhei slim fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwiki xdg-user-dirs bluez bluez-utils blueberry zsh base-devel go clang nodejs npm python wezterm microsoft-edge-stable-bin xclip jq colord inotify-tools lazygit
+paru -S wqy-microhei slim fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwiki xdg-user-dirs bluez bluez-utils blueberry zsh base-devel go clang nodejs npm python wezterm microsoft-edge-stable-bin yay lazygit ranger unzip input-remapper-git wqy-zenhei
+
+yay -S awesome-git picom-git alacritty mpc playerctl ncmpcpp mpd xdg-utils \
+pipewire pipewire-pulse pipewire-alsa alsa-utils feh rofi maim \
+xclip jq pamixer colord mpdris2 imagemagick inotify-tools --needed
 ```
 
 
@@ -99,6 +103,19 @@ sudo systemctl enable bluetooth.service
 sudo systemctl enable slim
 ```
 
+# dai li
+sudo nvim /usr/share/applications/clash.desktop
+```sh
+[Desktop Entry]
+ Name=clash
+ Comment=Clash
+ Exec=/home/crazycat9/.app/clash/cfw
+ Icon=/home/crazycat9/.app/clash/logo.png
+ Type=Application
+ Categories=Development;
+ StartupNotify=true
+ NoDisplay=false
+```
 
 
 # 个人配置

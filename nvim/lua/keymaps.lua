@@ -35,8 +35,8 @@ keymap("v", "p", "_dp", opts)
 --   command_mode = "c",
 
 -- comment
-keymap("n", "<C-_>", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
-keymap("x", "<C-_>", "<ESC><CMD>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", opts)
+keymap("n", "<C-/>", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
+keymap("x", "<C-/>", "<ESC><CMD>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", opts)
 
 -- git
 keymap("n", ";g", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
