@@ -86,7 +86,7 @@ sudo pacamn -S paru
 安装软件
 
 ```sh
-paru -S awesome-git wqy-microhei slim fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwiki xdg-user-dirs bluez bluez-utils blueberry zsh base-devel go clang nodejs npm python wezterm microsoft-edge-stable-bin xclip jq colord inotify-tools
+paru -S awesome-git wqy-microhei slim fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwiki xdg-user-dirs bluez bluez-utils blueberry zsh base-devel go clang nodejs npm python wezterm microsoft-edge-stable-bin xclip jq colord inotify-tools lazygit
 ```
 
 
