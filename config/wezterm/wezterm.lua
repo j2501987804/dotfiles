@@ -41,10 +41,10 @@ return {
 	line_height = 1.0,
 
 	-- Cursor style
-	-- default_cursor_style = "BlinkingUnderline",
+	default_cursor_style = "BlinkingUnderline",
 
 	-- X11
-	-- enable_wayland = false,
+	enable_wayland = false,
 
 	-- Keybinds
 	disable_default_key_bindings = true,
