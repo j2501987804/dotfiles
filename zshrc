@@ -55,6 +55,6 @@ alias unproxy='unset http_proxy && unset https_proxy && unset all_proxy'
 # 环境变量
 export EDITOR='nvim'
 export HOMEBREW_NO_AUTO_UPDATE=true #关闭brew自动更新
-export PATH=$PATH:~/go/bin
+# export PATH=$PATH:~/go/bin
 setopt no_nomatch
 
