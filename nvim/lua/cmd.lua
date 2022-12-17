@@ -29,9 +29,17 @@ vim.cmd([[
 
 vim.cmd [[
 	try
-		colorscheme darkplus
+		colorscheme tokyonight-moon
 	catch /^Vim\%((\a\+)\)\=:E185/
 		colorscheme default
 		set background=dark
 	endtry
+]]
+
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd [[
+  augroup packer_user_config
+	autocmd!
+	autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
 ]]

@@ -1,21 +1,4 @@
 local M = {}
-M.disabled = {
-  n = {
-    ["<leader>h"] = "",
-    ["<leader>q"] = "",
-    ["<leader>e"] = "",
-    ["<leader>f"] = "",
-    ["<leader>fa"] = "",
-    ["<leader>fw"] = "",
-    ["<leader>fb"] = "",
-    ["<leader>fh"] = "",
-    ["<leader>fo"] = "",
-    ["<leader>ff"] = "",
-    ["<leader>fm"] = "",
-    ["<C-s>"] = "",
-    ["<C-n>"] = "",
-  },
-}
 
 M.general = {
   i = {},
@@ -46,16 +29,18 @@ M.general = {
     -- lsp
     ["<leader>lf"] = {
       function()
-        vim.lsp.buf.formatting {}
+        vim.lsp.buf.format { async = true }
       end,
       "lsp formatting",
     },
 
     -- others
-    ["f"] = { ":HopWord<cr>", "HopWord" },
     ["H"] = { "^", "^" },
     ["L"] = { "$", "$" },
     ["<leader>q"] = { ":q<cr>", "quit" },
+    [";t"] = { "<cmd>TodoTrouble<cr>", "Todo" },
+    [";r"] = { "<cmd>lua _QUICK_RUN()<CR>", "quick run" },
+    [";g"] = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "lazygit" },
   },
 
   v = {
@@ -99,14 +84,14 @@ M.nvterm = {
 
   t = {
     -- toggle in terminal mode
-    ["<C-]>"] = {
+    ["<C-\\>"] = {
       function()
         require("nvterm.terminal").toggle "float"
       end,
       "toggle floating term",
     },
 
-    ["<C-\\>"] = {
+    ["<C-]>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
@@ -123,14 +108,14 @@ M.nvterm = {
 
   n = {
     -- toggle in normal mode
-    ["<C-]>"] = {
+    ["<C-\\>"] = {
       function()
         require("nvterm.terminal").toggle "float"
       end,
       "toggle floating term",
     },
 
-    ["<C-\\>"] = {
+    ["<C-]>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
@@ -159,6 +144,46 @@ M.nvterm = {
       end,
       "new vertical term",
     },
+  },
+}
+
+M.remap = {
+  n = {
+    ["<S-Up>"] = {"<cmd>resize +2<CR>",""},
+    ["<S-Down>"] = {"<cmd>resize -2<CR>",""},
+    ["<S-Left>"] = {"<cmd>vertical resize +2<CR>",""},
+    ["<S-Right>"] = {"<cmd>vertical resize -2<CR>",""},
+  },
+
+  t = {
+    ["<S-Up>"] = {"<cmd>resize +2<CR>",""},
+    ["<S-Down>"] = {"<cmd>resize -2<CR>",""},
+    ["<S-Left>"] = {"<cmd>vertical resize +2<CR>",""},
+    ["<S-Right>"] = {"<cmd>vertical resize -2<CR>",""},
+  },
+
+  v = {
+    ["<"] = {"<gv",""},
+    [">"] = {">gv",""},
+    ["p"] = {"_dP",""},
+  },
+}
+
+M.disabled = {
+  n = {
+    ["<leader>h"] = "",
+    ["<leader>q"] = "",
+    ["<leader>e"] = "",
+    ["<leader>f"] = "",
+    ["<leader>fa"] = "",
+    ["<leader>fw"] = "",
+    ["<leader>fb"] = "",
+    ["<leader>fh"] = "",
+    ["<leader>fo"] = "",
+    ["<leader>ff"] = "",
+    ["<leader>fm"] = "",
+    ["<C-s>"] = "",
+    ["<C-n>"] = "",
   },
 }
 

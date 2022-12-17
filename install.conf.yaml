@@ -6,7 +6,7 @@
 
 - link:
     ~/.tmux.conf: tmux.conf
-    #~/.config/nvim/lua/custom: custom
+      #~/.config/nvim/lua/custom: custom
     ~/.config/lazygit: lazygit
     ~/.zshrc: zshrc
     ~/.config/nvim: nvim
@@ -20,7 +20,6 @@
 
 - create:
     - ~/.local/share/zinit
-    # - ~/.config/nvim/custom
     - ~/Library/Application\ Support/lazygit
 
 - shell:

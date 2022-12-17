@@ -1,80 +1,127 @@
+local overrides = require "custom.plugins.overrides"
+local conf = require 'custom.plugins.configs'
+
 return {
-	["goolord/alpha-nvim"] = {
-		disable = false,
-		config = require("custom.plugins.alpha")
-	},
+  ["goolord/alpha-nvim"] = {
+    disable = false,
+  }, -- enables dashboard
 
-	["neovim/nvim-lspconfig"] = {
-		config = function()
-			require("plugins.configs.lspconfig")
-			require("custom.plugins.lspconfig")
-		end,
-	},
-	["nvim-telescope/telescope-fzf-native.nvim"] = {
-		run = "make",
-	},
+  ["folke/which-key.nvim"] = {
+    disable = false,
+  },
 
-	["jose-elias-alvarez/null-ls.nvim"] = {
-		after = "nvim-lspconfig",
-		config = function()
-			require("custom.plugins.null-ls")
-		end,
-	},
+  ["neovim/nvim-lspconfig"] = {
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.plugins.lspconfig"
+    end,
+  },
 
-	["hrsh7th/cmp-cmdline"] = {},
+  -- code formatting, linting etc
+  ["jose-elias-alvarez/null-ls.nvim"] = {
+    after = "nvim-lspconfig",
+    config = function()
+      require "custom.plugins.null-ls"
+    end,
+  },
 
-	["folke/trouble.nvim"] = {
-		cmd = { "TroubleToggle" },
-		config = [[require("trouble").setup()]],
-	},
+  -- vim and tmux statusline merge
+	["vimpostor/vim-tpipeline"]={},
 
-	-----------------------------------------------------------
-	-- git stuff
-	-----------------------------------------------------------
-	["sindrets/diffview.nvim"] = { cmd = { "DiffviewOpen", "DiffviewFileHistory" } },
+  -- Override plugin definition options
+  ["nvim-treesitter/nvim-treesitter"] = {
+    override_options = overrides.treesitter,
+  },
 
-	["f-person/git-blame.nvim"] = {
-		event = { "BufRead", "BufNewFile" },
-	},
+  ["NvChad/nvterm"] = {
+    override_options = overrides.nvterm,
+  },
 
-	-----------------------------------------------------------
-	-- others
-	-----------------------------------------------------------
-	["Pocco81/AutoSave.nvim"] = {
-		event = { "TextChanged", "TextChangedI" },
-		config = function()
-			require("auto-save").setup({})
-		end,
-	},
+  ["williamboman/mason.nvim"] = {
+    override_options = overrides.mason,
+  },
 
-	-- last read
-	["ethanholz/nvim-lastplace"] = {
-		event = { "BufRead", "BufNewFile" },
-		config = [[require("custom.plugins.others").lastplace()]],
-	},
+  ["kyazdani42/nvim-tree.lua"] = {
+    override_options = overrides.nvimtree,
+  },
 
-	["karb94/neoscroll.nvim"] = {
-		event = { "BufRead", "BufNewFile" },
-		config = [[require 'neoscroll'.setup()]],
-	},
+  ["nvim-telescope/telescope.nvim"] = {
+    override_options = overrides.telescope,
+    requires = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      run = "make",
+    }
+  },
 
-	["phaazon/hop.nvim"] = {
-		cmd = "HopWord",
-		config = "require 'hop'.setup{}",
-	},
+  ["hrsh7th/nvim-cmp"] = {
+    override_options = overrides.cmp,
+  },
+  ["hrsh7th/cmp-cmdline"] = { after = "cmp-buffer" },
 
-	["brglng/vim-im-select"] = {
-		event = { "InsertEnter" },
-		cond = [[vim.fn.has("mac") == 1]],
-	},
+  -- Install a plugin
+  ["max397574/better-escape.nvim"] = {
+    event = "InsertEnter",
+    config = function()
+      require("better_escape").setup()
+    end,
+  },
 
-	-----------------------------------------------------------
-	-- lang
-	-----------------------------------------------------------
-	["ray-x/go.nvim"] = {
-		ft = "go",
-		config = function()
-			require("go").setup()
-		end,
-	},
+  ["folke/trouble.nvim"] = {
+    cmd = { "TroubleToggle" },
+    config = [[require("trouble").setup()]],
+  },
+
+  -----------------------------------------------------------
+  -- git stuff
+  -----------------------------------------------------------
+  ["sindrets/diffview.nvim"] = { cmd = { "DiffviewOpen", "DiffviewFileHistory" } },
+
+  ["f-person/git-blame.nvim"] = {
+    event = { "BufRead", "BufNewFile" },
+  },
+
+  -----------------------------------------------------------
+  -- others
+  -----------------------------------------------------------
+  ["Pocco81/AutoSave.nvim"] = {
+    event = { "TextChanged", "TextChangedI" },
+    config = function()
+      require("auto-save").setup({})
+    end,
+  },
+
+  -- last read
+  ["ethanholz/nvim-lastplace"] = {
+    event = { "BufRead", "BufNewFile" },
+    config = conf.lastplace,
+  },
+
+  ["karb94/neoscroll.nvim"] = {
+    event = { "BufRead", "BufNewFile" },
+    config = [[require 'neoscroll'.setup()]],
+  },
+
+  ["brglng/vim-im-select"] = {
+    event = { "InsertEnter" },
+  },
+
+  ['fgheng/winbar.nvim'] = {
+    config = conf.winbar,
+  },
+
+  ['ggandor/leap.nvim'] = {},
+
+  ["folke/todo-comments.nvim"] = {
+    config = [[require('todo-comments').setup()]],
+  },
+
+  -----------------------------------------------------------
+  -- lang
+  -----------------------------------------------------------
+  ["ray-x/go.nvim"] = {
+    ft = "go",
+    config = function()
+      require("go").setup()
+    end,
+  },
 }

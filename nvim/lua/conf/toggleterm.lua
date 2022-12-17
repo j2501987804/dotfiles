@@ -96,7 +96,7 @@ function _LAZYGIT_TOGGLE()
 end
 
 function _QUICK_RUN()
-	vim.lsp.buf.formatting()
+	vim.lsp.buf.format{async=true}
 	Terminal:new({
 		cmd = run_command(),
 		hidden = true,

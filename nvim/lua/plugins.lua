@@ -20,8 +20,6 @@ local plugins = {
 	"kyazdani42/nvim-web-devicons",
 	"nvim-lualine/lualine.nvim",
 	"akinsho/bufferline.nvim",
-	'fgheng/winbar.nvim',
-	'SmiteshP/nvim-gps',
 	"moll/vim-bbye",
 	"lukas-reineke/indent-blankline.nvim",
 	"goolord/alpha-nvim",
@@ -137,7 +135,7 @@ for _, value in pairs(defualt) do
 end
 
 local conf_names = { "alpha", "cmp", "lualine", "mason", "nvimtree", "telescope",
-	"toggleterm", "treesitter", "whichkey", 'null-ls', 'lsp', 'lspsaga', 'winbar' }
+	"toggleterm", "treesitter", "whichkey", 'null-ls', 'lsp', 'lspsaga' }
 for _, value in pairs(conf_names) do
 	require("conf." .. value)
 end

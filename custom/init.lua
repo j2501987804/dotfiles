@@ -1,6 +1,6 @@
 vim.opt.backup = false -- creates a backup file
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
-vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
+vim.opt.cmdheight = 0 -- more space in the neovim command line for displaying messages
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 vim.opt.fileencoding = "utf-8" -- the encoding written to a file
@@ -44,6 +44,8 @@ vim.opt.foldlevel = 100
 vim.g.undotree_dir = vim.fn.stdpath("config") .. "/undodir"
 vim.g.im_select_default = 'com.apple.keylayout.ABC'
 vim.g.Illuminate_ftblacklist = { 'alpha', 'NvimTree' }
+vim.keymap.set({ 'x', 'o', 'n' }, 'f', '<Plug>(leap-forward-to)')
+vim.keymap.set({ 'x', 'o', 'n' }, 'F', '<Plug>(leap-backward-to)')
 
 vim.cmd([[
    augroup checktime
@@ -67,3 +69,5 @@ vim.cmd([[
 	autocmd BufEnter *  :silent !fcitx5-remote -c
 	autocmd BufLeave *  :silent !fcitx5-remote -c
 ]])
+
+require 'custom.term'
