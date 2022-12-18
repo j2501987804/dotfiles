@@ -2,3 +2,4 @@
 lazygit/state.yml
 nvim/plugin
 zshrc
+nvim/.luarc.json

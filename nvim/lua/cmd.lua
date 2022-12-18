@@ -1,3 +1,12 @@
+vim.cmd [[
+	try
+		colorscheme tokyonight-moon
+	catch /^Vim\%((\a\+)\)\=:E185/
+		colorscheme default
+		set background=dark
+	endtry
+]]
+
 vim.cmd([[
    augroup checktime
    au!
@@ -26,15 +35,6 @@ vim.cmd([[
 	autocmd BufEnter *  :silent !fcitx5-remote -c
 	autocmd BufLeave *  :silent !fcitx5-remote -c
 ]])
-
-vim.cmd [[
-	try
-		colorscheme tokyonight-moon
-	catch /^Vim\%((\a\+)\)\=:E185/
-		colorscheme default
-		set background=dark
-	endtry
-]]
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd [[

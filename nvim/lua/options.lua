@@ -45,6 +45,7 @@ vim.opt.foldlevel = 100
 vim.g.undotree_dir = vim.fn.stdpath("config") .. "/undodir"
 vim.g.im_select_default = 'com.apple.keylayout.ABC'
 vim.g.Illuminate_ftblacklist = { 'alpha', 'NvimTree' }
+vim.g.lsp_servers = { "gopls", "sumneko_lua", "bashls", "intelephense", "rust_analyzer", "pyright", "clangd" }
 
 -- notify
 vim.notify = function(msg, log_level)

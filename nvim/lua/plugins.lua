@@ -9,13 +9,14 @@ local plugins = {
 	-- UI
 	-----------------------------------------------------------
 	-- theme
-	"projekt0n/github-nvim-theme",
+	-- 'navarasu/onedark.nvim',
+	-- "projekt0n/github-nvim-theme",
 	"folke/tokyonight.nvim",
-	"tomasiser/vim-code-dark",
-	"lunarvim/darkplus.nvim",
-	"sainnhe/sonokai",
-	'olimorris/onedarkpro.nvim',
-	'catppuccin/nvim',
+	-- "tomasiser/vim-code-dark",
+	-- "lunarvim/darkplus.nvim",
+	-- "sainnhe/sonokai",
+	-- 'olimorris/onedarkpro.nvim',
+	-- 'catppuccin/nvim',
 
 	"kyazdani42/nvim-web-devicons",
 	"nvim-lualine/lualine.nvim",
@@ -25,7 +26,13 @@ local plugins = {
 	"goolord/alpha-nvim",
 	{
 		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
+		run = function()
+			pcall(require('nvim-treesitter.install').update { with_sync = true })
+		end,
+	},
+	{ -- Additional text objects via treesitter
+		'nvim-treesitter/nvim-treesitter-textobjects',
+		after = 'nvim-treesitter',
 	},
 
 	-- vim and tmux statusline merge
@@ -43,10 +50,11 @@ local plugins = {
 	"neovim/nvim-lspconfig",
 	"ray-x/lsp_signature.nvim",
 	"glepnir/lspsaga.nvim",
-	-- "williamboman/mason-lspconfig.nvim",
+	"williamboman/mason-lspconfig.nvim",
 	"williamboman/mason.nvim",
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
 	"jose-elias-alvarez/null-ls.nvim",
+	'j-hui/fidget.nvim',
 
 	-----------------------------------------------------------
 	-- CMP
@@ -106,10 +114,7 @@ local plugins = {
 	-- "phaazon/hop.nvim",
 	"ggandor/leap.nvim",
 	"dstein64/vim-startuptime",
-	{
-		"brglng/vim-im-select",
-		cond = pack.is_mac,
-	},
+	"brglng/vim-im-select",
 	"folke/todo-comments.nvim",
 
 	-----------------------------------------------------------
