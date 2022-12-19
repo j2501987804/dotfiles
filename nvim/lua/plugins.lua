@@ -96,7 +96,6 @@ local plugins = {
 	"kyazdani42/nvim-tree.lua",
 	"akinsho/toggleterm.nvim",
 	"folke/trouble.nvim",
-	"stevearc/aerial.nvim",
 	"windwp/nvim-spectre",
 	"mbbill/undotree",
 
@@ -111,7 +110,6 @@ local plugins = {
 	"ethanholz/nvim-lastplace",
 	"numToStr/Comment.nvim",
 	"karb94/neoscroll.nvim",
-	-- "phaazon/hop.nvim",
 	"ggandor/leap.nvim",
 	"dstein64/vim-startuptime",
 	"brglng/vim-im-select",
@@ -129,9 +127,7 @@ local plugins = {
 
 pack.run(plugins)
 
--- load config
-local defualt = { 'hop', 'neoscroll', 'bufferline', 'colorizer', 'auto-save', 'aerial', 'gitsigns', 'nvim-gps',
-	'project_nvim', 'todo-comments' }
+local defualt = { 'neoscroll', 'bufferline', 'colorizer', 'gitsigns', 'todo-comments' }
 for _, value in pairs(defualt) do
 	local ok, plugin = pcall(require, value)
 	if ok then
@@ -140,12 +136,7 @@ for _, value in pairs(defualt) do
 end
 
 local conf_names = { "alpha", "cmp", "lualine", "mason", "nvimtree", "telescope",
-	"toggleterm", "treesitter", "whichkey", 'null-ls', 'lsp', 'lspsaga' }
+	"toggleterm", "treesitter", "whichkey", 'null-ls', 'lsp', 'lspsaga', 'common' }
 for _, value in pairs(conf_names) do
 	require("conf." .. value)
-end
-
-local common = require("conf.common")
-for _, value in pairs(common) do
-	value()
 end

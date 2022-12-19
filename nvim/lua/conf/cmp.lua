@@ -93,9 +93,9 @@ local options = {
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.close(),
 		['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-        },
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
+		},
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -160,3 +160,19 @@ cmp.setup.cmdline(':', {
 		{ name = 'cmdline' }
 	})
 })
+
+require("nvim-autopairs").setup({
+	fast_wrap = {},
+	disable_filetype = { "TelescopePrompt", "vim" },
+})
+
+local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+
+require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+require("luasnip").config.set_config({
+	history = true,
+	updateevents = "TextChanged,TextChangedI",
+})
+
+require("luasnip.loaders.from_vscode").lazy_load()
