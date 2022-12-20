@@ -1,15 +1,15 @@
 local M = {}
 
 M.treesitter = {
-ensure_installed = {
-    "vim",
-    "lua",
-    "html",
-    "css",
-    "typescript",
-    "c",
-  },
-  incremental_selection = {
+	ensure_installed = {
+		"vim",
+		"lua",
+		"html",
+		"css",
+		"typescript",
+		"c",
+	},
+	incremental_selection = {
 		enable = true,
 		keymaps = {
 			init_selection = "<CR>",
@@ -19,7 +19,6 @@ ensure_installed = {
 		},
 	},
 }
-
 
 M.telescope = function()
 	local actions = require("telescope.actions")
@@ -86,35 +85,61 @@ M.mason = {
 }
 
 -- git support in nvimtree
-M.nvimtree = function ()
-  local tree_cb = require("nvim-tree.config").nvim_tree_callback
-  return {
-    git = {
-      enable = true,
-    },
-    renderer = {
-      highlight_git = true,
-      icons = {
-        show = {
-          git = true,
-        },
-      },
-    },
-    view = {
-      mappings = {
-        custom_only = false,
-        list = {
-          { key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
-          { key = "h", cb = tree_cb("close_node") },
-          { key = "v", cb = tree_cb("vsplit") },
-        },
-      },
-    },
-  }
+M.nvimtree = function()
+	local tree_cb = require("nvim-tree.config").nvim_tree_callback
+	return {
+		git = {
+			enable = true,
+		},
+		renderer = {
+			highlight_git = true,
+			icons = {
+				show = {
+					git = true,
+				},
+			},
+		},
+		view = {
+			mappings = {
+				custom_only = false,
+				list = {
+					{ key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
+					{ key = "h", cb = tree_cb("close_node") },
+					{ key = "v", cb = tree_cb("vsplit") },
+				},
+			},
+		},
+	}
 end
 
 M.cmp = function()
-	return require("custom.plugins.cmp")
+	local cmp = require("cmp")
+	cmp.setup.cmdline("/", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = {
+			{ name = "buffer" },
+		},
+	})
+
+	-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+	cmp.setup.cmdline(":", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = cmp.config.sources({
+			{ name = "path" },
+		}, {
+			{ name = "cmdline" },
+		}),
+	})
+
+	return {
+		preselect = cmp.PreselectMode.None,
+		mapping = {
+			["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+			["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+			["<C-d>"] = cmp.mapping.scroll_docs(-4),
+			["<C-f>"] = cmp.mapping.scroll_docs(4),
+		},
+	}
 end
 
 M.nvterm = {

@@ -1,20 +1,18 @@
 local M = {}
 
--- Path to overriding theme and highlights files
-local themes = require "custom.overidden_themes"
-local highlights = require "custom.highlights"
-
+-- local themes = require("custom.overidden_themes")
+-- local highlights = require("custom.highlights")
 M.ui = {
-  theme_toggle = { "onedark", "one_light" },
-  theme = "tokyonight",
-  changed_themes = themes,
-  hl_override = highlights.override,
-  hl_add = highlights.add,
+	-- changed_themes = themes,
+	-- hl_override = highlights.override,
+	-- hl_add = highlights.add,
+	theme_toggle = { "catppuccin", "one_light" },
+	theme = "catppuccin",
 }
 
-M.plugins = require "custom.plugins"
+M.plugins = require("custom.plugins")
 
 -- check core.mappings for table structure
-M.mappings = require "custom.mappings"
+M.mappings = require("custom.mappings")
 
 return M

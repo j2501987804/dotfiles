@@ -69,5 +69,3 @@ vim.cmd([[
 	autocmd BufEnter *  :silent !fcitx5-remote -c
 	autocmd BufLeave *  :silent !fcitx5-remote -c
 ]])
-
-require 'custom.term'

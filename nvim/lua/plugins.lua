@@ -136,7 +136,7 @@ for _, value in pairs(defualt) do
 end
 
 local conf_names = { "alpha", "cmp", "lualine", "mason", "nvimtree", "telescope",
-	"toggleterm", "treesitter", "whichkey", 'null-ls', 'lsp', 'lspsaga', 'common' }
+	"toggleterm", "treesitter", "whichkey", 'null-ls', 'lsp', 'lspsaga', 'common', 'tokyonight' }
 for _, value in pairs(conf_names) do
 	require("conf." .. value)
 end

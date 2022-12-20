@@ -45,22 +45,13 @@ local icons = {
 	Package = "",
 }
 
-local cmp_window = require "cmp.utils.window"
-
-cmp_window.info_ = cmp_window.info
-cmp_window.info = function(self)
-	local info = self:info_()
-	info.scrollable = false
-	return info
-end
-
-local check_backspace = function()
-	local col = vim.fn.col "." - 1
-	return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-end
+-- local check_backspace = function()
+-- 	local col = vim.fn.col "." - 1
+-- 	return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+-- end
 
 local options = {
-	-- preselect = cmp.PreselectMode.None,
+	preselect = cmp.PreselectMode.None,
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,
@@ -96,34 +87,34 @@ local options = {
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = true,
 		},
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif luasnip.expandable() then
-				luasnip.expand()
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			elseif check_backspace() then
-				fallback()
-			else
-				fallback()
-			end
-		end, {
-			"i",
-			"s",
-		}),
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif luasnip.jumpable(-1) then
-				luasnip.jump(-1)
-			else
-				fallback()
-			end
-		end, {
-			"i",
-			"s",
-		}),
+		-- ["<Tab>"] = cmp.mapping(function(fallback)
+		-- 	if cmp.visible() then
+		-- 		cmp.select_next_item()
+		-- 	elseif luasnip.expandable() then
+		-- 		luasnip.expand()
+		-- 	elseif luasnip.expand_or_jumpable() then
+		-- 		luasnip.expand_or_jump()
+		-- 	elseif check_backspace() then
+		-- 		fallback()
+		-- 	else
+		-- 		fallback()
+		-- 	end
+		-- end, {
+		-- 	"i",
+		-- 	"s",
+		-- }),
+		-- ["<S-Tab>"] = cmp.mapping(function(fallback)
+		-- 	if cmp.visible() then
+		-- 		cmp.select_prev_item()
+		-- 	elseif luasnip.jumpable(-1) then
+		-- 		luasnip.jump(-1)
+		-- 	else
+		-- 		fallback()
+		-- 	end
+		-- end, {
+		-- 	"i",
+		-- 	"s",
+		-- }),
 	},
 	sources = {
 		{ name = "luasnip" },
@@ -133,13 +124,6 @@ local options = {
 		{ name = "path" },
 		-- { name = "cmp_tabnine" },
 	},
-	PmenuSel = { bg = "#282C34", fg = "NONE" },
-	Pmenu = { fg = "#C5CDD9", bg = "#22252A" },
-
-	CmpItemAbbrDeprecated = { fg = "#7E8294", bg = "NONE", fmt = "strikethrough" },
-	CmpItemAbbrMatch = { fg = "#82AAFF", bg = "NONE", fmt = "bold" },
-	CmpItemAbbrMatchFuzzy = { fg = "#82AAFF", bg = "NONE", fmt = "bold" },
-	CmpItemMenu = { fg = "#C792EA", bg = "NONE", fmt = "italic" },
 }
 
 cmp.setup(options)
@@ -176,3 +160,17 @@ require("luasnip").config.set_config({
 })
 
 require("luasnip.loaders.from_vscode").lazy_load()
+
+-- Keymaps for Luasnip
+local ls = require("luasnip")
+vim.keymap.set({ "i", "s" }, "<Tab>", function()
+	if ls.expand_or_jumpable() then
+		ls.expand_or_jump()
+	end
+end, { silent = true })
+
+vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
+	if ls.jumpable(-1) then
+		ls.jump(-1)
+	end
+end, { silent = true })

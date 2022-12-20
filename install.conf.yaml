@@ -6,10 +6,10 @@
 
 - link:
     ~/.tmux.conf: tmux.conf
-      #~/.config/nvim/lua/custom: custom
+    ~/.config/nvim/lua/custom: custom
     ~/.config/lazygit: lazygit
     ~/.zshrc: zshrc
-    ~/.config/nvim: nvim
+    # ~/.config/nvim: nvim
     ~/.config/alacritty: config/alacritty
     ~/.config/wezterm: config/wezterm
     ~/.config/picom.conf: config/picom.conf
@@ -24,6 +24,6 @@
 
 - shell:
     - [git clone https://github.com/zdharma-continuum/zinit.git ~/.local/share/zinit/zinit.git]
-      #- [git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1]
+    - [git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1]
     - [source ~/.zshrc]
 

@@ -124,7 +124,22 @@ local lsp_settings = {
 	},
 
 	-- golang
-	-- ['gopls'] = {filetypes={"go", "gomod", "gowork", "gotmpl"}},
+	gopls = {
+		cmd = { 'gopls' },
+		settings = {
+			gopls = {
+				experimentalPostfixCompletions = true,
+				analyses = {
+					unusedparams = true,
+					shadow = true,
+				},
+				staticcheck = true,
+			},
+		},
+		init_options = {
+			usePlaceholders = true,
+		}
+	}
 }
 
 for _, lsp in ipairs(servers) do
