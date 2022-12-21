@@ -28,4 +28,5 @@ run.run_once_grep("picom")
 run.run_once_grep("blueberry")
 run.run_once_grep("nm-applet")
 run.run_once_grep("fcitx5")
+run.run_once_grep("clash")
 -- awful.spawn.with_shell("start-stop-daemon mpDris2 -q") -- OpenRC mpDris2 since no service file --
