@@ -14,7 +14,6 @@ return {
 			require("plugins.configs.lspconfig")
 			require("custom.plugins.lspconfig")
 		end,
-		requires = "rrethy/vim-illuminate",
 	},
 
 	-- code formatting, linting etc
@@ -27,6 +26,8 @@ return {
 
 	-- vim and tmux statusline merge
 	["vimpostor/vim-tpipeline"] = {},
+
+	['RRethy/vim-illuminate'] = {},
 
 	-- Override plugin definition options
 	["nvim-treesitter/nvim-treesitter"] = {
