@@ -8,6 +8,7 @@ M.ui = {
 	-- hl_add = highlights.add,
 	theme_toggle = { "catppuccin", "one_light" },
 	theme = "catppuccin",
+	transparency = true,
 }
 
 M.plugins = require("custom.plugins")

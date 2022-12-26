@@ -1,5 +1,4 @@
 local overrides = require("custom.plugins.overrides")
-local conf = require("custom.plugins.configs")
 
 return {
 	-- ["goolord/alpha-nvim"] = {
@@ -15,6 +14,7 @@ return {
 			require("plugins.configs.lspconfig")
 			require("custom.plugins.lspconfig")
 		end,
+		requires = "rrethy/vim-illuminate",
 	},
 
 	-- code formatting, linting etc
@@ -91,7 +91,7 @@ return {
 	-- last read
 	["ethanholz/nvim-lastplace"] = {
 		event = { "BufRead", "BufNewFile" },
-		config = conf.lastplace,
+		config = [[require("nvim-lastplace").setup()]],
 	},
 
 	["karb94/neoscroll.nvim"] = {
@@ -119,6 +119,15 @@ return {
 
 	["akinsho/toggleterm.nvim"] = {
 		config = [[require 'custom.plugins.toggleterm']],
+	},
+
+	["mfussenegger/nvim-dap"] = {
+		module = "dap",
+		config = [[require 'custom.plugins.dap']],
+		requires = {
+			"theHamsta/nvim-dap-virtual-text",
+			"rcarriga/nvim-dap-ui",
+		},
 	},
 
 	-----------------------------------------------------------

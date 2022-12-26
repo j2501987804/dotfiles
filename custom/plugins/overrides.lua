@@ -1,14 +1,8 @@
 local M = {}
 
 M.treesitter = {
-	ensure_installed = {
-		"vim",
-		"lua",
-		"html",
-		"css",
-		"typescript",
-		"c",
-	},
+	ensure_installed = "all",
+	sync_install = true,
 	incremental_selection = {
 		enable = true,
 		keymaps = {
@@ -55,6 +49,7 @@ M.mason = {
 		"gopls",
 		"goimports",
 		"golines",
+		"go-debug-adapter",
 
 		-- php
 		"intelephense",
@@ -141,23 +136,5 @@ M.cmp = function()
 		},
 	}
 end
-
-M.nvterm = {
-	terminals = {
-		list = {},
-		type_opts = {
-			float = {
-				relative = "editor",
-				row = 0.1,
-				col = 0.05,
-				width = 0.9,
-				height = 0.8,
-				border = "single",
-			},
-			horizontal = { location = "rightbelow", split_ratio = 0.3 },
-			vertical = { location = "rightbelow", split_ratio = 0.5 },
-		},
-	},
-}
 
 return M
