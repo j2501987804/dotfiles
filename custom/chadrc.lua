@@ -7,8 +7,8 @@ M.ui = {
 	-- hl_override = highlights.override,
 	-- hl_add = highlights.add,
 	theme_toggle = { "catppuccin", "one_light" },
-	theme = "catppuccin",
-	transparency = true,
+	theme = "chadracula",
+	transparency = false,
 }
 
 M.plugins = require("custom.plugins")

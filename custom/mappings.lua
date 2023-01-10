@@ -1,5 +1,23 @@
 local M = {}
 
+M.disabled = {
+	n = {
+		["<leader>h"] = "",
+		["<leader>q"] = "",
+		["<leader>e"] = "",
+		["<leader>f"] = "",
+		["<leader>fa"] = "",
+		["<leader>fw"] = "",
+		["<leader>fb"] = "",
+		["<leader>fh"] = "",
+		["<leader>fo"] = "",
+		["<leader>ff"] = "",
+		["<leader>fm"] = "",
+		["<C-s>"] = "",
+		["<C-n>"] = "",
+	},
+}
+
 M.general = {
 	i = {},
 
@@ -78,6 +96,7 @@ M.lspconfig = {
 			"lsp formatting",
 		},
 		["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "code action" },
+		["<leader>lr"] = { "<cmd>LspRestart<CR>", "LspRestart" },
 	},
 }
 
@@ -86,7 +105,7 @@ M.comment = {
 
 	-- toggle comment in both modes
 	n = {
-		["<C-_>"] = {
+		["<C-/>"] = {
 			function()
 				require("Comment.api").toggle.linewise.current()
 			end,
@@ -95,7 +114,7 @@ M.comment = {
 	},
 
 	v = {
-		["<C-_>"] = {
+		["<C-/>"] = {
 			"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
 			"toggle comment",
 		},
@@ -120,25 +139,7 @@ M.remap = {
 	v = {
 		["<"] = { "<gv", "" },
 		[">"] = { ">gv", "" },
-		["p"] = { "_dP", "" },
-	},
-}
-
-M.disabled = {
-	n = {
-		["<leader>h"] = "",
-		["<leader>q"] = "",
-		["<leader>e"] = "",
-		["<leader>f"] = "",
-		["<leader>fa"] = "",
-		["<leader>fw"] = "",
-		["<leader>fb"] = "",
-		["<leader>fh"] = "",
-		["<leader>fo"] = "",
-		["<leader>ff"] = "",
-		["<leader>fm"] = "",
-		["<C-s>"] = "",
-		["<C-n>"] = "",
+		["p"] = { '"_dP', "" },
 	},
 }
 

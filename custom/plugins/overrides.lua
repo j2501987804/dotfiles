@@ -133,6 +133,29 @@ M.cmp = function()
 			["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
 			["<C-d>"] = cmp.mapping.scroll_docs(-4),
 			["<C-f>"] = cmp.mapping.scroll_docs(4),
+			["<Tab>"] = cmp.mapping(function(fallback)
+				if require("luasnip").expand_or_jumpable() then
+					vim.fn.feedkeys(
+						vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
+						""
+					)
+				else
+					fallback()
+				end
+			end, {
+				"i",
+				"s",
+			}),
+			["<S-Tab>"] = cmp.mapping(function(fallback)
+				if require("luasnip").jumpable(-1) then
+					vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+				else
+					fallback()
+				end
+			end, {
+				"i",
+				"s",
+			}),
 		},
 	}
 end

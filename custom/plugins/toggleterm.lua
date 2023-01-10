@@ -50,6 +50,7 @@ local vim, api = vim, vim.api
 local M = {
 	go = { "go run ", "go test " },
 	lua = { "lua " },
+	rs = {"cargo run "},
 }
 
 local function run_command()
