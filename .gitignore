@@ -3,3 +3,6 @@ lazygit/state.yml
 nvim/plugin
 zshrc
 nvim/.luarc.json
+config/ncmpcpp/error.log
+config/mpd/mpd.log
+config/mpd/mpdstate

@@ -1,3 +1,0 @@
-Jan 12 12:55 : exception: Failed to open '/home/crazycat9/.config/mpd/mpdstate': No such file or directory
-Jan 12 12:55 : exception: Failed to access /home/crazycat9/music: No such file or directory
-Jan 12 12:55 : config: option 'device' on line 13 was not recognized

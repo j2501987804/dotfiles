@@ -102,6 +102,7 @@ return {
 
 	["brglng/vim-im-select"] = {
 		event = { "InsertEnter" },
+		cond = vim.fn.has("mac") == 1,
 	},
 
 	["ggandor/leap.nvim"] = {},
