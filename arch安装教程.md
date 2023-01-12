@@ -86,7 +86,7 @@ sudo pacamn -S paru
 安装软件
 
 ```sh
-paru -S wqy-microhei slim fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwiki xdg-user-dirs bluez bluez-utils blueberry zsh base-devel go clang nodejs npm python wezterm microsoft-edge-stable-bin yay lazygit ranger unzip input-remapper-git wqy-zenhei
+yay -S wqy-microhei slim fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwiki xdg-user-dirs bluez bluez-utils blueberry zsh base-devel go clang nodejs npm python wezterm microsoft-edge-stable-bin yay lazygit ranger unzip input-remapper-git wqy-zenhei thunar betterlockscreen xautolock
 
 yay -S awesome-git picom-git alacritty mpc playerctl ncmpcpp mpd xdg-utils \
 pipewire pipewire-pulse pipewire-alsa alsa-utils feh rofi maim \

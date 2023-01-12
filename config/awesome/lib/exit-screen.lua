@@ -45,6 +45,7 @@ end
 local lock_command = function()
 	awesome.emit_signal("module::exit_screen:hide")
 	--lock_screen_show()
+	awful.spawn.with_shell("betterlockscreen -l")
 end
 
 local create_button = function(symbol, hover_color, text, command)

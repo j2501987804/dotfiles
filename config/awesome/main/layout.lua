@@ -23,8 +23,8 @@ machi.editor.nested_layouts = {
 awful.layout.layouts = {
   awful.layout.suit.tile,
   -- awful.layout.suit.spiral.dwindle,
-  -- awful.layout.suit.floating,
-  -- awful.layout.suit.max,
+  awful.layout.suit.floating,
+  awful.layout.suit.max,
   -- centered,
   -- mstab,
   -- equal,

@@ -39,7 +39,7 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ modkey, "Control" }, "q", function()
 		awesome.emit_signal("module::exit_screen:show")
 	end, { description = "show Exit Screen", group = "Utils" }),
-	awful.key({ modkey }, "s", function()
+	awful.key({ modkey }, "t", function()
 		--if value == false then
 		--	create_tag()
 		--	value = true
@@ -50,14 +50,15 @@ awful.keyboard.append_global_keybindings({
 
 		awesome.emit_signal("scratchpad::toggle")
 	end, { description = "show Scratchpad", group = "Utils" }),
-	awful.key({ modkey }, "b", function()
-		awful.spawn.easy_async_with_shell("headsetcontrol -l 0", function() end)
-	end, { description = "headsetcontrol", group = "Utils" }),
+	awful.key({ modkey }, "b", function() 
+		-- awful.spawn.easy_async_with_shell("headsetcontrol -l 0", function() end)
+		awful.spawn.easy_async_with_shell("microsoft-edge-stable", function() end)
+	end, { description = "microsoft-edge-stable", group = "Utils" }),
 	--	awful.key({modkey}, "r", function() awful.spawn(apps.launcher, false) end), -- Rofi
 	--	awful.key({alt}, "c", function() awesome.emit_signal("sidebar::toggle") end), -- Sidebar
-	awful.key({ modkey }, "t", function()
-		awful.titlebar.toggle(client.focus)
-	end, { description = "toggle titlebar for active client", group = "Utils" }), -- Toggle titlebar
+	-- awful.key({ modkey }, "t", function()
+	-- 	awful.titlebar.toggle(client.focus)
+	-- end, { description = "toggle titlebar for active client", group = "Utils" }), -- Toggle titlebar
 	--	awful.key({alt}, "x", function() awesome.emit_signal("lockscreen::toggle") end), -- Toggle lockscreen
 })
 
