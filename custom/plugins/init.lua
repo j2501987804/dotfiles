@@ -7,6 +7,7 @@ return {
 
 	["folke/which-key.nvim"] = {
 		disable = false,
+		keys = { "<leader>", '"', "'", "`", "g", ";" },
 	},
 
 	["neovim/nvim-lspconfig"] = {
@@ -27,7 +28,7 @@ return {
 	-- vim and tmux statusline merge
 	["vimpostor/vim-tpipeline"] = {},
 
-	['RRethy/vim-illuminate'] = {},
+	["RRethy/vim-illuminate"] = {},
 
 	-- Override plugin definition options
 	["nvim-treesitter/nvim-treesitter"] = {
@@ -112,6 +113,7 @@ return {
 	},
 
 	["glepnir/lspsaga.nvim"] = {
+		branch = "main",
 		config = [[require("custom.plugins.lspsaga")]],
 	},
 
@@ -121,15 +123,6 @@ return {
 
 	["akinsho/toggleterm.nvim"] = {
 		config = [[require 'custom.plugins.toggleterm']],
-	},
-
-	["mfussenegger/nvim-dap"] = {
-		module = "dap",
-		config = [[require 'custom.plugins.dap']],
-		requires = {
-			"theHamsta/nvim-dap-virtual-text",
-			"rcarriga/nvim-dap-ui",
-		},
 	},
 
 	-----------------------------------------------------------

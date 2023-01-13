@@ -61,42 +61,21 @@ M.general = {
 	},
 }
 
-M.dap = {
-	n = {
-		[";b"] = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "toggle breakpoint" },
-		[";B"] = {
-			"<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
-			"set breakpoint",
-		},
-		[";u"] = { "<cmd>lua require'dapui'.toggle()<cr>", "dapui open" },
-		[";k"] = { "<Cmd>lua require('dapui').eval()<CR>", "dapui eval" },
-
-		["<F5>"] = { "<cmd>lua require'dap'.continue()<cr>", "dap continue" },
-		["<F6>"] = { "<cmd>lua require'dap'.step_into()<cr>", "step into" },
-		["<F7>"] = { "<cmd>lua require'dap'.step_over()<cr>", "setp over" },
-		["<F8>"] = { "<cmd>lua require'dap'.step_out()<cr>", "setp out" },
-		["<leader>dr"] = { "<cmd>lua require'dap'.repl.toggle()<cr>", "repl toggle" },
-		["<leader>dl"] = { "<cmd>lua require'dap'.run_last()<cr>", "run last" },
-		["<F10>"] = { "<cmd>lua require'dap'.terminate()<cr>", "dap terminate" },
-	},
-}
-
 M.lspconfig = {
 	n = {
 		["gr"] = { "<cmd>TroubleToggle lsp_references<cr>", "lsp references" },
 		["gh"] = { "<cmd>Lspsaga lsp_finder<CR>", "lsp finder" },
 		["gp"] = { "<cmd>Lspsaga peek_definition<CR>", "peek definition" },
 		["K"] = { "<cmd>Lspsaga hover_doc<CR>", "hover doc" },
-		["[d"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "prev diagnostic" },
-		["]d"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "next diagnostic" },
 		["<leader>lf"] = {
 			function()
 				vim.lsp.buf.format({ async = true })
 			end,
 			"lsp formatting",
 		},
-		["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "code action" },
+		-- ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "code action" },
 		["<leader>lr"] = { "<cmd>LspRestart<CR>", "LspRestart" },
+		["<leader>lw"] = { "<cmd>TroubleToggle workspace_diagnostics<CR>", "workspace_diagnostics" },
 	},
 }
 

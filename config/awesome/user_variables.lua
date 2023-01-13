@@ -5,25 +5,25 @@ return {
 			key = " ",
 			--- Coordinates
 			coordinates = {
-				" ", --- lat
-				" ", --- lon
+				"122.62916", --- lat
+				"23.89155", --- lon
 			},
 		},
 
 		--- Github activity
 		github = {
-			username = "V2BlockBuster2K",
+			username = "j2501987804",
 		},
 
 		--- Microphone 
+		-- pamixer --list-sources | grep input
 		mic = {
-			name = "alsa_input.pci-0000_00_1b.0.analog-stereo",
+			name = "alsa_input.pci-0000_00_1f.3.analog-stereo.3",
 		},
 
 		--- Disk for Top-panel
 		disk = {
-			name = "/dev/sda2",
+			name = "/dev/sda3",
 		},
-		
 	},
 }

@@ -6,3 +6,5 @@ nvim/.luarc.json
 config/ncmpcpp/error.log
 config/mpd/mpd.log
 config/mpd/mpdstate
+config/ranger/colorschemes/__pycache__
+config/ranger/plugins
