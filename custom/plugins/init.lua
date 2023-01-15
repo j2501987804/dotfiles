@@ -112,10 +112,10 @@ return {
 		config = [[require('todo-comments').setup()]],
 	},
 
-	["glepnir/lspsaga.nvim"] = {
-		branch = "main",
-		config = [[require("custom.plugins.lspsaga")]],
-	},
+	-- ["glepnir/lspsaga.nvim"] = {
+	-- 	branch = "main",
+	-- 	config = [[require("custom.plugins.lspsaga")]],
+	-- },
 
 	["j-hui/fidget.nvim"] = {
 		config = [[require 'fidget'.setup()]],
@@ -123,6 +123,10 @@ return {
 
 	["akinsho/toggleterm.nvim"] = {
 		config = [[require 'custom.plugins.toggleterm']],
+	},
+
+	["dstein64/vim-startuptime"] = {
+		cmd = "StartupTime",
 	},
 
 	-----------------------------------------------------------

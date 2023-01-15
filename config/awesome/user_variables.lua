@@ -18,7 +18,7 @@ return {
 		--- Microphone 
 		-- pamixer --list-sources | grep input
 		mic = {
-			name = "alsa_input.pci-0000_00_1f.3.analog-stereo.3",
+			name = "alsa_input.pci-0000_00_1f.3.analog-stereo",
 		},
 
 		--- Disk for Top-panel

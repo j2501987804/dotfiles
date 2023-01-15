@@ -15,6 +15,7 @@ M.disabled = {
 		["<leader>fm"] = "",
 		["<C-s>"] = "",
 		["<C-n>"] = "",
+		["gi"] = "",
 	},
 }
 
@@ -64,9 +65,10 @@ M.general = {
 M.lspconfig = {
 	n = {
 		["gr"] = { "<cmd>TroubleToggle lsp_references<cr>", "lsp references" },
-		["gh"] = { "<cmd>Lspsaga lsp_finder<CR>", "lsp finder" },
-		["gp"] = { "<cmd>Lspsaga peek_definition<CR>", "peek definition" },
-		["K"] = { "<cmd>Lspsaga hover_doc<CR>", "hover doc" },
+		["gI"] = { "<cmd>TroubleToggle lsp_implementations<CR>", "lsp implementation" },
+		-- ["gh"] = { "<cmd>Lspsaga lsp_finder<CR>", "lsp finder" },
+		-- ["gp"] = { "<cmd>Lspsaga peek_definition<CR>", "peek definition" },
+		-- ["K"] = { "<cmd>Lspsaga hover_doc<CR>", "hover doc" },
 		["<leader>lf"] = {
 			function()
 				vim.lsp.buf.format({ async = true })

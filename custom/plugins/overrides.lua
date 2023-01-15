@@ -1,7 +1,7 @@
 local M = {}
 
 M.treesitter = {
-	ensure_installed = {"go","lua","rust"},
+	ensure_installed = { "go", "lua", "rust" },
 	sync_install = true,
 	incremental_selection = {
 		enable = true,
