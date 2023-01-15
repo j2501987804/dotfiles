@@ -8,3 +8,5 @@ config/mpd/mpd.log
 config/mpd/mpdstate
 config/ranger/colorschemes/__pycache__
 config/ranger/plugins
+nvim/lazy-lock.json
+nvim/lua/.luarc.json
