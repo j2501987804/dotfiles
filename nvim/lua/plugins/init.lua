@@ -29,18 +29,22 @@ return {
 		event = "BufReadPost",
 		opts = {
 			options = {
-				hover = {
-					enabled = true,
-					delay = 200,
-					reveal = { "close" },
+				indicator = {
+					style = "underline",
+				},
+				offsets = {
+					{
+						filetype = "NvimTree",
+						text = "File Explorer",
+					},
 				},
 			},
 		},
 	},
 
-	{ "NvChad/nvim-colorizer.lua", event = "BufReadPost" },
+	{ "NvChad/nvim-colorizer.lua", event = "BufReadPost", config = true },
 
-	{ "lewis6991/gitsigns.nvim", ft = "gitcommit" },
+	{ "lewis6991/gitsigns.nvim", config = true },
 
 	{
 		"numToStr/Comment.nvim",
@@ -60,7 +64,7 @@ return {
 		keys = { { "<leader>2", ":UndotreeToggle<cr>", desc = "Undo" } },
 	},
 
-	"folke/which-key.nvim",
+	{ "folke/which-key.nvim", config = true },
 
 	"vimpostor/vim-tpipeline",
 
@@ -81,9 +85,10 @@ return {
 	{
 		"ethanholz/nvim-lastplace",
 		event = { "BufRead", "BufNewFile" },
+		config = true,
 	},
 
-	{ "karb94/neoscroll.nvim", event = { "BufRead", "BufNewFile" } },
+	{ "karb94/neoscroll.nvim", config = true, event = { "BufRead", "BufNewFile" } },
 
 	{
 		"brglng/vim-im-select",
@@ -101,15 +106,12 @@ return {
 
 	{
 		"folke/todo-comments.nvim",
+		event = "BufRead",
 		keys = { { ";t", "<cmd>TodoTrouble<cr>", "Todo" } },
-	},
-
-	{
-		"moll/vim-bbye",
-		keys = { { "<leader>x", "<cmd>Bdelete!<CR>", desc = "Close buffers" } },
+		config = true,
 	},
 
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 
-	{ "ray-x/go.nvim", ft = "go" },
+	{ "ray-x/go.nvim", config = true, ft = "go" },
 }

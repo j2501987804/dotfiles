@@ -6,7 +6,6 @@ M.config = function()
 	local treesitter = require "nvim-treesitter.configs"
 	treesitter.setup({
 		ensure_installed = { "go", "lua", "rust" },
-		sync_install = true,
 		incremental_selection = {
 			enable = true,
 			keymaps = {

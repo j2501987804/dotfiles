@@ -15,16 +15,60 @@ M.config = function()
 	require("lsp_signature").setup()
 	require("fidget").setup({})
 
+	-- mason
+	local ensure_installed = {
+		-- lua stuff
+		"lua-language-server",
+		"stylua",
+
+		-- go
+		"gopls",
+		"golines",
+		"golangci-lint",
+
+		-- php
+		"intelephense",
+
+		-- rust
+		"rust-analyzer",
+
+		-- yaml
+		"yaml-language-server",
+		"yamlfmt",
+		"yamllint",
+
+		-- web dev
+		-- "css-lsp",
+		-- "html-lsp",
+		-- "typescript-language-server",
+		-- "deno",
+		-- "emmet-ls",
+		-- "json-lsp",
+
+		-- shell
+		"shfmt",
+		"shellcheck",
+
+		-- bash
+		"bash-language-server",
+	}
+	vim.api.nvim_create_user_command("MasonInstallAll", function()
+		vim.cmd("MasonInstall " .. table.concat(ensure_installed, " "))
+	end, {})
+
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 		border = "rounded",
 	})
 
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "rounded",
-	})
+	-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+	-- 	border = "rounded",
+	-- })
 	-- Use an on_attach function to only map the following keys
 	-- after the language server attaches to the current buffer
 	local on_attach = function(client, bufnr)
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
+
 		-- Enable completion triggered by <c-x><c-o>
 		vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -53,23 +97,6 @@ M.config = function()
 		-- This is the default in Nvim 0.7+
 		debounce_text_changes = 150,
 	}
-	require("lspconfig")["pyright"].setup({
-		on_attach = on_attach,
-		flags = lsp_flags,
-	})
-	require("lspconfig")["tsserver"].setup({
-		on_attach = on_attach,
-		flags = lsp_flags,
-	})
-	require("lspconfig")["rust_analyzer"].setup({
-		on_attach = on_attach,
-		flags = lsp_flags,
-		-- Server-specific settings...
-		settings = {
-			["rust-analyzer"] = {},
-		},
-	})
-
 	local lspconfig = require("lspconfig")
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -132,50 +159,9 @@ M.config = function()
 			on_attach = on_attach,
 			capabilities = capabilities,
 			settings = lsp_settings[lsp],
+			flags = lsp_flags,
 		})
 	end
-
-	-- mason
-	local ensure_installed = {
-		-- lua stuff
-		"lua-language-server",
-		"stylua",
-
-		-- go
-		"gopls",
-		"goimports",
-		"golines",
-		"go-debug-adapter",
-
-		-- php
-		"intelephense",
-
-		-- rust
-		"rust-analyzer",
-
-		-- yaml
-		"yaml-language-server",
-		"yamlfmt",
-		"yamllint",
-
-		-- web dev
-		-- "css-lsp",
-		-- "html-lsp",
-		-- "typescript-language-server",
-		-- "deno",
-		-- "emmet-ls",
-		-- "json-lsp",
-
-		-- shell
-		"shfmt",
-		"shellcheck",
-
-		-- bash
-		"bash-language-server",
-	}
-	vim.api.nvim_create_user_command("MasonInstallAll", function()
-		vim.cmd("MasonInstall " .. table.concat(ensure_installed, " "))
-	end, {})
 
 	-- null-ls
 	local null_ls = require("null-ls")

@@ -2,7 +2,6 @@ local M = {}
 
 M.treesitter = {
 	ensure_installed = { "go", "lua", "rust" },
-	sync_install = true,
 	incremental_selection = {
 		enable = true,
 		keymaps = {
@@ -49,7 +48,7 @@ M.mason = {
 		"gopls",
 		"goimports",
 		"golines",
-		"go-debug-adapter",
+		"golangci-lint",
 
 		-- php
 		"intelephense",

@@ -7,7 +7,7 @@ M.ui = {
 	-- hl_override = highlights.override,
 	-- hl_add = highlights.add,
 	theme_toggle = { "catppuccin", "one_light" },
-	theme = "catppuccin",
+	theme = "kanagawa",
 	transparency = false,
 }
 

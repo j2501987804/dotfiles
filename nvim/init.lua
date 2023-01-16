@@ -94,6 +94,7 @@ keymap("n", "<S-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<tab>", ":bnext<CR>", opts)
 keymap("n", "<S-tab>", ":bprevious<CR>", opts)
 keymap("n", "<leader>q", ":q!<CR>", opts)
+keymap("n", "<leader>x", ":bdelete!<CR>", opts)
 
 -- Clear highlights
 keymap("n", "<ESC>", "<cmd>nohlsearch<CR>", opts)
