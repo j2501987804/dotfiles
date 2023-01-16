@@ -8,6 +8,15 @@ local M = {
 		{ "gh", "<cmd>Lspsaga lsp_finder<CR>", desc = "lsp finder" },
 		-- { "K", "<cmd>Lspsaga hover_doc<CR>", desc = "hover_doc" },
 	},
+	dependencies = {
+		"lukas-reineke/indent-blankline.nvim",
+		"akinsho/bufferline.nvim",
+		"f-person/git-blame.nvim",
+		{ "NvChad/nvim-colorizer.lua", config = true },
+		{ "lewis6991/gitsigns.nvim", config = true },
+		{ "ethanholz/nvim-lastplace", config = true },
+		{ "karb94/neoscroll.nvim", config = true },
+	},
 }
 M.config = function()
 	require("lspsaga").setup({
@@ -28,5 +37,19 @@ M.config = function()
 		},
 	})
 	vim.wo.winbar = require("lspsaga.symbolwinbar"):get_winbar()
+
+	require("bufferline").setup({
+		options = {
+			indicator = {
+				style = "underline",
+			},
+			offsets = {
+				{
+					filetype = "NvimTree",
+					text = "File Explorer",
+				},
+			},
+		},
+	})
 end
 return M

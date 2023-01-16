@@ -37,7 +37,7 @@ return {
 		},
 	},
 	warn_about_missing_glyphs = false,
-	font_size = 11,
+	font_size = 15,
 	line_height = 1.0,
 
 	-- Cursor style
@@ -63,11 +63,16 @@ return {
 		-- 		SplitVertical = { domain = "CurrentPaneDomain" },
 		-- 	}),
 		-- },
-		-- {
-		-- 	key = "q",
-		-- 	mods = "CTRL",
-		-- 	action = wezterm.action({ CloseCurrentPane = { confirm = false } }),
-		-- },
+		{
+			key = "q",
+			mods = "CTRL",
+			action = wezterm.action({ CloseCurrentPane = { confirm = false } }),
+		},
+		{
+			key = "q",
+			mods = "SUPER",
+			action = wezterm.action({ CloseCurrentPane = { confirm = false } }),
+		},
 		-- {
 		-- 	key = "h",
 		-- 	mods = "CTRL|SHIFT",
@@ -143,6 +148,16 @@ return {
 			mods = "CTRL|SHIFT",
 			action = wezterm.action({ CopyTo = "ClipboardAndPrimarySelection" }),
 		},
+		{
+			key = "v",
+			mods = "SUPER",
+			action = wezterm.action({ PasteFrom = "Clipboard" }),
+		},
+		{
+			key = "c",
+			mods = "SUPER",
+			action = wezterm.action({ CopyTo = "ClipboardAndPrimarySelection" }),
+		},
 	},
 
 	-- Aesthetic Night Colorscheme
@@ -191,7 +206,7 @@ return {
 	-- General
 	automatically_reload_config = true,
 	inactive_pane_hsb = { saturation = 1.0, brightness = 1.0 },
-	window_background_opacity = 1,
+	window_background_opacity = 1.0,
 	window_close_confirmation = "NeverPrompt",
 	window_frame = { active_titlebar_bg = "#090909", font = font_with_fallback(font_name, { bold = true }) },
 }

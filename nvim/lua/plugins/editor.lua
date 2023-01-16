@@ -11,6 +11,7 @@ local M = {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"windwp/nvim-autopairs",
+		{ "tzachar/cmp-tabnine", build = "./install.sh" },
 	},
 }
 M.config = function()
@@ -126,6 +127,7 @@ M.config = function()
 			{ name = "buffer" },
 			{ name = "nvim_lua" },
 			{ name = "path" },
+			{ name = "cmp_tabnine" },
 		},
 	}
 	cmp.setup(options)

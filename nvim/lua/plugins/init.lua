@@ -1,7 +1,6 @@
 return {
 	"nvim-lua/plenary.nvim",
 	"kyazdani42/nvim-web-devicons",
-
 	{
 		"rebelot/kanagawa.nvim",
 		config = function()
@@ -15,47 +14,21 @@ return {
 			options = {
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
+				disabled_filetypes = { "alpha" },
 			},
 		},
 	},
-
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		event = "BufReadPost",
-	},
-
-	{
-		"akinsho/bufferline.nvim",
-		event = "BufReadPost",
-		opts = {
-			options = {
-				indicator = {
-					style = "underline",
-				},
-				offsets = {
-					{
-						filetype = "NvimTree",
-						text = "File Explorer",
-					},
-				},
-			},
-		},
-	},
-
-	{ "NvChad/nvim-colorizer.lua", event = "BufReadPost", config = true },
-
-	{ "lewis6991/gitsigns.nvim", config = true },
 
 	{
 		"numToStr/Comment.nvim",
 		keys = {
 			{
-				"<C-/>",
+				"<leader>/",
 				function()
 					require("Comment.api").toggle.linewise.current()
 				end,
 			},
-			{ "<C-/>", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", mode = "v" },
+			{ "<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", mode = "v" },
 		},
 	},
 
@@ -65,8 +38,6 @@ return {
 	},
 
 	{ "folke/which-key.nvim", config = true },
-
-	"vimpostor/vim-tpipeline",
 
 	{
 		"folke/trouble.nvim",
@@ -80,15 +51,6 @@ return {
 		"Pocco81/AutoSave.nvim",
 		event = { "TextChanged", "TextChangedI" },
 	},
-
-	-- last read
-	{
-		"ethanholz/nvim-lastplace",
-		event = { "BufRead", "BufNewFile" },
-		config = true,
-	},
-
-	{ "karb94/neoscroll.nvim", config = true, event = { "BufRead", "BufNewFile" } },
 
 	{
 		"brglng/vim-im-select",
@@ -111,6 +73,22 @@ return {
 		config = true,
 	},
 
+	{
+		"nvim-pack/nvim-spectre",
+		keys = {
+			{'<leader>sp' ,"<cmd>lua require('spectre').open()<CR>",desc='spectre'},
+			{'<leader>sw',"<cmd>lua require('spectre').open_visual({select_word=true})<CR>",desc='search word'},
+			{'<leader>sf',"viw:lua require('spectre').open_file_search()<cr>",desc=''},
+
+			-- "search current word
+			-- nnoremap  
+			-- vnoremap <leader>s <esc>:lua require('spectre').open_visual()<CR>
+			-- "  search in current file
+			-- nnoremap  			-- " run command :Spectre
+		},
+	},
+
+	"vimpostor/vim-tpipeline",
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 
 	{ "ray-x/go.nvim", config = true, ft = "go" },
