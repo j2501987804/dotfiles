@@ -14,7 +14,7 @@ return {
 			options = {
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
-				disabled_filetypes = { "alpha" },
+				disabled_filetypes = { "alpha", "NvimTree" },
 			},
 		},
 	},
@@ -28,7 +28,11 @@ return {
 					require("Comment.api").toggle.linewise.current()
 				end,
 			},
-			{ "<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", mode = "v" },
+			{
+				"<leader>/",
+				"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+				mode = "v",
+			},
 		},
 	},
 
@@ -76,20 +80,14 @@ return {
 	{
 		"nvim-pack/nvim-spectre",
 		keys = {
-			{'<leader>sp' ,"<cmd>lua require('spectre').open()<CR>",desc='spectre'},
-			{'<leader>sw',"<cmd>lua require('spectre').open_visual({select_word=true})<CR>",desc='search word'},
-			{'<leader>sf',"viw:lua require('spectre').open_file_search()<cr>",desc=''},
-
-			-- "search current word
-			-- nnoremap  
-			-- vnoremap <leader>s <esc>:lua require('spectre').open_visual()<CR>
-			-- "  search in current file
-			-- nnoremap  			-- " run command :Spectre
+			{ "<leader>sp", "<cmd>lua require('spectre').open()<CR>", desc = "spectre" },
+			{ "<leader>sw", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", desc = "search word" },
+			{ "<leader>sf", "viw:lua require('spectre').open_file_search()<cr>", desc = "" },
 		},
 	},
 
-	"vimpostor/vim-tpipeline",
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 
 	{ "ray-x/go.nvim", config = true, ft = "go" },
+	"vimpostor/vim-tpipeline",
 }

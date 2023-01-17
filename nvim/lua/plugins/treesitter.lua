@@ -1,12 +1,13 @@
 local M = {
 	"nvim-treesitter/nvim-treesitter",
+
 	build = ":TSUpdate",
-	dependencies = "p00f/nvim-ts-rainbow",
+	-- dependencies = "p00f/nvim-ts-rainbow",
 }
 M.config = function()
 	local treesitter = require("nvim-treesitter.configs")
 	treesitter.setup({
-		ensure_installed = { "go", "lua", "rust" },
+		ensure_installed = { "go", "lua", "rust", "vim", "regex", "lua", "bash", "markdown", "markdown_inline" },
 		incremental_selection = {
 			enable = true,
 			keymaps = {

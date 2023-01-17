@@ -1,6 +1,7 @@
 local M = {
 	"rafamadriz/friendly-snippets",
 	event = "InsertEnter",
+	keys = { { ":" }, { "/" } },
 	dependencies = {
 		"hrsh7th/nvim-cmp",
 		"L3MON4D3/LuaSnip",
@@ -11,7 +12,7 @@ local M = {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"windwp/nvim-autopairs",
-		{ "tzachar/cmp-tabnine", build = "./install.sh" },
+		{ "tzachar/cmp-tabnine", build = "./install.s" },
 	},
 }
 M.config = function()

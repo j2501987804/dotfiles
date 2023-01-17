@@ -39,6 +39,7 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 100
 
 vim.g.im_select_default = "com.apple.keylayout.ABC"
+vim.g.border_style = 'rounded'
 
 vim.cmd([[
    augroup checktime
