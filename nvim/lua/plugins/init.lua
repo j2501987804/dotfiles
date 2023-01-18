@@ -42,7 +42,9 @@ return {
 
 	{
 		"Pocco81/AutoSave.nvim",
-		event = { "TextChanged", "TextChangedI" },
+		opts = {
+			execution_message = { message = "" },
+		},
 	},
 
 	{
@@ -71,7 +73,7 @@ return {
 		keys = {
 			{ "<leader>sp", "<cmd>lua require('spectre').open()<CR>", desc = "spectre" },
 			{ "<leader>sw", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", desc = "search word" },
-			{ "<leader>sf", "viw:lua require('spectre').open_file_search()<cr>", desc = "" },
+			{ "<leader>sf", "viw:lua require('spectre').open_file_search()<cr>", desc = "open_file_search" },
 		},
 	},
 
