@@ -6,7 +6,7 @@ local M = {
 		"ray-x/lsp_signature.nvim",
 		"RRethy/vim-illuminate",
 		"jose-elias-alvarez/null-ls.nvim",
-		'hrsh7th/cmp-nvim-lsp',
+		"hrsh7th/cmp-nvim-lsp",
 	},
 }
 
@@ -36,14 +36,6 @@ M.config = function()
 		"yaml-language-server",
 		"yamlfmt",
 		"yamllint",
-
-		-- web dev
-		-- "css-lsp",
-		-- "html-lsp",
-		-- "typescript-language-server",
-		-- "deno",
-		-- "emmet-ls",
-		-- "json-lsp",
 
 		-- shell
 		"shfmt",
@@ -91,7 +83,7 @@ M.config = function()
 		debounce_text_changes = 150,
 	}
 	local lspconfig = require("lspconfig")
-	local capabilities = require('cmp_nvim_lsp').default_capabilities() 
+	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 	local lsp_settings = {
 		sumneko_lua = {
@@ -116,18 +108,7 @@ M.config = function()
 		},
 	}
 
-	local servers = {
-		"sumneko_lua",
-		"html",
-		"cssls",
-		"gopls",
-		"rust_analyzer",
-		"intelephense",
-		"jsonls",
-		"bashls",
-		"yamlls",
-		"bufls",
-	}
+	local servers = { "sumneko_lua", "gopls", "rust_analyzer", "intelephense", "jsonls", "bashls", "yamlls" }
 
 	for _, lsp in ipairs(servers) do
 		lspconfig[lsp].setup({
