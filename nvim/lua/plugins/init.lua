@@ -9,17 +9,6 @@ return {
 	},
 
 	{
-		"nvim-lualine/lualine.nvim",
-		opts = {
-			options = {
-				component_separators = { left = "", right = "" },
-				section_separators = { left = "", right = "" },
-				disabled_filetypes = { "alpha", "NvimTree" },
-			},
-		},
-	},
-
-	{
 		"numToStr/Comment.nvim",
 		keys = {
 			{
@@ -41,7 +30,7 @@ return {
 		keys = { { "<leader>2", ":UndotreeToggle<cr>", desc = "Undo" } },
 	},
 
-	{ "folke/which-key.nvim", config = true },
+	{ "folke/which-key.nvim", event = "VeryLazy", config = true },
 
 	{
 		"folke/trouble.nvim",
@@ -86,8 +75,5 @@ return {
 		},
 	},
 
-	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
-
 	{ "ray-x/go.nvim", config = true, ft = "go" },
-	"vimpostor/vim-tpipeline",
 }

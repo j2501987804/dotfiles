@@ -1,10 +1,10 @@
 local M = {
-	'akinsho/toggleterm.nvim',
+	"akinsho/toggleterm.nvim",
 	keys = {
-		{ '<C-\\>' },
-		{ ';r', "<cmd>lua _QUICK_RUN()<CR>", desc = "quick run" },
-		{ ';g', "<cmd>lua _LAZYGIT_TOGGLE()<CR>", desc = "lazygit" },
-	}
+		{ "<C-\\>" },
+		{ ";r", "<cmd>lua _QUICK_RUN()<CR>", desc = "quick run" },
+		{ ";g", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", desc = "lazygit" },
+	},
 }
 
 M.config = function()
@@ -14,7 +14,7 @@ M.config = function()
 	end
 
 	local function on_open(term)
-		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<esc>", [[<C-\><C-n>]], { noremap = true, silent = true, })
+		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<esc>", [[<C-\><C-n>]], { noremap = true, silent = true })
 		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-h>", [[<C-\><C-n><C-W>h]], { noremap = true, silent = true })
 		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-j>", [[<C-\><C-n><C-W>j]], { noremap = true, silent = true })
 		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-k>", [[<C-\><C-n><C-W>k]], { noremap = true, silent = true })
@@ -55,9 +55,7 @@ M.config = function()
 		end,
 	})
 
-
-	local vim, api = vim, vim.api
-	local M = {
+	local run_cmd = {
 		go = { "go run ", "go test " },
 		lua = { "lua " },
 		rs = { "cargo run " },
@@ -75,12 +73,12 @@ M.config = function()
 		end
 		if file_type == "go" then
 			if file_name:match("_test") then
-				cmd = M[file_type][2]
+				cmd = run_cmd[file_type][2]
 			else
-				cmd = M[file_type][1]
+				cmd = run_cmd[file_type][1]
 			end
 		else
-			cmd = M[file_type][1]
+			cmd = run_cmd[file_type][1]
 		end
 		return cmd .. file_name
 	end
@@ -92,7 +90,7 @@ M.config = function()
 		end
 		for value in rsfile:lines() do
 			local path = string.sub(value, 3, -1)
-			local ext = vim.fn.fnamemodify(vim.fn.expand(path), ':e')
+			local ext = vim.fn.fnamemodify(vim.fn.expand(path), ":e")
 			if ext == "php" then
 				return
 			end
@@ -107,7 +105,7 @@ M.config = function()
 	end
 
 	function _QUICK_RUN()
-		vim.lsp.buf.format { async = true }
+		vim.lsp.buf.format({ async = true })
 		Terminal:new({
 			cmd = run_command(),
 			hidden = true,

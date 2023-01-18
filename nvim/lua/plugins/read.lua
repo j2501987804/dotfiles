@@ -6,7 +6,7 @@ local M = {
 		{ "<leader>rn", "<cmd>Lspsaga rename<CR>", desc = "rename" },
 		{ "<leader>ca", "<cmd>Lspsaga code_action<CR>", desc = "code action" },
 		{ "gh", "<cmd>Lspsaga lsp_finder<CR>", desc = "lsp finder" },
-		-- { "K", "<cmd>Lspsaga hover_doc<CR>", desc = "hover_doc" },
+		{ "K", "<cmd>Lspsaga hover_doc<CR>", desc = "hover_doc" },
 	},
 	dependencies = {
 		"lukas-reineke/indent-blankline.nvim",
@@ -24,7 +24,7 @@ M.config = function()
 			-- currently only round theme
 			theme = "round",
 			-- border type can be single,double,rounded,solid,shadow.
-			border = "rounded",
+			border = vim.g.border_style,
 		},
 		symbol_in_winbar = {
 			enable = true,

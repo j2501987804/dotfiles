@@ -7,6 +7,7 @@ local M = {
 		"j-hui/fidget.nvim",
 		"RRethy/vim-illuminate",
 		"jose-elias-alvarez/null-ls.nvim",
+		'hrsh7th/cmp-nvim-lsp',
 	},
 }
 
@@ -71,7 +72,7 @@ M.config = function()
 		local bufopts = { noremap = true, silent = true, buffer = bufnr }
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+		-- vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 		-- vim.keymap.set("n", "gI", "<cmd>TroubleToggle lsp_implementations<CR>", bufopts)
 		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
 		vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
@@ -92,25 +93,7 @@ M.config = function()
 		debounce_text_changes = 150,
 	}
 	local lspconfig = require("lspconfig")
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-	capabilities.textDocument.completion.completionItem = {
-		documentationFormat = { "markdown", "plaintext" },
-		snippetSupport = true,
-		preselectSupport = true,
-		insertReplaceSupport = true,
-		labelDetailsSupport = true,
-		deprecatedSupport = true,
-		commitCharactersSupport = true,
-		tagSupport = { valueSet = { 1 } },
-		resolveSupport = {
-			properties = {
-				"documentation",
-				"detail",
-				"additionalTextEdits",
-			},
-		},
-	}
+	local capabilities = require('cmp_nvim_lsp').default_capabilities() 
 
 	local lsp_settings = {
 		sumneko_lua = {
