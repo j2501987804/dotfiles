@@ -99,28 +99,20 @@ M.config = function()
 			["<C-d>"] = cmp.mapping.scroll_docs(-4),
 			["<C-f>"] = cmp.mapping.scroll_docs(4),
 			["<Tab>"] = cmp.mapping(function(fallback)
-				if require("luasnip").expand_or_jumpable() then
-					vim.fn.feedkeys(
-						vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
-						""
-					)
+				if luasnip.expand_or_jumpable() then
+					luasnip.expand_or_jump()
 				else
 					fallback()
 				end
-			end, {
-				"i",
-				"s",
-			}),
+			end, { "i", "s" }),
+
 			["<S-Tab>"] = cmp.mapping(function(fallback)
-				if require("luasnip").jumpable(-1) then
-					vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+				if luasnip.jumpable(-1) then
+					luasnip.jump(-1)
 				else
 					fallback()
 				end
-			end, {
-				"i",
-				"s",
-			}),
+			end, { "i", "s" }),
 		},
 		sources = {
 			{ name = "luasnip" },

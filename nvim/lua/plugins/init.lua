@@ -9,18 +9,6 @@ return {
 	},
 
 	{
-		"nvim-lualine/lualine.nvim",
-		opts = {
-			options = {
-				component_separators = { left = "", right = "" },
-				section_separators = { left = "", right = "" },
-				-- disabled_filetypes = { "alpha", "NvimTree" },
-			},
-		},
-		lazy = false
-	},
-
-	{
 		"numToStr/Comment.nvim",
 		keys = {
 			{
@@ -42,7 +30,7 @@ return {
 		keys = { { "<leader>2", ":UndotreeToggle<cr>", desc = "Undo" } },
 	},
 
-	{ "folke/which-key.nvim", config = true },
+	{ "folke/which-key.nvim", event = "VeryLazy", config = true },
 
 	{
 		"folke/trouble.nvim",
@@ -54,7 +42,9 @@ return {
 
 	{
 		"Pocco81/AutoSave.nvim",
-		event = { "TextChanged", "TextChangedI" },
+		opts = {
+			execution_message = { message = "" },
+		},
 	},
 
 	{
@@ -83,12 +73,9 @@ return {
 		keys = {
 			{ "<leader>sp", "<cmd>lua require('spectre').open()<CR>", desc = "spectre" },
 			{ "<leader>sw", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", desc = "search word" },
-			{ "<leader>sf", "viw:lua require('spectre').open_file_search()<cr>", desc = "" },
+			{ "<leader>sf", "viw:lua require('spectre').open_file_search()<cr>", desc = "open_file_search" },
 		},
 	},
 
-	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
-
 	{ "ray-x/go.nvim", config = true, ft = "go" },
-	"vimpostor/vim-tpipeline",
 }
