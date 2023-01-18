@@ -4,7 +4,6 @@ local M = {
 	dependencies = {
 		"williamboman/mason.nvim",
 		"ray-x/lsp_signature.nvim",
-		"j-hui/fidget.nvim",
 		"RRethy/vim-illuminate",
 		"jose-elias-alvarez/null-ls.nvim",
 		'hrsh7th/cmp-nvim-lsp',
@@ -13,7 +12,6 @@ local M = {
 
 M.config = function()
 	require("mason").setup()
-	require("fidget").setup({})
 
 	-- mason
 	local ensure_installed = {
@@ -74,7 +72,7 @@ M.config = function()
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 		-- vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 		-- vim.keymap.set("n", "gI", "<cmd>TroubleToggle lsp_implementations<CR>", bufopts)
-		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+		-- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
 		vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
 		vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
 		-- vim.keymap.set("n", "<space>lw", "<cmd>TroubleToggle workspace_diagnostics<CR>", bufopts)

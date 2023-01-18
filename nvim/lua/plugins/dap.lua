@@ -85,11 +85,11 @@ M.config = function()
 		dapui.close()
 	end
 
+	local bin = os.getenv("HOME") .. "/.local/share/nvim/mason/bin/"
 	-- go
 	dap.adapters.go = {
 		type = "executable",
-		command = "node",
-		args = { os.getenv("HOME") .. "/dev/golang/vscode-go/dist/debugAdapter.js" },
+		command = bin .. "go-debug-adapter",
 	}
 	dap.configurations.go = {
 		{
@@ -108,7 +108,7 @@ M.config = function()
 		port = "${port}",
 		executable = {
 			-- CHANGE THIS to your path!
-			command = "codelldb",
+			command = bin .. "codelldb",
 			args = { "--port", "${port}" },
 
 			-- On windows you may have to uncomment this:
