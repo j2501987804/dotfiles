@@ -6,7 +6,6 @@ return {
 			if not line_ok then
 				return
 			end
-
 			local c = {
 				vim_mode = {
 					provider = {

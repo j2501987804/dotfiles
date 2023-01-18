@@ -1,10 +1,10 @@
 local M = {
-	'nvim-tree/nvim-tree.lua',
+	"nvim-tree/nvim-tree.lua",
 	keys = { { "<leader>e", "<cmd> NvimTreeToggle <CR>", desc = "toggle nvimtree" } },
 }
 
 M.config = function()
-	local nvimtree = require "nvim-tree"
+	local nvimtree = require("nvim-tree")
 	local tree_cb = require("nvim-tree.config").nvim_tree_callback
 	local options = {
 		disable_netrw = true,
@@ -44,6 +44,9 @@ M.config = function()
 				resize_window = true,
 			},
 		},
+		-- notify = {
+		-- 	threshold = vim.log.levels.WARN,
+		-- },
 		renderer = {
 			highlight_git = true,
 			highlight_opened_files = "none",
@@ -67,7 +70,7 @@ M.config = function()
 						default = "",
 						empty = "",
 						empty_open = "",
-					open = "",
+						open = "",
 						symlink = "",
 						symlink_open = "",
 						arrow_open = "",
