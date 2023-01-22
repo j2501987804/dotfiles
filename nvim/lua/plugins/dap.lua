@@ -5,16 +5,16 @@ local M = {
 		"theHamsta/nvim-dap-virtual-text",
 	},
 	keys = {
-		{ ";b", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "set breakpoint" },
+		{ ";b", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "set breakpoint" },
 		{ "<F5>", "<cmd>lua require'dap'.continue()<cr>", "" },
 		{ "<F6>", "<cmd>lua require'dap'.step_into()<cr>", "" },
 		{ "<F7>", "<cmd>lua require'dap'.step_over()<cr>", "" },
 		{ "<F8>", "<cmd>lua require'dap'.step_out()<cr>", "" },
 		{ "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", "" },
-		{ "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", "reload" },
-		{ ";u", "<cmd>lua require'dapui'.toggle()<cr>", "" },
+		{ "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", desc = "reload" },
+		{ ";u", "<cmd>lua require'dapui'.toggle()<cr>", desc = "dapui" },
 		{ "<F9>", '<Cmd>lua require("dapui").eval()<CR>' },
-		{ ";t", "<cmd>lua require'dap'.terminate()<cr>", "dap close" },
+		{ ";t", "<cmd>lua require'dap'.terminate()<cr>", desc = "dap close" },
 	},
 }
 M.config = function()

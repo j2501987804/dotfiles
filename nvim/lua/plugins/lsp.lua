@@ -4,7 +4,6 @@ local M = {
 	dependencies = {
 		"williamboman/mason.nvim",
 		"ray-x/lsp_signature.nvim",
-		"RRethy/vim-illuminate",
 		"jose-elias-alvarez/null-ls.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 	},
@@ -68,7 +67,7 @@ M.config = function()
 		vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
 		vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
 		-- vim.keymap.set("n", "<space>lw", "<cmd>TroubleToggle workspace_diagnostics<CR>", bufopts)
-		vim.keymap.set("n", "<space>lr", "<cmd>LspRestart<CR>", bufopts)
+		vim.keymap.set("n", "<space>ls", "<cmd>LspRestart<CR>", bufopts)
 		vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
 		-- vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
 		-- vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
@@ -151,13 +150,13 @@ M.config = function()
 
 	vim.diagnostic.config(config)
 
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "rounded",
-	})
-
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "rounded",
-	})
+	-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+	-- 	border = "rounded",
+	-- })
+	--
+	-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+	-- 	border = "rounded",
+	-- })
 	require("lsp_signature").setup()
 
 	-- null-ls

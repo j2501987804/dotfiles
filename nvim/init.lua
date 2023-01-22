@@ -73,6 +73,13 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
 -- Normal --
+keymap("n", "<tab>", ":bnext<CR>", opts)
+keymap("n", "<S-tab>", ":bprevious<CR>", opts)
+keymap("n", "<leader>q", ":q!<CR>", opts)
+keymap("n", "<leader>x", ":bdelete!<CR>", opts)
+keymap("n", "<leader>x", ":bdelete!<CR>", opts)
+keymap("n", "<leader>tc", ":tabclose!<CR>", opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -88,12 +95,6 @@ keymap("n", "<S-Up>", ":resize -2<CR>", opts)
 keymap("n", "<S-Down>", ":resize +2<CR>", opts)
 keymap("n", "<S-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<S-Right>", ":vertical resize +2<CR>", opts)
-
--- Navigate buffers
-keymap("n", "<tab>", ":bnext<CR>", opts)
-keymap("n", "<S-tab>", ":bprevious<CR>", opts)
-keymap("n", "<leader>q", ":q!<CR>", opts)
-keymap("n", "<leader>x", ":bdelete!<CR>", opts)
 
 -- Clear highlights
 keymap("n", "<ESC>", "<cmd>nohlsearch<CR>", opts)
