@@ -22,20 +22,7 @@ return {
 						},
 						n = { ["q"] = require("telescope.actions").close },
 					},
-					vimgrep_arguments = {
-						"rg",
-						"-L",
-						"--color=never",
-						"--no-heading",
-						"--with-filename",
-						"--line-number",
-						"--column",
-						"--smart-case",
-					},
-					prompt_prefix = "   ",
-					selection_caret = "  ",
-					entry_prefix = "  ",
-					initial_mode = "insert",
+					prompt_prefix = " 🔍",
 					selection_strategy = "reset",
 					sorting_strategy = "ascending",
 					layout_strategy = "horizontal",
@@ -52,20 +39,6 @@ return {
 						height = 0.80,
 						preview_cutoff = 120,
 					},
-					file_sorter = require("telescope.sorters").get_fuzzy_file,
-					file_ignore_patterns = { "node_modules" },
-					generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-					path_display = { "truncate" },
-					winblend = 0,
-					border = {},
-					borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-					color_devicons = true,
-					set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-					file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-					grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-					qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-					-- Developer configurations: Not meant for general override
-					buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 				},
 			}
 			telescope.setup(options)
@@ -78,6 +51,7 @@ return {
 	{
 		"folke/trouble.nvim",
 		keys = {
+			{ "gr", "<cmd>TroubleToggle lsp_references<cr>", desc = "references" },
 			{ "gI", "<cmd>TroubleToggle lsp_implementations<CR>", desc = "impl" },
 			{ "<space>lw", "<cmd>TroubleToggle document_diagnostics<CR>", desc = "document_diagnostics" },
 			{ "<space>lW", "<cmd>TroubleToggle workspace_diagnostics<CR>", desc = "workspace_diagnostics" },
@@ -120,37 +94,24 @@ return {
 				changedelete = { text = "▎" },
 				untracked = { text = "▎" },
 			},
-			on_attach = function(buffer)
-				local gs = package.loaded.gitsigns
-
-				local function map(mode, l, r, desc)
-					vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
-				end
-
-				map("n", "]h", gs.next_hunk, "Next Hunk")
-				map("n", "[h", gs.prev_hunk, "Prev Hunk")
-				map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
-				map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
-				map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
-				map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
-				map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
-				map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
-				map("n", "<leader>ghb", function()
-					gs.blame_line({ full = true })
-				end, "Blame Line")
-				map("n", "<leader>ghd", gs.diffthis, "Diff This")
-				map("n", "<leader>ghD", function()
-					gs.diffthis("~")
-				end, "Diff This ~")
-				map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
-			end,
+		},
+		keys = {
+			{ "]h", "<cmd>Gitsigns next_hunk<CR>", desc = "Next Hunk" },
+			{ "[h", "<cmd>Gitsigns prev_hunk<CR>", desc = "Prev Hunk" },
 		},
 		dependencies = {
 			"f-person/git-blame.nvim",
-			{ "NvChad/nvim-colorizer.lua", config = true },
 			{ "ethanholz/nvim-lastplace", config = true },
 			{ "karb94/neoscroll.nvim", config = true },
 		},
+	},
+
+	{
+		"NvChad/nvim-colorizer.lua",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			require("colorizer").setup()
+		end,
 	},
 
 	{
@@ -215,6 +176,12 @@ return {
 				},
 			})
 		end,
+	},
+
+	{
+		"simrat39/symbols-outline.nvim",
+		config = true,
+		keys = { { "<leader>3", ":SymbolsOutline<CR>", desc = "SymbolsOutline" } },
 	},
 
 	-- {

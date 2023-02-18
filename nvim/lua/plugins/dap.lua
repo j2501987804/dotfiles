@@ -6,8 +6,8 @@ local M = {
 	},
 	keys = {
 		{ ";b", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "set breakpoint" },
-		{ "<F5>", "<cmd>lua require'dap'.continue()<cr>", "" },
-		{ "<F6>", "<cmd>lua require'dap'.step_into()<cr>", "" },
+		{ "<F5>", "<cmd>lua require'dap'.continue()<cr>", desc = "dap continue" },
+		{ "<F6>", "<cmd>lua require'dap'.step_into()<cr>" },
 		{ "<F7>", "<cmd>lua require'dap'.step_over()<cr>", "" },
 		{ "<F8>", "<cmd>lua require'dap'.step_out()<cr>", "" },
 		{ "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", "" },
@@ -107,12 +107,8 @@ M.config = function()
 		type = "server",
 		port = "${port}",
 		executable = {
-			-- CHANGE THIS to your path!
 			command = bin .. "codelldb",
 			args = { "--port", "${port}" },
-
-			-- On windows you may have to uncomment this:
-			-- detached = false,
 		},
 	}
 	dap.configurations.cpp = {

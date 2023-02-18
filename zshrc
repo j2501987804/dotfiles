@@ -49,7 +49,7 @@ alias v='nvim'
 alias k='kubectl'
 alias go="go"
 alias lg="lazygit"
-export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+alias setproxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
 alias unproxy='unset http_proxy && unset https_proxy && unset all_proxy'
 
 # 环境变量

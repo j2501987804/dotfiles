@@ -1,6 +1,6 @@
 vim.opt.backup = false -- creates a backup file
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
-vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
+vim.opt.cmdheight = 0 -- more space in the neovim command line for displaying messages
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 vim.opt.fileencoding = "utf-8" -- the encoding written to a file
@@ -37,9 +37,39 @@ vim.opt.sidescrolloff = 8
 vim.opt.foldenable = true
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 100
+vim.opt.relativenumber = true
 
 vim.g.im_select_default = "com.apple.keylayout.ABC"
 vim.g.border_style = "rounded"
+local signs = {
+	{ name = "DiagnosticSignError", text = "" },
+	{ name = "DiagnosticSignWarn", text = "" },
+	{ name = "DiagnosticSignHint", text = "" },
+	{ name = "DiagnosticSignInfo", text = "" },
+}
+
+for _, sign in ipairs(signs) do
+	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+end
+
+local config = {
+	virtual_text = false, -- disable virtual text
+	signs = {
+		active = signs, -- show signs
+	},
+	update_in_insert = true,
+	underline = true,
+	severity_sort = true,
+	float = {
+		focusable = true,
+		style = "minimal",
+		border = "rounded",
+		source = "always",
+		header = "",
+		prefix = "",
+	},
+}
+vim.diagnostic.config(config)
 
 vim.cmd([[
    augroup checktime
@@ -55,13 +85,19 @@ vim.cmd([[
            autocmd CursorMovedI    * silent! checktime
        endif
    augroup END
+
+   augroup _git
+    autocmd!
+    autocmd FileType gitcommit setlocal wrap
+    autocmd FileType gitcommit setlocal spell
+   augroup end
 ]])
 
-vim.cmd([[
-	let fcitx5state=system("fcitx5-remote")
-	autocmd InsertLeave * :silent let fcitx5state=system("fcitx5-remote")[0] | silent !fcitx5-remote -c
-	autocmd InsertEnter * :silent if fcitx5state == 2 | call system("fcitx5-remote -o") | endif
-]])
+-- vim.cmd([[
+-- 	let fcitx5state=system("fcitx5-remote")
+-- 	autocmd InsertLeave * :silent let fcitx5state=system("fcitx5-remote")[0] | silent !fcitx5-remote -c
+-- 	autocmd InsertEnter * :silent if fcitx5state == 2 | call system("fcitx5-remote -o") | endif
+-- ]])
 
 -- Shorten function name
 local keymap = vim.keymap.set
@@ -78,7 +114,7 @@ keymap("n", "<S-tab>", ":bprevious<CR>", opts)
 keymap("n", "<leader>q", ":q!<CR>", opts)
 keymap("n", "<leader>x", ":bdelete!<CR>", opts)
 keymap("n", "<leader>x", ":bdelete!<CR>", opts)
-keymap("n", "<leader>tc", ":tabclose!<CR>", opts)
+keymap("n", "<leader>tc", ":bdelete!<CR>", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -101,6 +137,8 @@ keymap("n", "<ESC>", "<cmd>nohlsearch<CR>", opts)
 
 -- Better paste
 keymap("v", "p", '"_dP', opts)
+keymap("v", "<A-j>", ":m .+1<CR>==", opts)
+keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 
 -- Insert --
 -- Press jk fast to enter
