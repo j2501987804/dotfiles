@@ -40,7 +40,7 @@ vim.opt.foldlevel = 100
 vim.opt.relativenumber = true
 
 vim.g.im_select_default = "com.apple.keylayout.ABC"
-vim.g.border_style = "rounded"
+-- vim.g.border_style = "rounded"
 local signs = {
 	{ name = "DiagnosticSignError", text = "" },
 	{ name = "DiagnosticSignWarn", text = "" },

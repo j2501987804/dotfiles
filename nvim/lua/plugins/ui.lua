@@ -1,7 +1,7 @@
 return {
 	"vimpostor/vim-tpipeline",
 	"stevearc/dressing.nvim",
-	"kyazdani42/nvim-web-devicons",
+	"nvim-tree/nvim-web-devicons",
 	{
 		"rebelot/kanagawa.nvim",
 		config = function()
@@ -15,6 +15,13 @@ return {
 				TelescopePromptTitle = { bg = c.autumnRed },
 				TelescopePreviewTitle = { bg = c.autumnGreen },
 				TelescopeResultsTitle = { bg = c.winterBlue, fg = c.winterBlue },
+
+				-- cmp
+				CmpBorder = { fg = "#42464e" },
+				CmpDocBorder = { link = "CmpBorder" },
+				FloatBorder = { bg = c.sumiInk1 },
+				Pmenu = { bg = c.sumiInk1 },
+				NormalFloat = { link = "Pmenu" },
 			}
 
 			require("kanagawa").setup({ overrides = overrides })
@@ -48,6 +55,48 @@ return {
 			show_trailing_blankline_indent = true,
 			show_current_context = true,
 			show_current_context_start = true,
+		},
+	},
+
+	{
+		"folke/persistence.nvim",
+		opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help" } },
+	},
+
+	{
+		"glepnir/dashboard-nvim",
+		opts = {
+			theme = "hyper",
+			config = {
+				week_header = {
+					enable = true,
+				},
+				shortcut = {
+					{ desc = " Update", group = "@property", action = "Lazy update", key = "u" },
+					{
+						icon = " ",
+						icon_hl = "@variable",
+						desc = "Files",
+						group = "Label",
+						action = "Telescope find_files",
+						key = "f",
+					},
+					{
+						desc = " Sessions",
+						group = "DiagnosticHint",
+						action = function()
+							require("persistence").load()
+						end,
+						key = "s",
+					},
+					{
+						desc = " New file",
+						group = "Number",
+						action = "enew",
+						key = "e",
+					},
+				},
+			},
 		},
 	},
 }

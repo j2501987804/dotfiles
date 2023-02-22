@@ -58,11 +58,11 @@ return {
 		},
 	},
 
-	-- {
-	-- 	"brglng/vim-im-select",
-	-- 	event = { "InsertEnter" },
-	-- 	cond = vim.fn.has("mac") == 1,
-	-- },
+	{
+		"brglng/vim-im-select",
+		event = { "InsertEnter" },
+		cond = vim.fn.has("mac") == 1,
+	},
 
 	{ "ray-x/go.nvim", config = true, ft = "go" },
 

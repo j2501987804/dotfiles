@@ -14,7 +14,7 @@ local M = {
 		{ "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", desc = "reload" },
 		{ ";u", "<cmd>lua require'dapui'.toggle()<cr>", desc = "dapui" },
 		{ "<F9>", '<Cmd>lua require("dapui").eval()<CR>' },
-		{ ";t", "<cmd>lua require'dap'.terminate()<cr>", desc = "dap close" },
+		{ "<F10>", "<cmd>lua require'dap'.terminate()<cr>", desc = "dap close" },
 	},
 }
 M.config = function()

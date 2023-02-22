@@ -10,7 +10,7 @@ local M = {
 }
 
 local servers = {
-	sumneko_lua = {
+	lua_ls = {
 		Lua = {
 			runtime = {
 				version = "LuaJIT",
@@ -31,6 +31,14 @@ local servers = {
 	rust_analyzer = {},
 	intelephense = {},
 }
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+	border = "rounded",
+})
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+	border = "rounded",
+})
 
 M.config = function()
 	local on_attach = function(client, bufnr)
