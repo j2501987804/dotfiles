@@ -12,16 +12,16 @@ M.config = function()
 	local theme = {
 		aqua = "#7AB0DF",
 		bg = "#1F1F28",
-		blue = "#5FB0FC",
+		blue = "#2D4F67",
 		cyan = "#70C0BA",
-		darkred = "#FB7373",
+		darkred = "#C34043",
 		fg = "#DCD7BA",
-		gray = "#222730",
-		green = "#98BB6C",
+		gray = "#1F1F28",
+		green = "#76946A",
 		lime = "#54CED6",
 		orange = "#FFA066",
-		pink = "#D997C8",
-		purple = "#C397D8",
+		pink = "#D27E99",
+		purple = "#957FB8",
 		red = "#E46876",
 		yellow = "#E6C384",
 	}
@@ -284,6 +284,7 @@ M.config = function()
 
 	local left = {
 		component.vim_mode,
+		component.file_type,
 		component.git_branch,
 		component.git_add,
 		component.git_delete,
@@ -299,7 +300,6 @@ M.config = function()
 		component.diagnostic_warnings,
 		component.diagnostic_info,
 		component.diagnostic_hints,
-		component.file_type,
 		component.position,
 		-- component.line_percentage,
 		component.scroll_bar,
