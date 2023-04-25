@@ -14,7 +14,7 @@ local M = {
 		{ "windwp/nvim-autopairs", config = true },
 		{ "tzachar/cmp-tabnine", build = "./install.sh" },
 	},
-	keys = { { ":" }, { "/" } },
+	keys = { { ":" }, { "/" }, { "?" } },
 }
 
 local check_backspace = function()
@@ -61,19 +61,6 @@ local icons = {
 	Package = "",
 }
 
-local function border(hl_name)
-	return {
-		{ "╭", hl_name },
-		{ "─", hl_name },
-		{ "╮", hl_name },
-		{ "│", hl_name },
-		{ "╯", hl_name },
-		{ "─", hl_name },
-		{ "╰", hl_name },
-		{ "│", hl_name },
-	}
-end
-
 M.opts = function()
 	local cmp = require("cmp")
 	local luasnip = require("luasnip")
@@ -101,19 +88,6 @@ M.opts = function()
 	return {
 		completion = {
 			completeopt = "menu,menuone,noinsert",
-		},
-		-- window = {
-		-- 	completion = cmp.config.window.bordered(),
-		-- 	documentation = cmp.config.window.bordered(),
-		-- },
-		window = {
-			completion = {
-				border = border("CmpBorder"),
-				-- winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
-			},
-			documentation = {
-				border = border("CmpDocBorder"),
-			},
 		},
 		snippet = {
 			expand = function(args)

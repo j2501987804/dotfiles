@@ -4,29 +4,8 @@ return {
 	"nvim-tree/nvim-web-devicons",
 	{
 		"rebelot/kanagawa.nvim",
-		tag = "faeef985abd6f32cdc2e3c2cce89469060b9c74a",
 		config = function()
-			local overrides = function(colors)
-				local c = colors.palette
-				local prompt = c.sumiInk2
-				return {
-					TelescopeNormal = { bg = c.winterBlue, fg = c.fg_dark },
-					TelescopeBorder = { bg = c.winterBlue, fg = c.winterBlue },
-					TelescopePromptNormal = { bg = prompt },
-					TelescopePromptBorder = { bg = prompt, fg = prompt },
-					TelescopePromptTitle = { bg = c.autumnRed },
-					TelescopePreviewTitle = { bg = c.autumnGreen },
-					TelescopeResultsTitle = { bg = c.winterBlue, fg = c.winterBlue },
-
-					-- cmp
-					CmpBorder = { fg = "#42464e" },
-					CmpDocBorder = { link = "CmpBorder" },
-					FloatBorder = { bg = c.sumiInk1 },
-					Pmenu = { bg = c.sumiInk1 },
-					NormalFloat = { link = "Pmenu" },
-				}
-			end
-			require("kanagawa").setup({ overrides = overrides })
+			require("kanagawa").setup()
 			vim.cmd("colorscheme kanagawa")
 		end,
 	},

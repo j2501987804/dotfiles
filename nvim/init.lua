@@ -39,6 +39,8 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 100
 vim.opt.relativenumber = true
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.g.im_select_default = "com.apple.keylayout.ABC"
 -- vim.g.border_style = "rounded"
 local signs = {
