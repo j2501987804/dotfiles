@@ -115,6 +115,24 @@ local plugins = {
             panel = { enabled = false },
         },
     },
+
+    {
+        "ggandor/leap.nvim",
+        keys = {
+            { "f", "<Plug>(leap-forward-to)",  mode = { "x", "o", "n" } },
+            { "F", "<Plug>(leap-backward-to)", mode = { "x", "o", "n" } },
+        },
+    },
+
+    {
+        "folke/trouble.nvim",
+        keys = {
+            { "gr",        "<cmd>TroubleToggle lsp_references<cr>",        desc = "references" },
+            { "gI",        "<cmd>TroubleToggle lsp_implementations<CR>",   desc = "impl" },
+            { "<space>lw", "<cmd>TroubleToggle document_diagnostics<CR>",  desc = "document_diagnostics" },
+            { "<space>lW", "<cmd>TroubleToggle workspace_diagnostics<CR>", desc = "workspace_diagnostics" },
+        },
+    },
     -- To make a plugin not be loaded
     -- {
     --   "NvChad/nvim-colorizer.lua",
