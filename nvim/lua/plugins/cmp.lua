@@ -12,7 +12,7 @@ local M = {
 		"rafamadriz/friendly-snippets",
 		"L3MON4D3/LuaSnip",
 		{ "windwp/nvim-autopairs", config = true },
-		{ "tzachar/cmp-tabnine", build = "./install.sh" },
+		-- { "tzachar/cmp-tabnine", build = "./install.sh" },
 	},
 	keys = { { ":" }, { "/" }, { "?" } },
 }

@@ -100,7 +100,7 @@ M.config = function()
 	end
 
 	function _LAZYGIT_TOGGLE()
-		format()
+		pcall(format)
 		lazygit:toggle()
 	end
 
