@@ -13,6 +13,7 @@ M.disabled = {
         ["<leader>fm"] = "",
         ["<leader>f"] = "",
         ["gi"] = "",
+        ["gr"] = "",
     },
 }
 

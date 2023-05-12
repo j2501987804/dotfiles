@@ -54,6 +54,30 @@ local plugins = {
         opts = overrides.cmp,
     },
 
+    {
+        "hrsh7th/cmp-cmdline",
+        event = { "CmdlineEnter" },
+        dependencies = { "hrsh7th/nvim-cmp" },
+        config = function()
+            require("cmp").setup.cmdline({ "/", "?" }, {
+                mapping = require("cmp").mapping.preset.cmdline(),
+                sources = {
+                    { name = "buffer" },
+                },
+            })
+
+            -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+            require("cmp").setup.cmdline(":", {
+                mapping = require("cmp").mapping.preset.cmdline(),
+                sources = require("cmp").config.sources({
+                    { name = "path" },
+                }, {
+                    { name = "cmdline" },
+                }),
+            })
+        end,
+    },
+
     -- Install a plugin
     {
         "max397574/better-escape.nvim",
@@ -104,7 +128,9 @@ local plugins = {
         },
     },
 
-    { "f-person/git-blame.nvim", event = "BufReadPre" },
+    { "f-person/git-blame.nvim",  event = "BufReadPre" },
+    { "ethanholz/nvim-lastplace", config = true,       event = "BufReadPre" },
+    { "karb94/neoscroll.nvim",    config = true,       event = "BufReadPre" },
 
     {
         "zbirenbaum/copilot.lua",
@@ -133,6 +159,79 @@ local plugins = {
             { "<space>lW", "<cmd>TroubleToggle workspace_diagnostics<CR>", desc = "workspace_diagnostics" },
         },
     },
+
+    {
+        "ray-x/go.nvim",
+        dependencies = { -- optional packages
+            "ray-x/guihua.lua",
+            "neovim/nvim-lspconfig",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require("go").setup()
+        end,
+        event = { "CmdlineEnter" },
+        ft = { "go", "gomod" },
+        build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+    },
+
+    {
+        "nvim-pack/nvim-spectre",
+        keys = {
+            { "<leader>sp", "<cmd>lua require('spectre').open()<CR>",                          desc = "spectre" },
+            { "<leader>sw", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", desc = "search word" },
+            {
+                "<leader>sf",
+                "viw:lua require('spectre').open_file_search()<cr>",
+                desc = "open_file_search",
+            },
+        },
+    },
+
+    -- {
+    --     "folke/persistence.nvim",
+    --     opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help" } },
+    --     lazy = false,
+    -- },
+    --
+    -- {
+    --     "glepnir/dashboard-nvim",
+    --     lazy = false,
+    --     opts = {
+    --         theme = "hyper",
+    --         config = {
+    --             week_header = {
+    --                 enable = true,
+    --             },
+    --             shortcut = {
+    --                 { desc = " Update", group = "@property", action = "Lazy update", key = "u" },
+    --                 {
+    --                     icon = " ",
+    --                     icon_hl = "@variable",
+    --                     desc = "Files",
+    --                     group = "Label",
+    --                     action = "Telescope find_files",
+    --                     key = "f",
+    --                 },
+    --                 {
+    --                     desc = " Sessions",
+    --                     group = "DiagnosticHint",
+    --                     action = function()
+    --                         require("persistence").load()
+    --                     end,
+    --                     key = "s",
+    --                 },
+    --                 {
+    --                     desc = " New file",
+    --                     group = "Number",
+    --                     action = "enew",
+    --                     key = "e",
+    --                 },
+    --             },
+    --         },
+    --     },
+    -- },
+
     -- To make a plugin not be loaded
     -- {
     --   "NvChad/nvim-colorizer.lua",
@@ -146,6 +245,7 @@ local plugins = {
     --   "mg979/vim-visual-multi",
     --   lazy = false,
     -- }
+    require("custom.configs.dap")
 }
 
 return plugins

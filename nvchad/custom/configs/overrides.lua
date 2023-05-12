@@ -106,9 +106,10 @@ M.telescope = {
 }
 
 M.cmp = {
-    mapping = require("cmp").mapping.preset.insert {
+    mapping = require("cmp").mapping.preset.insert({
         ["<C-k>"] = require("cmp").mapping(require("cmp").mapping.select_prev_item(), { "i", "c" }),
         ["<C-j>"] = require("cmp").mapping(require("cmp").mapping.select_next_item(), { "i", "c" }),
-    },
+    }),
 }
+
 return M
