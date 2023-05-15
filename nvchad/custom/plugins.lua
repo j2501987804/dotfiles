@@ -1,6 +1,5 @@
 local overrides = require("custom.configs.overrides")
 
----@type NvPluginSpec[]
 local plugins = {
 
 	-- Override plugin definition options
@@ -106,26 +105,12 @@ local plugins = {
 
 	{
 		"RRethy/vim-illuminate",
-		event = "BufReadPost",
+		event = { "BufReadPost", "BufNewFile" },
 		opts = { delay = 200 },
-		config = function(_, opts)
-			require("illuminate").configure(opts)
-		end,
+		config = overrides.illuminate,
 		keys = {
-			{
-				"]]",
-				function()
-					require("illuminate").goto_next_reference(false)
-				end,
-				desc = "Next Reference",
-			},
-			{
-				"[[",
-				function()
-					require("illuminate").goto_prev_reference(false)
-				end,
-				desc = "Prev Reference",
-			},
+			{ "]]", desc = "Next Reference" },
+			{ "[[", desc = "Prev Reference" },
 		},
 	},
 
@@ -140,6 +125,14 @@ local plugins = {
 		opts = {
 			suggestion = { enabled = false },
 			panel = { enabled = false },
+		},
+	},
+
+	{
+		"zbirenbaum/copilot-cmp",
+		event = { "InsertEnter", "LspAttach" },
+		opts = {
+			fix_pairs = true,
 		},
 	},
 

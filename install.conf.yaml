@@ -10,7 +10,6 @@
 - shell:
     - [git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim]
     - [git clone https://github.com/zdharma-continuum/zinit.git ~/.local/share/zinit/zinit.git]
-    - [curl -sS https://starship.rs/install.sh | sh]
     - [source ~/.zshrc]
 
 - link:
