@@ -13,6 +13,8 @@ vim.opt.tabstop = 4 -- insert 2 spaces for a tab
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
 vim.opt.swapfile = false -- creates a swapfile
+vim.opt.cmdheight = 0
+vim.opt.cursorline = false
 
 
 -- Shorten function name

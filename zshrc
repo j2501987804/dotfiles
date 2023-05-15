@@ -1,4 +1,4 @@
-
+eval "$(starship init zsh)"
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
@@ -55,6 +55,6 @@ alias unproxy='unset http_proxy && unset https_proxy && unset all_proxy'
 # 环境变量
 export EDITOR='nvim'
 export HOMEBREW_NO_AUTO_UPDATE=true #关闭brew自动更新
-export PATH=$PATH:~/go/bin
+export PATH=$PATH:~/go/bin:~/.local/bin
 setopt no_nomatch
 
