@@ -188,6 +188,13 @@ local plugins = {
         },
     },
 
+    {
+        "folke/todo-comments.nvim",
+        event = "BufRead",
+        dependencies = "nvim-lua/plenary.nvim",
+        keys = { { "<leader>tt", "<cmd>TodoTrouble<cr>", "Todo" } },
+        config = true,
+    },
     -- {
     --     "folke/persistence.nvim",
     --     opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help" } },
@@ -245,7 +252,7 @@ local plugins = {
     --   "mg979/vim-visual-multi",
     --   lazy = false,
     -- }
-    require("custom.configs.dap")
+    require("custom.configs.dap"),
 }
 
 return plugins
