@@ -25,4 +25,17 @@ return {
         ft = { "go", "gomod" },
         -- build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
     },
+
+    {
+        "simrat39/symbols-outline.nvim",
+        cmd = "SymbolsOutline",
+        keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
+        config = true,
+    },
+
+    {
+        "NvChad/nvim-colorizer.lua",
+        event = { "BufReadPre", "BufNewFile" },
+        config = true,
+    },
 }

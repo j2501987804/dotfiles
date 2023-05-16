@@ -66,17 +66,18 @@ return {
     {
         "telescope.nvim",
         dependencies = {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            build = "make",
-            config = function()
-                require("telescope").load_extension("fzf")
-            end,
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+            "ahmedkhalf/project.nvim",
         },
         keys = function()
+            require("project_nvim").setup()
+            require("telescope").load_extension("fzf")
+            require("telescope").load_extension("projects")
             return {
                 { "<leader>f", "<cmd>Telescope fd<cr>", desc = "find files" },
                 { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "find buffers" },
                 { "<leader>F", "<cmd>Telescope live_grep theme=ivy<cr>", desc = "find text" },
+                { "<leader>p", ":Telescope projects <CR>", desc = "Find projects" },
             }
         end,
     },
