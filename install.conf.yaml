@@ -20,6 +20,7 @@
     # ~/.config/nvim: nvim
     ~/.config/nvim/lua/custom: nvchad/custom
     ~/.config/gtk-3.0: config/gtk-3.0
+    ~/.config/fish: config/fish
     ~/.config/alacritty: config/alacritty
     ~/.config/wezterm: config/wezterm
     ~/.config/picom.conf: config/picom.conf
