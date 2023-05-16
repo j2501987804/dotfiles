@@ -7,6 +7,7 @@ local M = {
   },
 }
 
+
 M.config = function()
   local status_ok, toggleterm = pcall(require, "toggleterm")
   if not status_ok then
@@ -66,10 +67,10 @@ M.config = function()
     local file_type = vim.fn.expand("%:e")
     local file_name = vim.fn.expand("%:p")
     if vim.bo.filetype == "dashboard" then
-      return
+      return ""
     end
     if vim.bo.filetype == "NvimTree" then
-      return
+      return ""
     end
     if file_type == "go" then
       if file_name:match("_test") then
@@ -83,24 +84,24 @@ M.config = function()
     return cmd .. file_name
   end
 
-  local function format()
-    local rsfile = io.popen("git status -s")
-    if rsfile == nil then
-      return
-    end
-    for value in rsfile:lines() do
-      local path = string.sub(value, 3, -1)
-      local ext = vim.fn.fnamemodify(vim.fn.expand(path), ":e")
-      if ext == "php" then
-        return
-      end
-      local bufnr = vim.fn.bufadd(path)
-      vim.lsp.buf.format({ buffer = bufnr })
-    end
-  end
+  -- local function format()
+  --   local rsfile = io.popen("git status -s")
+  --   if rsfile == nil then
+  --     return
+  --   end
+  --   for value in rsfile:lines() do
+  --     local path = string.sub(value, 3, -1)
+  --     local ext = vim.fn.fnamemodify(vim.fn.expand(path), ":e")
+  --     if ext == "php" then
+  --       return
+  --     end
+  --     local bufnr = vim.fn.bufadd(path)
+  --     vim.lsp.buf.format({ buffer = bufnr })
+  --   end
+  -- end
 
   function _LAZYGIT_TOGGLE()
-    pcall(format)
+    -- pcall(format)
     lazygit:toggle()
   end
 

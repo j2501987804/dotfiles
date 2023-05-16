@@ -1,5 +1,8 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+
+# fish
+[ -f /usr/share/autojump/autojump.fish ]; and source /usr/share/autojump/autojump.fish
+
 # alias
 alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias v='nvim'
