@@ -182,6 +182,56 @@ local plugins = {
 		},
 	},
 
+    {
+        "folke/todo-comments.nvim",
+        event = "BufRead",
+        dependencies = "nvim-lua/plenary.nvim",
+        keys = { { "<leader>tt", "<cmd>TodoTrouble<cr>", "Todo" } },
+        config = true,
+    },
+    -- {
+    --     "folke/persistence.nvim",
+    --     opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help" } },
+    --     lazy = false,
+    -- },
+    --
+    -- {
+    --     "glepnir/dashboard-nvim",
+    --     lazy = false,
+    --     opts = {
+    --         theme = "hyper",
+    --         config = {
+    --             week_header = {
+    --                 enable = true,
+    --             },
+    --             shortcut = {
+    --                 { desc = " Update", group = "@property", action = "Lazy update", key = "u" },
+    --                 {
+    --                     icon = " ",
+    --                     icon_hl = "@variable",
+    --                     desc = "Files",
+    --                     group = "Label",
+    --                     action = "Telescope find_files",
+    --                     key = "f",
+    --                 },
+    --                 {
+    --                     desc = " Sessions",
+    --                     group = "DiagnosticHint",
+    --                     action = function()
+    --                         require("persistence").load()
+    --                     end,
+    --                     key = "s",
+    --                 },
+    --                 {
+    --                     desc = " New file",
+    --                     group = "Number",
+    --                     action = "enew",
+    --                     key = "e",
+    --                 },
+    --             },
+    --         },
+    --     },
+    -- },
 	{
 		"folke/noice.nvim",
 		event = "CmdlineEnter",
