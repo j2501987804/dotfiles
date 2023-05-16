@@ -9,3 +9,4 @@ config/mpd/mpdstate
 config/ranger/colorschemes/__pycache__
 config/ranger/plugins
 nvim/lazy-lock.json
+config/.DS_Store

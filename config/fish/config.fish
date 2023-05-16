@@ -1,10 +1,10 @@
 if status is-interactive
-
-# arch
-[ -f /usr/share/autojump/autojump.fish ]; and source /usr/share/autojump/autojump.fish
+    # Commands to run in interactive sessions can go here
+# alias
 alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias v='nvim'
 alias k='kubectl'
+alias go="go"
 alias lg="lazygit"
 alias setproxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
 alias unproxy='unset http_proxy && unset https_proxy && unset all_proxy'
