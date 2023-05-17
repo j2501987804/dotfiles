@@ -8,17 +8,12 @@
     - ~/.local/share/zinit
 
 - shell:
-    - [git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim]
-    - [git clone https://github.com/zdharma-continuum/zinit.git ~/.local/share/zinit/zinit.git]
-    - [source ~/.zshrc]
 
 - link:
     ~/.tmux.conf: tmux.conf
     ~/.config/lazygit: lazygit
-    ~/.zshrc: zshrc
     ~/.Xresources: .Xresources
-    # ~/.config/nvim: nvim
-    ~/.config/nvim/lua/custom: nvchad/custom
+    ~/.config/nvim: nvim
     ~/.config/gtk-3.0: config/gtk-3.0
     ~/.config/fish: config/fish
     ~/.config/alacritty: config/alacritty
