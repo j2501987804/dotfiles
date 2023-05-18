@@ -1,9 +1,11 @@
 -- local autocmd = vim.api.nvim_create_autocmd
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+vim.opt.swapfile = false
 
+local autocmd = vim.api.nvim_create_autocmd
 -- 自动保存
-vim.api.nvim_create_autocmd({ "BufLeave" }, {
+autocmd({ "BufLeave" }, {
     callback = function()
         local bufner = vim.api.nvim_get_current_buf()
         if vim.api.nvim_buf_get_option(bufner, "modified") then
@@ -15,7 +17,7 @@ vim.api.nvim_create_autocmd({ "BufLeave" }, {
 })
 
 -- 自动重载文件
-vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
     command = "checktime",
 })
 
@@ -27,7 +29,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 })
 
 -- 记住最后一次光标浏览
-vim.api.nvim_create_autocmd("BufReadPost", {
+autocmd("BufReadPost", {
     callback = function()
         local mark = vim.api.nvim_buf_get_mark(0, '"')
         local lcount = vim.api.nvim_buf_line_count(0)
@@ -38,7 +40,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 -- 保存时目录不存在自动创建
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+autocmd({ "BufWritePre" }, {
     callback = function(event)
         if event.match:match "^%w%w+://" then
             return
@@ -46,4 +48,14 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
         local file = vim.loop.fs_realpath(event.match) or event.match
         vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
     end,
+})
+
+-- 高亮复制内容
+autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = "IncSearch",
+			timeout = 300,
+		})
+	end,
 })

@@ -17,7 +17,7 @@ M.treesitter = {
         "gomod",
     },
     indent = {
-        enable = true,
+        enable = false,
         -- disable = {
         --   "python"
         -- },
