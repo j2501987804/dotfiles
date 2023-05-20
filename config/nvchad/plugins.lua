@@ -42,14 +42,10 @@ local plugins = {
 		opts = overrides.nvimtree,
 	},
 
-	-- {
-	-- 	"hrsh7th/nvim-cmp",
-	-- 	opts = overrides.cmp,
-	-- },
-
 	-- Install a plugin
     {import = "custom.extras.tool"},
     {import = "custom.extras.copilot"},
+    {import = "custom.extras.cmdline"},
 }
 
 return plugins
