@@ -9,6 +9,12 @@ M.general = {
 		["<S-Down>"] = { "<cmd>resize -2<cr>", "Decrease window height" },
 		["<S-Left>"] = { "<cmd>vertical resize -2<cr>", "Decrease window width" },
 		["<S-Right>"] = { "<cmd>vertical resize +2<cr>", "Increase window width" },
+		["H"] = { "^", "^" },
+		["L"] = { "$", "$" },
+	},
+	v = {
+		["H"] = { "^", "^" },
+		["L"] = { "$", "$" },
 	},
 }
 

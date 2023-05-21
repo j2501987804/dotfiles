@@ -43,9 +43,9 @@ local plugins = {
 	},
 
 	-- Install a plugin
-    {import = "custom.extras.tool"},
-    {import = "custom.extras.copilot"},
-    {import = "custom.extras.cmdline"},
+	{ import = "custom.extras.tool" },
+	{ import = "custom.extras.copilot" },
+	{ import = "custom.extras.cmdline" },
 }
 
 return plugins

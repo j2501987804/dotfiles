@@ -6,7 +6,13 @@ return {
 		opts = {
 			suggestion = {
 				auto_trigger = true,
-                auto_refreshtrue = true,
+				auto_refreshtrue = true,
+				keymap = {
+					accept = "<Tab>",
+					next = "<M-]>",
+					prev = "<M-[>",
+					dismiss = "<C-]>",
+				},
 			},
 		},
 	},
