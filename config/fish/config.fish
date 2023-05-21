@@ -2,6 +2,7 @@ if status is-interactive
 
 # fish
 [ -f /usr/share/autojump/autojump.fish ]; and source /usr/share/autojump/autojump.fish
+[ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
 
 # alias
 alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
