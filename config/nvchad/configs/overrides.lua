@@ -4,12 +4,6 @@ M.treesitter = {
 	ensure_installed = {
 		"vim",
 		"lua",
-		"html",
-		"css",
-		"javascript",
-		"typescript",
-		"tsx",
-		"c",
 		"markdown",
 		"markdown_inline",
 
@@ -17,7 +11,7 @@ M.treesitter = {
 		"gomod",
 	},
 	indent = {
-		enable = false,
+		enable = true,
 		-- disable = {
 		--   "python"
 		-- },
@@ -30,12 +24,13 @@ M.mason = {
 		"lua-language-server",
 		"stylua",
 
-		-- c/cpp stuff
-		"clangd",
-		"clang-format",
-
+		-- go
 		"gopls",
-        "pyright",
+		"goimports-reviser",
+
+		-- python
+		"pyright",
+		"black",
 	},
 }
 
@@ -52,36 +47,6 @@ M.nvimtree = {
 				git = true,
 			},
 		},
-	},
-}
-
--- M.cmp = function()
--- 	local cmp = require("cmp")
--- 	cmp.setup.cmdline({ "/", "?" }, {
--- 		mapping = cmp.mapping.preset.cmdline(),
--- 		sources = {
--- 			{ name = "buffer" },
--- 		},
--- 	})
---
--- 	cmp.setup.cmdline(":", {
--- 		mapping = cmp.mapping.preset.cmdline(),
--- 		sources = cmp.config.sources({
--- 			{ name = "path" },
--- 		}, {
--- 			{ name = "cmdline" },
--- 		}),
--- 	})
--- end
-
-M.cmp = {
-	sources = {
-		{ name = "copilot" },
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
-		{ name = "buffer" },
-		{ name = "nvim_lua" },
-		{ name = "path" },
 	},
 }
 return M
