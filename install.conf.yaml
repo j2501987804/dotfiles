@@ -13,7 +13,7 @@
     ~/.tmux.conf: tmux.conf
     ~/.config/lazygit: lazygit
     ~/.Xresources: .Xresources
-    ~/.config/nvim/lua/custom: config/nvchad
+    ~/.config/nvim: nvim
     ~/.config/gtk-3.0: config/gtk-3.0
     ~/.config/fish: config/fish
     ~/.config/alacritty: config/alacritty
