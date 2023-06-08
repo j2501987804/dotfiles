@@ -8,6 +8,7 @@ local M = {
 
 M.config = function()
     require 'lspconfig'.pyright.setup {}
+    require 'lspconfig'.gopls.setup {}
     require 'lspconfig'.lua_ls.setup {
         settings = {
             Lua = {
@@ -30,7 +31,6 @@ M.config = function()
 
             local opts = { buffer = ev.buf }
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
             vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
             vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
             vim.keymap.set("n", "<space>lf", function()
@@ -40,7 +40,7 @@ M.config = function()
     })
 
     vim.api.nvim_create_user_command("MasonInstallAll", function()
-        vim.cmd "MasonInstall lua-language-server pyright"
+        vim.cmd "MasonInstall lua-language-server pyright gopls"
     end, {})
 end
 

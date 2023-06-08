@@ -16,5 +16,5 @@ alias unproxy='unset http_proxy && unset https_proxy && unset all_proxy'
 # 环境变量
 export EDITOR='nvim'
 export HOMEBREW_NO_AUTO_UPDATE=true #关闭brew自动更新
-set -x PATH ~/go/bin ~/.local/bin $PATH
+set -x PATH ~/go/bin ~/.local/bin ~/.cargo/bin $PATH
 end

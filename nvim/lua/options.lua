@@ -1,6 +1,6 @@
 local opt = vim.opt
 
-opt.laststatus = 3 -- global statusline
+-- opt.laststatus = 3 -- global statusline
 opt.showmode = false
 
 opt.clipboard = "unnamedplus"

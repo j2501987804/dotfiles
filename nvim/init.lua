@@ -25,16 +25,22 @@ require('lazy').setup({
         end,
     },
 
-    {
-        'nvim-telescope/telescope.nvim',
-        keys = map.telescope,
-    },
-
-    { 'numToStr/Comment.nvim',       opts = {},  keys = map.comment },
+    { 'nvim-telescope/telescope.nvim', keys = map.telescope },
+    { 'numToStr/Comment.nvim',         opts = {},           keys = map.comment },
 
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
+        config = function()
+            require 'nvim-treesitter.configs'.setup {
+                ensure_installed = { 'bash', 'go', 'python' },
+                highlight = {
+                    enable = true,
+                    use_languagetree = true,
+                },
+                indent = { enable = true },
+            }
+        end
     },
 
     {
