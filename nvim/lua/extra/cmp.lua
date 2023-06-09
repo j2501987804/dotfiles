@@ -6,12 +6,14 @@ local M = {
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-cmdline',
         'L3MON4D3/LuaSnip',
+        "rafamadriz/friendly-snippets",
         'saadparwaiz1/cmp_luasnip',
     },
     event = { 'InsertEnter', 'CmdwinEnter' },
 }
 
 M.config = function()
+    require("luasnip.loaders.from_vscode").lazy_load()
     local cmp = require 'cmp'
 
     cmp.setup({
@@ -27,6 +29,27 @@ M.config = function()
             ['<C-Space>'] = cmp.mapping.complete(),
             ['<C-e>'] = cmp.mapping.abort(),
             ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+            -- luasnip
+            ["<Tab>"] = cmp.mapping(function(fallback)
+                if require("luasnip").expand_or_jumpable() then
+                    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+                else
+                    fallback()
+                end
+            end, {
+                "i",
+                "s",
+            }),
+            ["<S-Tab>"] = cmp.mapping(function(fallback)
+                if require("luasnip").jumpable(-1) then
+                    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+                else
+                    fallback()
+                end
+            end, {
+                "i",
+                "s",
+            }),
         }),
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },

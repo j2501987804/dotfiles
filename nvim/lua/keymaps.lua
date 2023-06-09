@@ -5,6 +5,7 @@ local map = vim.keymap.set
 
 -- general mappings
 map("n", "<C-s>", "<cmd> w <CR>")
+map("i", "<C-s>", "<ESC><cmd> w <CR>")
 map("n", "<leader>q", "<cmd> q <CR>")
 map("n", ";", ":")
 

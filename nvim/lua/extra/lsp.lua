@@ -4,6 +4,7 @@ local M = {
         "williamboman/mason.nvim",
         opts = {}
     },
+    event = 'VeryLazy',
 }
 
 M.config = function()
