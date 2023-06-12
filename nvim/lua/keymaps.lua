@@ -63,16 +63,16 @@ M.lspsaga = {
     { "gh",         "<cmd>Lspsaga lsp_finder<CR>", },
     { "gd",         "<cmd>Lspsaga goto_definition<CR>", },
     { "<leader>ca", "<cmd>Lspsaga code_action<CR>", },
-    { "gr", "<cmd>Lspsaga rename<CR>", },
+    { "gr",         "<cmd>Lspsaga rename<CR>", },
     { "<leader>o",  "<cmd>Lspsaga outline<CR>", },
     { "<leader>lw", "<cmd>Lspsaga show_workspace_diagnostics<CR>", },
     { "<leader>lc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", },
     { "<A-d>",      "<cmd>Lspsaga term_toggle<CR>",                mode = { 'n', 't' } },
 }
 
-M.spectre = {
+M.specte = {
     {
-        "<leader>sp",
+        "<leader>s",
         ":lua require('spectre').open_visual({select_word=true}) <CR>",
         desc = "Replace in projects",
     },

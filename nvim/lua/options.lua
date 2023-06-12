@@ -1,6 +1,7 @@
 local opt = vim.opt
 
-opt.laststatus = 3 -- global statusline
+-- 状态栏
+opt.laststatus = 0
 opt.showmode = false
 
 opt.clipboard = "unnamedplus"
@@ -37,4 +38,3 @@ opt.updatetime = 450
 
 -- 屏蔽启动页面板
 opt.shortmess:append("I")
-

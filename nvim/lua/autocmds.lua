@@ -1,7 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
 -- 自动保存
 autocmd({ "BufLeave" }, {
-    pattern = '*.go,*.py,*.lua',
+    pattern = '*.go,*.py,*.lua,*rust',
     callback = function()
         local bufner = vim.api.nvim_get_current_buf()
         if vim.api.nvim_buf_get_option(bufner, "modified") then
