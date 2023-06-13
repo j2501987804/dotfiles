@@ -2,13 +2,13 @@ local M = {
     'neovim/nvim-lspconfig',
     dependencies = {
         { "williamboman/mason.nvim", opts = {} },
+        'williamboman/mason-lspconfig.nvim',
         'hrsh7th/cmp-nvim-lsp',
     },
-    event = 'VeryLazy',
+    event = { "BufReadPre", "BufNewFile" },
 }
 
 M.config = function()
-    local lspconfig = require('lspconfig')
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
     local servers = {
         pyright = {},
@@ -18,7 +18,6 @@ M.config = function()
             settings = {
                 Lua = {
                     diagnostics = {
-                        -- Get the language server to recognize the `vim` global
                         globals = { 'vim' },
                     },
                     workspace = { checkThirdParty = false },
@@ -27,10 +26,18 @@ M.config = function()
             },
         }
     }
-    for server, conf in pairs(servers) do
-        local opts = vim.tbl_extend("keep", { capabilities = capabilities }, conf)
-        lspconfig[server].setup(opts)
-    end
+
+    local mason_lspconfig = require 'mason-lspconfig'
+    mason_lspconfig.setup {
+        ensure_installed = vim.tbl_keys(servers),
+    }
+
+    mason_lspconfig.setup_handlers {
+        function(server_name)
+            local opts = vim.tbl_extend("keep", { capabilities = capabilities }, servers[server_name])
+            require('lspconfig')[server_name].setup(opts)
+        end,
+    }
 
     -- Use LspAttach autocommand to only map the following keys
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -49,10 +56,6 @@ M.config = function()
             end, opts)
         end,
     })
-
-    vim.api.nvim_create_user_command("MasonInstallAll", function()
-        vim.cmd "MasonInstall lua-language-server pyright gopls rust-analyzer"
-    end, {})
 end
 
 return M

@@ -43,8 +43,7 @@ require('lazy').setup({
     { 'nvim-telescope/telescope.nvim', keys = map.telescope },
     { 'numToStr/Comment.nvim',         keys = map.comment,  opts = {} },
     { "nvim-tree/nvim-tree.lua",       keys = map.nvimtree, opts = {} },
-    { "nvim-pack/nvim-spectre",        keys = map.spectre },
-    { "rebelot/heirline.nvim",         opts = {} },
+    { "nvim-pack/nvim-spectre",        keys = map.specte },
 
     { import = 'extra.cmp' },
     { import = 'extra.lsp' },

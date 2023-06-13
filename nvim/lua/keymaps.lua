@@ -7,6 +7,7 @@ local map = vim.keymap.set
 map("n", "<C-s>", "<cmd> w <CR>")
 map("i", "<C-s>", "<ESC><cmd> w <CR>")
 map("n", "<leader>q", "<cmd> q <CR>")
+map("n", "<leader>L", "<cmd> Lazy <CR>")
 map("n", ";", ":")
 
 -- Clear highlights
@@ -19,10 +20,10 @@ map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
 
 -- Resize with arrows
-map("n", "<S-Up>", ":resize -2<CR>")
-map("n", "<S-Down>", ":resize +2<CR>")
-map("n", "<S-Left>", ":vertical resize -2<CR>")
-map("n", "<S-Right>", ":vertical resize +2<CR>")
+map("n", "<S-Up>", "<cmd>resize -2<CR>")
+map("n", "<S-Down>", "<cmd>resize +2<CR>")
+map("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
+map("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
 
 -- Visual --
 -- Stay in indent mode
@@ -43,12 +44,12 @@ map("i", "<C-l>", "<Right>")
 
 local M = {}
 M.telescope = {
-    { '<leader>f', ':Telescope fd<CR>' },
-    { '<leader>b', ':Telescope buffers<CR>' },
-    { '<leader>F', ':Telescope live_grep<CR>' },
+    { '<leader>f', '<cmd>Telescope fd<CR>' },
+    { '<leader>b', '<cmd>Telescope buffers<CR>' },
+    { '<leader>F', '<cmd>Telescope live_grep<CR>' },
 }
 
-M.nvimtree = { { '<leader>e', ':NvimTreeToggle<CR>' } }
+M.nvimtree = { { '<leader>e', '<cmd>NvimTreeToggle<CR>' } }
 
 M.comment = {
     { "<leader>/", function()
@@ -73,7 +74,7 @@ M.lspsaga = {
 M.specte = {
     {
         "<leader>s",
-        ":lua require('spectre').open_visual({select_word=true}) <CR>",
+        "<cmd>lua require('spectre').open_visual({select_word=true}) <CR>",
         desc = "Replace in projects",
     },
 }
