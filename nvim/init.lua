@@ -20,6 +20,7 @@ require('lazy').setup({
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             require 'nvim-treesitter.configs'.setup {
                 ensure_installed = { 'lua', 'bash', 'go', 'python', 'markdown', 'markdown_inline' },
@@ -34,7 +35,7 @@ require('lazy').setup({
 
     {
         "glepnir/lspsaga.nvim",
-        event = "LspAttach",
+        -- event = "LspAttach",
         opts = {},
         keys = map.lspsaga,
     },
