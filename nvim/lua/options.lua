@@ -38,3 +38,7 @@ opt.updatetime = 450
 
 -- 屏蔽启动页面板
 opt.shortmess:append("I")
+
+-- 滚动而不是换行
+vim.opt.wrap = false
+vim.opt.scroll = 1

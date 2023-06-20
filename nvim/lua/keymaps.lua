@@ -44,9 +44,9 @@ map("i", "<C-l>", "<Right>")
 
 local M = {}
 M.telescope = {
-    { '<leader>f', '<cmd>Telescope fd<CR>' },
-    { '<leader>b', '<cmd>Telescope buffers<CR>' },
-    { '<leader>F', '<cmd>Telescope live_grep<CR>' },
+    { '<leader>f', '<cmd>Telescope fd theme=dropdown previewer=false<CR>' },
+    { '<leader>b', '<cmd>Telescope buffers theme=dropdown previewer=false<CR>' },
+    { '<leader>F', '<cmd>Telescope live_grep  theme=ivy<CR>' },
 }
 
 M.nvimtree = { { '<leader>e', '<cmd>NvimTreeToggle<CR>' } }

@@ -3,14 +3,14 @@ local M = {
     dependencies = {
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-cmdline',
+        -- 'hrsh7th/cmp-path',
+        -- 'hrsh7th/cmp-cmdline',
         'L3MON4D3/LuaSnip',
         "rafamadriz/friendly-snippets",
         'saadparwaiz1/cmp_luasnip',
         { 'echasnovski/mini.pairs', opts = {} },
     },
-    event = { 'InsertEnter', 'CmdwinEnter' },
+    event = { 'InsertEnter', 'CmdlineEnter' },
 }
 
 M.config = function()
@@ -66,14 +66,14 @@ M.config = function()
         }
     })
 
-    cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-            { name = 'path' }
-        }, {
-            { name = 'cmdline' }
-        })
-    })
+    -- cmp.setup.cmdline(':', {
+    --     mapping = cmp.mapping.preset.cmdline(),
+    --     sources = cmp.config.sources({
+    --         { name = 'path' }
+    --     }, {
+    --         { name = 'cmdline' }
+    --     })
+    -- })
 end
 
 return M
