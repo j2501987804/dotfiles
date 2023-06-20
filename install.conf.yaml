@@ -5,13 +5,15 @@
 - clean: ['~']
 
 - create:
-    - ~/.local/share/zinit
+    # - ~/.local/share/zinit
+    - ~/.config
 
 - shell:
 
 - link:
     ~/.tmux.conf: tmux.conf
-    ~/.config/lazygit: lazygit
+    ~/.zshrc: zshrc
+    ~/.config/lazygit: config/lazygit
     ~/.Xresources: .Xresources
     ~/.config/nvim: nvim
     ~/.config/gtk-3.0: config/gtk-3.0
@@ -27,3 +29,6 @@
     ~/.config/mpd: config/mpd
     ~/.config/ncmpcpp: config/ncmpcpp
     ~/.config/mpDris2: config/mpDris2
+- shell:
+    - [zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1]
+
