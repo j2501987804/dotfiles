@@ -3,7 +3,7 @@ local M = {
     dependencies = {
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
-        -- 'hrsh7th/cmp-path',
+        'hrsh7th/cmp-path',
         -- 'hrsh7th/cmp-cmdline',
         'L3MON4D3/LuaSnip',
         "rafamadriz/friendly-snippets",
@@ -16,11 +16,41 @@ local M = {
 M.config = function()
     require("luasnip.loaders.from_vscode").lazy_load()
     local cmp = require 'cmp'
+    local function border(hl_name)
+        return {
+            { "╭", hl_name },
+            { "─", hl_name },
+            { "╮", hl_name },
+            { "│", hl_name },
+            { "╯", hl_name },
+            { "─", hl_name },
+            { "╰", hl_name },
+            { "│", hl_name },
+        }
+    end
 
     cmp.setup({
         snippet = {
             expand = function(args)
                 require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            end,
+        },
+        window = {
+            completion = {
+                border = border "CmpBorder",
+                winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+            },
+            documentation = {
+                border = border "CmpDocBorder",
+                winhighlight = "Normal:CmpDoc",
+            },
+        },
+        preselect = cmp.PreselectMode.None,
+        formatting = {
+            format = function(_, vim_item)
+                local icons = require("icons").lspkind
+                vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
+                return vim_item
             end,
         },
         mapping = cmp.mapping.preset.insert({
@@ -56,6 +86,7 @@ M.config = function()
             { name = 'luasnip' }, -- For luasnip users.
         }, {
             { name = 'buffer' },
+            { name = 'path' },
         })
     })
 
@@ -74,6 +105,12 @@ M.config = function()
     --         { name = 'cmdline' }
     --     })
     -- })
+    -- Customization for Pmenu
+    vim.api.nvim_set_hl(0, "CmpBorder", {  fg = "#4e5882" })
+    vim.api.nvim_set_hl(0, "CmpDocBorder", {  fg = "#4e5882" })
+
+    vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#2e3c64", fg = "NONE" })
+    vim.api.nvim_set_hl(0, "Pmenu", { fg = "#C5CDD9", bg = "#22252A" })
 end
 
 return M

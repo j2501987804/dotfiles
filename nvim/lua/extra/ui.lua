@@ -103,7 +103,7 @@ return {
                     "help",
                     "alpha",
                     "dashboard",
-                    "neo-tree",
+                    "NvimTree",
                     "Trouble",
                     "lazy",
                     "mason",
@@ -116,5 +116,21 @@ return {
                 end,
             })
         end,
+    },
+
+    {
+        'akinsho/bufferline.nvim',
+        opts = {
+            options = {
+                offsets = {
+                    {
+                        filetype = "NvimTree",
+                        text = "File Explorer",
+                        text_align = "left",
+                        separator = true,
+                    }
+                },
+            }
+        },
     },
 }
