@@ -10,10 +10,11 @@ require('lazy').setup({
     'nvim-lua/plenary.nvim',
     "nvim-tree/nvim-web-devicons",
     {
-        'folke/tokyonight.nvim',
+        "catppuccin/nvim",
+        name = "catppuccin",
         priority = 1000,
         config = function()
-            vim.cmd.colorscheme 'tokyonight'
+            vim.cmd.colorscheme 'catppuccin'
         end,
     },
 

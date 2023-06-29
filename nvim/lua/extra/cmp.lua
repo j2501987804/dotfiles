@@ -106,10 +106,10 @@ M.config = function()
     --     })
     -- })
     -- Customization for Pmenu
-    vim.api.nvim_set_hl(0, "CmpBorder", {  fg = "#4e5882" })
-    vim.api.nvim_set_hl(0, "CmpDocBorder", {  fg = "#4e5882" })
+    vim.api.nvim_set_hl(0, "CmpBorder", { fg = "#4e5882" })
+    vim.api.nvim_set_hl(0, "CmpDocBorder", { fg = "#4e5882" })
 
-    vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#2e3c64", fg = "NONE" })
+    vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#a6e3a1", fg = "#1c1018" })
     vim.api.nvim_set_hl(0, "Pmenu", { fg = "#C5CDD9", bg = "#22252A" })
 end
 

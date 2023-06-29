@@ -35,6 +35,8 @@ return {
                     theme = "auto",
                     globalstatus = true,
                     disabled_filetypes = { statusline = { "dashboard", "alpha" } },
+                    section_separators = '',
+                    component_separators = '',
                 },
                 sections = {
                     lualine_x = {
@@ -45,11 +47,6 @@ return {
                         {
                             require("noice").api.status.command.get,
                             cond = require("noice").api.status.command.has,
-                            color = { fg = "#ff9e64" },
-                        },
-                        {
-                            require("noice").api.status.mode.get,
-                            cond = require("noice").api.status.mode.has,
                             color = { fg = "#ff9e64" },
                         },
                         {
@@ -122,6 +119,7 @@ return {
         'akinsho/bufferline.nvim',
         opts = {
             options = {
+                close_command = "bdelete!",
                 offsets = {
                     {
                         filetype = "NvimTree",

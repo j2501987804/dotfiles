@@ -8,6 +8,11 @@ map("n", "<C-s>", "<cmd> w <CR>")
 map("i", "<C-s>", "<ESC><cmd> w <CR>")
 map("n", "<leader>q", "<cmd> q <CR>")
 map("n", "<leader>L", "<cmd> Lazy <CR>")
+map("n", "<leader>nf", "<cmd> enew <CR>")
+map("n", "<leader>x", "<cmd> bdelete! <CR>")
+map("n", "<Tab>", "<cmd> BufferLineCycleNext <CR>")
+map("n", "<S-Tab>", "<cmd> BufferLineCyclePrev <CR>")
+map("n", "<leader>nf", "<cmd> enew <CR>")
 map("n", ";", ":")
 
 -- Clear highlights
@@ -78,4 +83,5 @@ M.specte = {
         desc = "Replace in projects",
     },
 }
+
 return M
