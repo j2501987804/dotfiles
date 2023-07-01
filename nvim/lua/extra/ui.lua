@@ -14,6 +14,10 @@ return {
                 },
             },
             sections = {
+                lualine_a = {
+                },
+                lualine_b = {
+                },
                 lualine_c = {
                     { "fancy_mode", width = 6 },
                     { "fancy_branch" },
@@ -27,6 +31,10 @@ return {
                     { "fancy_location" },
                     { "fancy_filetype", ts_icon = "" },
                     { "fancy_lsp_servers" }
+                },
+                lualine_y = {
+                },
+                lualine_z = {
                 },
             }
         },
