@@ -1,63 +1,35 @@
 return {
     {
-        "folke/noice.nvim",
+        'nvim-lualine/lualine.nvim',
+        dependencies = "meuter/lualine-so-fancy.nvim",
         event = "VeryLazy",
         opts = {
-            lsp = {
-                -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-                override = {
-                    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                    ["vim.lsp.util.stylize_markdown"] = true,
-                    ["cmp.entry.get_documentation"] = true,
+            options = {
+                theme = "auto",
+                component_separators = { left = "", right = "" },
+                section_separators = { left = "", right = "" },
+                globalstatus = true,
+                refresh = {
+                    statusline = 100,
                 },
             },
-            -- you can enable a preset for easier configuration
-            presets = {
-                bottom_search = true,         -- use a classic bottom cmdline for search
-                command_palette = true,       -- position the cmdline and popupmenu together
-                long_message_to_split = true, -- long messages will be sent to a split
-                inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-                lsp_doc_border = false,       -- add a border to hover docs and signature help
-            },
+            sections = {
+                lualine_c = {
+                    { "fancy_mode", width = 6 },
+                    { "fancy_branch" },
+                    { "fancy_diff" },
+                    { "fancy_cwd", substitute_home = true }
+                },
+                lualine_x = {
+                    { "fancy_macro" },
+                    { "fancy_diagnostics" },
+                    { "fancy_searchcount" },
+                    { "fancy_location" },
+                    { "fancy_filetype", ts_icon = "" },
+                    { "fancy_lsp_servers" }
+                },
+            }
         },
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-        }
-    },
-
-    {
-        'nvim-lualine/lualine.nvim',
-        event = "VeryLazy",
-        config = function()
-            require("lualine").setup({
-                options = {
-                    theme = "auto",
-                    globalstatus = true,
-                    disabled_filetypes = { statusline = { "dashboard", "alpha" } },
-                    section_separators = '',
-                    component_separators = '',
-                },
-                sections = {
-                    lualine_x = {
-                        {
-                            require("noice").api.status.message.get_hl,
-                            cond = require("noice").api.status.message.has,
-                        },
-                        {
-                            require("noice").api.status.command.get,
-                            cond = require("noice").api.status.command.has,
-                            color = { fg = "#ff9e64" },
-                        },
-                        {
-                            require("noice").api.status.search.get,
-                            cond = require("noice").api.status.search.has,
-                            color = { fg = "#ff9e64" },
-                        },
-                    },
-                },
-            })
-        end
     },
 
     -- indent guides for Neovim

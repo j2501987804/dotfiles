@@ -1,8 +1,9 @@
 local opt = vim.opt
 
 -- 状态栏
--- opt.laststatus = 0
--- opt.showmode = false
+opt.laststatus = 0
+opt.showmode = false
+opt.cmdheight = 0
 
 opt.clipboard = "unnamedplus"
 
@@ -21,7 +22,7 @@ opt.fillchars = { eob = " " }
 opt.ignorecase = true
 opt.smartcase = true
 opt.mouse = "a"
-opt.scrolloff=8
+opt.scrolloff = 8
 
 -- Numbers
 opt.number = true

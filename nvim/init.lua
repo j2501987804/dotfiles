@@ -36,7 +36,7 @@ require('lazy').setup({
 
     {
         "glepnir/lspsaga.nvim",
-        -- event = "LspAttach",
+        event = "LspAttach",
         opts = {},
         keys = map.lspsaga,
     },

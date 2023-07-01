@@ -4,7 +4,7 @@ local M = {
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-path',
-        -- 'hrsh7th/cmp-cmdline',
+        'hrsh7th/cmp-cmdline',
         'L3MON4D3/LuaSnip',
         "rafamadriz/friendly-snippets",
         'saadparwaiz1/cmp_luasnip',
@@ -97,20 +97,22 @@ M.config = function()
         }
     })
 
-    -- cmp.setup.cmdline(':', {
-    --     mapping = cmp.mapping.preset.cmdline(),
-    --     sources = cmp.config.sources({
-    --         { name = 'path' }
-    --     }, {
-    --         { name = 'cmdline' }
-    --     })
-    -- })
+    cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+            { name = 'path' }
+        }, {
+            { name = 'cmdline' }
+        })
+    })
     -- Customization for Pmenu
     vim.api.nvim_set_hl(0, "CmpBorder", { fg = "#4e5882" })
     vim.api.nvim_set_hl(0, "CmpDocBorder", { fg = "#4e5882" })
 
-    vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#a6e3a1", fg = "#1c1018" })
-    vim.api.nvim_set_hl(0, "Pmenu", { fg = "#C5CDD9", bg = "#22252A" })
+    local selectColor = { bg = "#a6e3a1", fg = "#1c1018" }
+    vim.api.nvim_set_hl(0, "TelescopeSelection", selectColor)
+    vim.api.nvim_set_hl(0, "PmenuSel", selectColor)
+    vim.api.nvim_set_hl(0, "Pmenu", selectColor)
 end
 
 return M
