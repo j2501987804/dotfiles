@@ -1,9 +1,11 @@
 require 'options'
 require 'autocmds'
 local map = require 'keymaps'
+local conf = require 'conf'
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system { 'git', 'clone', '--filter=blob:none', 'https://github.com/folke/lazy.nvim.git', '--branch=stable', lazypath }
+    vim.fn.system { 'git', 'clone', '--filter=blob:none', 'https://github.com/folke/lazy.nvim.git', '--branch=stable',
+        lazypath }
 end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
@@ -22,16 +24,7 @@ require('lazy').setup({
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         event = { "BufReadPost", "BufNewFile" },
-        config = function()
-            require 'nvim-treesitter.configs'.setup {
-                ensure_installed = { 'lua', 'bash', 'go', 'python', 'markdown', 'markdown_inline' },
-                highlight = {
-                    enable = true,
-                    use_languagetree = true,
-                },
-                indent = { enable = true },
-            }
-        end
+        config = conf.treesitter,
     },
 
     {
@@ -41,10 +34,22 @@ require('lazy').setup({
         keys = map.lspsaga,
     },
 
-    { 'nvim-telescope/telescope.nvim', keys = map.telescope },
-    { 'numToStr/Comment.nvim',         keys = map.comment,  opts = {} },
-    { "nvim-tree/nvim-tree.lua",       keys = map.nvimtree, opts = {} },
-    { "nvim-pack/nvim-spectre",        keys = map.specte },
+    {
+        "RRethy/vim-illuminate",
+        event = { "BufReadPost", "BufNewFile" },
+        config = conf.illuminate,
+    },
+
+    {
+        'nvim-telescope/telescope.nvim',
+        keys = map.telescope,
+        config = conf.telescope,
+    },
+
+    { "ggandor/leap.nvim",       keys = map.leap },
+    { "nvim-pack/nvim-spectre",  keys = map.specte },
+    { 'numToStr/Comment.nvim',   keys = map.comment,  opts = {} },
+    { "nvim-tree/nvim-tree.lua", keys = map.nvimtree, opts = {} },
 
     { import = 'extra.cmp' },
     { import = 'extra.lsp' },
