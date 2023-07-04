@@ -41,3 +41,10 @@ paru -S ttf-fira-code noto-fonts-emoji wqy-microhei ttf-symbola nerd-fonts-fira-
 paru -S clash-for-windows-chinese everforest-gtk-theme-git lx-music-desktop-bin ly microsoft-edge-stable-bin picom-jonaburg-git telegram-desktop-bin rofi 
 wezterm wqy-microhei lazygit nitrogen neovim autojump betterlockscreen alsa-utils 
 ```
+
+# neovim截图
+![图片](https://github.com/j2501987804/dotfiles/assets/41771911/fafe8d8f-9099-41c8-bccd-d0e223e7f5cf)
+![图片](https://github.com/j2501987804/dotfiles/assets/41771911/e83c0f54-0129-4a5b-b076-b7bc2dd43776)
+![图片](https://github.com/j2501987804/dotfiles/assets/41771911/b9f3903c-e8ab-473a-ab76-bc5c1459d669)
+![图片](https://github.com/j2501987804/dotfiles/assets/41771911/a311722c-22af-4220-8d02-813261653309)
+
