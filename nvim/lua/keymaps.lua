@@ -54,7 +54,9 @@ M.telescope = {
     { '<leader>F', '<cmd>Telescope live_grep  theme=ivy<CR>' },
 }
 
-M.nvimtree = { { '<leader>e', '<cmd>NvimTreeToggle<CR>' } }
+M.nvimtree = {
+    { '<leader>e', '<cmd>NvimTreeToggle<CR>' },
+}
 
 M.comment = {
     { "<leader>/", function()
@@ -66,11 +68,11 @@ M.comment = {
 
 M.lspsaga = {
     { "K",          "<cmd>Lspsaga hover_doc<CR>", },
-    { "gh",         "<cmd>Lspsaga lsp_finder<CR>", },
+    { "gh",         "<cmd>Lspsaga finder<CR>", },
     { "gd",         "<cmd>Lspsaga goto_definition<CR>", },
     { "<leader>ca", "<cmd>Lspsaga code_action<CR>", },
     { "gr",         "<cmd>Lspsaga rename<CR>", },
-    { "<leader>o",  "<cmd>Lspsaga outline<CR>", },
+    { "<leader>lo",  "<cmd>Lspsaga outline<CR>", },
     { "<leader>lw", "<cmd>Lspsaga show_workspace_diagnostics<CR>", },
     { "<leader>lc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", },
     { "<A-d>",      "<cmd>Lspsaga term_toggle<CR>",                mode = { 'n', 't' } },
