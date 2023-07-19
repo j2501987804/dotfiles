@@ -49,38 +49,46 @@ map("i", "<C-l>", "<Right>")
 
 local M = {}
 M.telescope = {
-    { '<leader>f', '<cmd>Telescope fd theme=dropdown previewer=false<CR>' },
-    { '<leader>b', '<cmd>Telescope buffers theme=dropdown previewer=false<CR>' },
-    { '<leader>F', '<cmd>Telescope live_grep  theme=ivy<CR>' },
+    { '<leader>f', '<cmd>Telescope fd theme=dropdown previewer=false<CR>',      desc = 'find file' },
+    { '<leader>b', '<cmd>Telescope buffers theme=dropdown previewer=false<CR>', desc = 'find buff' },
+    { '<leader>F', '<cmd>Telescope live_grep  theme=ivy<CR>',                   desc = 'find word' },
 }
 
 M.nvimtree = {
-    { '<leader>e', '<cmd>NvimTreeToggle<CR>' },
+    { '<leader>e', '<cmd>NvimTreeToggle<CR>', desc = 'nvimtree' },
 }
 
 M.comment = {
-    { "<leader>/", function()
-        require("Comment.api").toggle.linewise.current()
-    end },
-
-    { "<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", mode = 'v' },
+    {
+        "<leader>/",
+        function()
+            require("Comment.api").toggle.linewise.current()
+        end,
+        desc = 'comment'
+    },
+    {
+        "<leader>/",
+        "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+        mode = 'v',
+        desc = 'comment'
+    },
 }
 
 M.lspsaga = {
-    { "K",          "<cmd>Lspsaga hover_doc<CR>", },
-    { "gh",         "<cmd>Lspsaga finder<CR>", },
-    { "gd",         "<cmd>Lspsaga goto_definition<CR>", },
-    { "<leader>ca", "<cmd>Lspsaga code_action<CR>", },
-    { "gr",         "<cmd>Lspsaga rename<CR>", },
-    { "<leader>lo",  "<cmd>Lspsaga outline<CR>", },
-    { "<leader>lw", "<cmd>Lspsaga show_workspace_diagnostics<CR>", },
-    { "<leader>lc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", },
-    { "<A-d>",      "<cmd>Lspsaga term_toggle<CR>",                mode = { 'n', 't' } },
+    { "K",          "<cmd>Lspsaga hover_doc<CR>",                  desc = 'lsp hover_doc' },
+    { "gh",         "<cmd>Lspsaga finder<CR>",                     desc = 'lsp finder' },
+    { "gd",         "<cmd>Lspsaga goto_definition<CR>",            desc = 'definition' },
+    { "<leader>la", "<cmd>Lspsaga code_action<CR>",                desc = 'code action' },
+    { "gr",         "<cmd>Lspsaga rename<CR>",                     desc = 'rename' },
+    { "<leader>lo", "<cmd>Lspsaga outline<CR>",                    desc = 'outline' },
+    { "<leader>lw", "<cmd>Lspsaga show_workspace_diagnostics<CR>", desc = 'workspace diagnostics' },
+    { "<leader>lc", "<cmd>Lspsaga show_cursor_diagnostics<CR>",    desc = 'cursor diagnostics' },
+    { "<A-d>",      "<cmd>Lspsaga term_toggle<CR>",                mode = { 'n', 't' },           desc = 'term' },
 }
 
 M.specte = {
     {
-        "<leader>s",
+        "<leader>r",
         "<cmd>lua require('spectre').open_visual({select_word=true}) <CR>",
         desc = "Replace in projects",
     },
@@ -95,5 +103,13 @@ M.leap = {
         end
     }
 }
+
+M.gitsigns = {
+    { "[g",         '<cmd>Gitsigns preview_hunk<CR>', desc = 'preview_hunk' },
+    { "]g",         '<cmd>Gitsigns next_hunk<CR>',    desc = 'next_hunk' },
+    { "<leader>gb", '<cmd>Gitsigns blame_line<CR>',   desc = 'blame_line' },
+}
+
+M.todo = { { '<leader>td', '<cmd>TodoTelescope<CR>', desc = 'todo' } }
 
 return M

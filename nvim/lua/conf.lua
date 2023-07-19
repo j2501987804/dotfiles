@@ -52,15 +52,15 @@ M.illuminate = function()
         end, { desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer })
     end
 
-    map("<C-n>", "next")
-    map("<C-p>", "prev")
+    map("[w", "next")
+    map("]w", "prev")
 
     -- also set it after loading ftplugins, since a lot overwrite [[ and ]]
     vim.api.nvim_create_autocmd("FileType", {
         callback = function()
             local buffer = vim.api.nvim_get_current_buf()
-            map("<C-n>", "next", buffer)
-            map("<C-p>", "prev", buffer)
+            map("[w", "next", buffer)
+            map("]w", "prev", buffer)
         end,
     })
 end

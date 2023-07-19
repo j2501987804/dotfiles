@@ -46,12 +46,25 @@ require('lazy').setup({
         config = conf.telescope,
     },
 
-    { "ggandor/leap.nvim",       keys = map.leap },
-    { "nvim-pack/nvim-spectre",  keys = map.specte },
-    { 'numToStr/Comment.nvim',   keys = map.comment,  opts = {} },
-    { "nvim-tree/nvim-tree.lua", keys = map.nvimtree, opts = {} },
+    {
+        "nvim-tree/nvim-tree.lua",
+        keys = map.nvimtree,
+        opts = {
+            update_focused_file = {
+                enable = true,
+                update_cwd = true,
+            },
+        }
+    },
+
+    { "ggandor/leap.nvim",        keys = map.leap },
+    { "nvim-pack/nvim-spectre",   keys = map.specte },
+    { 'numToStr/Comment.nvim',    keys = map.comment, opts = {} },
+    { "folke/todo-comments.nvim", keys = map.todo,    opts = {} },
 
     { import = 'extra.cmp' },
     { import = 'extra.lsp' },
     { import = 'extra.ui' },
+    { import = 'extra.lang' },
+    { import = 'extra.dap' },
 })
