@@ -49,9 +49,10 @@ map("i", "<C-l>", "<Right>")
 
 local M = {}
 M.telescope = {
-    { '<leader>f', '<cmd>Telescope fd theme=dropdown previewer=false<CR>',      desc = 'find file' },
-    { '<leader>b', '<cmd>Telescope buffers theme=dropdown previewer=false<CR>', desc = 'find buff' },
-    { '<leader>F', '<cmd>Telescope live_grep  theme=ivy<CR>',                   desc = 'find word' },
+    { '<leader>f', '<cmd>Telescope fd theme=dropdown previewer=false<CR>',       desc = 'find file' },
+    { '<leader>p', '<cmd>Telescope projects theme=dropdown previewer=false<CR>', desc = 'projects' },
+    { '<leader>b', '<cmd>Telescope buffers theme=dropdown previewer=false<CR>',  desc = 'find buff' },
+    { '<leader>F', '<cmd>Telescope live_grep  theme=ivy<CR>',                    desc = 'find word' },
 }
 
 M.nvimtree = {
@@ -111,5 +112,7 @@ M.gitsigns = {
 }
 
 M.todo = { { '<leader>td', '<cmd>TodoTelescope<CR>', desc = 'todo' } }
+
+M.session = { { '<leader>sl', '<cmd>lua require("persistence").load({ last = true })<CR>', desc = 'last session' } }
 
 return M

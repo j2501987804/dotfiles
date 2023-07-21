@@ -1,5 +1,16 @@
 local M = {}
 
+M.theme = function()
+    require("catppuccin").setup({
+        integrations = {
+            telescope = { enabled = true, style = "nvchad" },
+            illuminate = true,
+            which_key = true,
+        },
+    })
+    vim.cmd.colorscheme 'catppuccin'
+end
+
 M.treesitter = function()
     require 'nvim-treesitter.configs'.setup {
         ensure_installed = { 'lua', 'bash', 'go', 'python', 'markdown', 'markdown_inline' },
@@ -35,6 +46,10 @@ M.telescope = function()
             },
         },
     })
+
+    -- projects
+    require("project_nvim").setup()
+    require("telescope").load_extension("projects")
 end
 
 M.illuminate = function()
@@ -52,15 +67,15 @@ M.illuminate = function()
         end, { desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer })
     end
 
-    map("[w", "next")
-    map("]w", "prev")
+    map("]w", "next")
+    map("[w", "prev")
 
     -- also set it after loading ftplugins, since a lot overwrite [[ and ]]
     vim.api.nvim_create_autocmd("FileType", {
         callback = function()
             local buffer = vim.api.nvim_get_current_buf()
-            map("[w", "next", buffer)
-            map("]w", "prev", buffer)
+            map("]w", "next", buffer)
+            map("[w", "prev", buffer)
         end,
     })
 end

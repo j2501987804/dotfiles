@@ -15,9 +15,7 @@ require('lazy').setup({
         "catppuccin/nvim",
         name = "catppuccin",
         priority = 1000,
-        config = function()
-            vim.cmd.colorscheme 'catppuccin'
-        end,
+        config = conf.theme,
     },
 
     {
@@ -42,6 +40,7 @@ require('lazy').setup({
 
     {
         'nvim-telescope/telescope.nvim',
+        dependencies = "ahmedkhalf/project.nvim",
         keys = map.telescope,
         config = conf.telescope,
     },
@@ -55,6 +54,13 @@ require('lazy').setup({
                 update_cwd = true,
             },
         }
+    },
+
+    {
+        "folke/persistence.nvim",
+        event = "BufReadPre",
+        opts = {},
+        keys = map.session,
     },
 
     { "ggandor/leap.nvim",        keys = map.leap },
