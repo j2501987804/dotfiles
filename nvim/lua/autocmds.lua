@@ -57,7 +57,7 @@ autocmd("TextYankPost", {
 })
 
 -- 换行时不自动注释
-autocmd({ "BufEnter,BufNewFile" }, {
+autocmd({ "BufEnter","BufNewFile" }, {
     callback = function()
         vim.bo.formatoptions = vim.bo.formatoptions:gsub("[cro]", "")
     end,

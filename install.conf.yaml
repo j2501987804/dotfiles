@@ -14,21 +14,21 @@
     ~/.tmux.conf: tmux.conf
     ~/.zshrc: zshrc
     ~/.config/lazygit: config/lazygit
-    ~/.Xresources: .Xresources
+    # ~/.Xresources: .Xresources
     ~/.config/nvim: nvim
-    ~/.config/gtk-3.0: config/gtk-3.0
-    ~/.config/fish: config/fish
-    ~/.config/alacritty: config/alacritty
+    # ~/.config/gtk-3.0: config/gtk-3.0
+    # ~/.config/fish: config/fish
+    # ~/.config/alacritty: config/alacritty
     ~/.config/wezterm: config/wezterm
-    ~/.config/picom.conf: config/picom.conf
-    ~/.config/ranger: config/ranger
-    ~/.config/rofi: config/rofi
+    # ~/.config/picom.conf: config/picom.conf
+    # ~/.config/ranger: config/ranger
+    # ~/.config/rofi: config/rofi
     ~/.config/neofetch: config/neofetch
     ~/.config/awesome: config/awesome
     ~/.config/dunst: config/dunst
-    ~/.config/mpd: config/mpd
-    ~/.config/ncmpcpp: config/ncmpcpp
-    ~/.config/mpDris2: config/mpDris2
+    # ~/.config/mpd: config/mpd
+    # ~/.config/ncmpcpp: config/ncmpcpp
+    # ~/.config/mpDris2: config/mpDris2
 - shell:
     - [zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1]
 
