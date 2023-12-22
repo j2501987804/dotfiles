@@ -18,6 +18,7 @@ alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd
 alias v='nvim'
 alias k='kubectl'
 alias lg="lazygit"
+alias gc="git clone "
 alias setproxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
 alias unproxy='unset http_proxy && unset https_proxy && unset all_proxy'
 
