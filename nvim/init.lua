@@ -63,10 +63,11 @@ require('lazy').setup({
         keys = map.session,
     },
 
-    { "ggandor/leap.nvim",        keys = map.leap },
-    { "nvim-pack/nvim-spectre",   keys = map.specte },
-    { 'numToStr/Comment.nvim',    keys = map.comment, opts = {} },
-    { "folke/todo-comments.nvim", keys = map.todo,    opts = {} },
+    { "ggandor/leap.nvim",         keys = map.leap },
+    { "nvim-pack/nvim-spectre",    keys = map.specte },
+    { 'numToStr/Comment.nvim',     keys = map.comment, opts = {} },
+    { "folke/todo-comments.nvim",  keys = map.todo,    opts = {} },
+    { "NvChad/nvim-colorizer.lua", opts = {} },
 
     { import = 'extra.cmp' },
     { import = 'extra.lsp' },
