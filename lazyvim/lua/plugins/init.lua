@@ -1,21 +1,35 @@
+-- if true then return {} end
 return {
     {
-        "simrat39/symbols-outline.nvim",
-        cmd = "SymbolsOutline",
-        keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
-        config = true,
+        "catppuccin/nvim",
+        name = "catppuccin",
+        -- priority = 1000,
+        opts = {
+            flavour = "macchiato",
+            integrations = {
+                -- telescope = {
+                --     enabled = true,
+                --     style = "nvchad"
+                -- }
+            },
+        },
     },
 
     {
-        "neovim/nvim-lspconfig",
-        init = function()
-            local keys = require("lazyvim.plugins.lsp.keymaps").get()
-            -- change a keymap
-            -- keys[#keys + 1] = { "K", "<cmd>echo 'hello'<cr>" }
-            -- disable a keymap
-            keys[#keys + 1] = { "<c-k>", false }
-            -- add a keymap
-            -- keys[#keys + 1] = { "H", "<cmd>echo 'hello'<cr>" }
-        end,
-    }
+        "LazyVim/LazyVim",
+        opts = {
+            colorscheme = "catppuccin",
+        },
+    },
+
+    {
+        "telescope.nvim",
+        dependencies = {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            build = "make",
+            config = function()
+                require("telescope").load_extension("fzf")
+            end,
+        },
+    },
 }
