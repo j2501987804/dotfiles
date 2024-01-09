@@ -25,4 +25,5 @@ alias unproxy='unset http_proxy && unset https_proxy && unset all_proxy'
 # 环境变量
 export PATH=/usr/local/go/bin:~/go/bin:~/.local/bin:~/.cargo/bin:/home/kk/.dotnet:$PATH
 export EDITOR=nvim
+eval "$(pdm --pep582)"
 
