@@ -16,7 +16,6 @@ return {
                 }
             end
             local selectColor = { bg = "#a6e3a1", fg = "#1c1018" }
-            local cmp = require("cmp")
             vim.api.nvim_set_hl(0, "CmpBorder", { fg = "#4e5882" })
             vim.api.nvim_set_hl(0, "CmpDocBorder", { fg = "#4e5882" })
             vim.api.nvim_set_hl(0, "TelescopeSelection", selectColor)
@@ -34,6 +33,7 @@ return {
                 },
             }
 
+            local cmp = require("cmp")
             opts.mapping = vim.tbl_extend("force", opts.mapping, {
                 ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
                 ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),

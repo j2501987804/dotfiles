@@ -7,11 +7,12 @@ return {
         opts = {
             flavour = "macchiato",
             integrations = {
-                -- telescope = {
-                --     enabled = true,
-                --     style = "nvchad"
-                -- }
+                telescope = {
+                    enabled = true,
+                    style = "nvchad",
+                },
             },
+            -- transparent_background = true,
         },
     },
 
@@ -25,10 +26,9 @@ return {
     {
         "telescope.nvim",
         dependencies = {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            build = "make",
+            "nvim-telescope/telescope-fzy-native.nvim",
             config = function()
-                require("telescope").load_extension("fzf")
+                require("telescope").load_extension("fzy_native")
             end,
         },
     },
