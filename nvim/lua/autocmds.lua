@@ -5,7 +5,7 @@ autocmd({ "BufLeave" }, {
     callback = function()
         local bufner = vim.api.nvim_get_current_buf()
         if vim.api.nvim_buf_get_option(bufner, "modified") then
-            vim.lsp.buf.format(nil, bufner)
+            -- vim.lsp.buf.format(nil, bufner)
             vim.fn.execute("silent! write")
             -- vim.cmd("silent! wall")
         end
@@ -57,7 +57,7 @@ autocmd("TextYankPost", {
 })
 
 -- 换行时不自动注释
-autocmd({ "BufEnter","BufNewFile" }, {
+autocmd({ "BufEnter", "BufNewFile" }, {
     callback = function()
         vim.bo.formatoptions = vim.bo.formatoptions:gsub("[cro]", "")
     end,

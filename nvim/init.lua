@@ -40,7 +40,7 @@ require('lazy').setup({
 
     {
         'nvim-telescope/telescope.nvim',
-        dependencies = "ahmedkhalf/project.nvim",
+        dependencies = { "ahmedkhalf/project.nvim", "nvim-telescope/telescope-fzy-native.nvim" },
         keys = map.telescope,
         config = conf.telescope,
     },

@@ -7,7 +7,7 @@ M.theme = function()
             illuminate = true,
             which_key = true,
         },
-        transparent_background = true,
+        transparent_background = false,
     })
     vim.cmd.colorscheme 'catppuccin'
 end
@@ -45,12 +45,22 @@ M.telescope = function()
                     ["<C-k>"] = require "telescope.actions".move_selection_previous,
                 }
             },
+            layout_config = {
+                horizontal = {
+                    preview_width = 0.6,
+                    results_width = 0.8,
+                },
+                vertical = {
+                    mirror = false,
+                },
+            },
         },
     })
 
     -- projects
     require("project_nvim").setup()
     require("telescope").load_extension("projects")
+    require('telescope').load_extension('fzy_native')
 end
 
 M.illuminate = function()
@@ -68,15 +78,15 @@ M.illuminate = function()
         end, { desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer })
     end
 
-    map("]w", "next")
-    map("[w", "prev")
+    map("]]", "next")
+    map("[[", "prev")
 
     -- also set it after loading ftplugins, since a lot overwrite [[ and ]]
     vim.api.nvim_create_autocmd("FileType", {
         callback = function()
             local buffer = vim.api.nvim_get_current_buf()
-            map("]w", "next", buffer)
-            map("[w", "prev", buffer)
+            map("]]", "next", buffer)
+            map("[[", "prev", buffer)
         end,
     })
 end

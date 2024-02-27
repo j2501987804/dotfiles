@@ -49,10 +49,11 @@ map("i", "<C-l>", "<Right>")
 
 local M = {}
 M.telescope = {
-    { '<leader>f', '<cmd>Telescope fd theme=dropdown previewer=false<CR>',       desc = 'find file' },
+    { '<leader>f', '<cmd>Telescope fd<CR>',                                      desc = 'find file' },
     { '<leader>p', '<cmd>Telescope projects theme=dropdown previewer=false<CR>', desc = 'projects' },
-    { '<leader>b', '<cmd>Telescope buffers theme=dropdown previewer=false<CR>',  desc = 'find buff' },
-    { '<leader>F', '<cmd>Telescope live_grep  theme=ivy<CR>',                    desc = 'find word' },
+    { '<leader>b', '<cmd>Telescope buffers<CR>',                                 desc = 'find buff' },
+    { '<leader>F', '<cmd>Telescope live_grep<CR>',                               desc = 'find word' },
+    { 'gr',        '<cmd>Telescope lsp_references<CR>',                          desc = 'lsp_references' },
 }
 
 M.nvimtree = {
@@ -61,14 +62,15 @@ M.nvimtree = {
 
 M.comment = {
     {
-        "<leader>/",
+        "<C-_>",
         function()
             require("Comment.api").toggle.linewise.current()
         end,
-        desc = 'comment'
+        desc = 'comment',
+        mode = { 'n', 'i' }
     },
     {
-        "<leader>/",
+        "<C-_>",
         "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
         mode = 'v',
         desc = 'comment'
@@ -80,11 +82,11 @@ M.lspsaga = {
     { "gh",         "<cmd>Lspsaga finder<CR>",                     desc = 'lsp finder' },
     { "gd",         "<cmd>Lspsaga goto_definition<CR>",            desc = 'definition' },
     { "<leader>la", "<cmd>Lspsaga code_action<CR>",                desc = 'code action' },
-    { "gr",         "<cmd>Lspsaga rename<CR>",                     desc = 'rename' },
+    { "<leader>ln", "<cmd>Lspsaga rename<CR>",                     desc = 'rename' },
     { "<leader>lo", "<cmd>Lspsaga outline<CR>",                    desc = 'outline' },
     { "<leader>lw", "<cmd>Lspsaga show_workspace_diagnostics<CR>", desc = 'workspace diagnostics' },
     { "<leader>lc", "<cmd>Lspsaga show_cursor_diagnostics<CR>",    desc = 'cursor diagnostics' },
-    { "<A-d>",      "<cmd>Lspsaga term_toggle<CR>",                mode = { 'n', 't' },           desc = 'term' },
+    { "<A-d>",      "<cmd>Lspsaga term_toggle<CR>",                mode = { 'n', 't', 'i' },      desc = 'term' },
 }
 
 M.specte = {

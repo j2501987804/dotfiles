@@ -1,14 +1,34 @@
 local M = {
     'neovim/nvim-lspconfig',
     dependencies = {
-        { "williamboman/mason.nvim", opts = {} },
+        {
+            "williamboman/mason.nvim",
+            opts = {
+                ensure_installed = { "gomodifytags", "impl", "goimports", "gofumpt" }
+            }
+        },
         'williamboman/mason-lspconfig.nvim',
         'hrsh7th/cmp-nvim-lsp',
+        "nvimtools/none-ls.nvim",
     },
     event = { "BufReadPre", "BufNewFile" },
 }
 
 M.config = function()
+    -- null
+    local nls = require("null-ls")
+    nls.setup({
+        sources = {
+            -- go
+            nls.builtins.code_actions.gomodifytags,
+            nls.builtins.code_actions.impl,
+            nls.builtins.formatting.goimports,
+            nls.builtins.formatting.gofumpt,
+        }
+    })
+
+
+    -- lsp
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
     local servers = {
         pylsp = {},

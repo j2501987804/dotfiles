@@ -87,9 +87,18 @@ return {
                     },
                 },
                 layout_strategy = "horizontal",
-                layout_config = { prompt_position = "top" },
                 sorting_strategy = "ascending",
                 winblend = 0,
+                layout_config = {
+                    prompt_position = "top",
+                    horizontal = {
+                        preview_width = 0.6,
+                        results_width = 0.8,
+                    },
+                    -- vertical = {
+                    --     mirror = false,
+                    -- },
+                },
             },
         },
     },
@@ -103,6 +112,22 @@ return {
                     ["<c-v>"] = "open_vsplit",
                     ["l"] = "open",
                     ["h"] = "close_node",
+                },
+            },
+        },
+    },
+
+    {
+        "nvim-treesitter/nvim-treesitter",
+        opts = {
+            indent = { enable = true },
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = "<CR>",
+                    node_incremental = "<CR>",
+                    scope_incremental = false,
+                    node_decremental = "<bs>",
                 },
             },
         },
