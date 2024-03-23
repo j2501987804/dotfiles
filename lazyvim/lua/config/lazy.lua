@@ -17,8 +17,8 @@ require("lazy").setup({
         { import = "lazyvim.plugins.extras.lang.python" },
         { import = "lazyvim.plugins.extras.lang.yaml" },
         { import = "lazyvim.plugins.extras.lang.go" },
-        { import = "lazyvim.plugins.extras.lang.omnisharp" }, -- c-sharp
-        { import = "lazyvim.plugins.extras.lang.docker" },
+        -- { import = "lazyvim.plugins.extras.lang.omnisharp" }, -- c-sharp
+        -- { import = "lazyvim.plugins.extras.lang.docker" },
 
         { import = "lazyvim.plugins.extras.util.project" },
         { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
