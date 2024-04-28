@@ -2,7 +2,7 @@
     link:
       relink: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - create:
     # - ~/.local/share/zinit
@@ -15,12 +15,12 @@
     ~/.zshrc: zshrc
     ~/.config/lazygit: config/lazygit
     # ~/.Xresources: .Xresources
-    ~/.config/nvim: lazyvim
+    ~/.config/nvim: nvchad
     # ~/.config/gtk-3.0: config/gtk-3.0
     # ~/.config/fish: config/fish
     # ~/.config/alacritty: config/alacritty
     # ~/.config/wezterm: config/wezterm
-    ~/.config/hypr: config/hypr
+    # ~/.config/hypr: config/hypr
     # ~/.config/picom.conf: config/picom.conf
     ~/.config/ranger: config/ranger
     # ~/.config/rofi: config/rofi
@@ -29,5 +29,9 @@
     # ~/.config/ncmpcpp: config/ncmpcpp
     # ~/.config/mpDris2: config/mpDris2
 - shell:
-    - [zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1]
-    - [git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install]
+    - [
+        zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1,
+      ]
+    - [
+        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install,
+      ]
