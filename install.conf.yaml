@@ -12,6 +12,7 @@
 
 - link:
     ~/.tmux.conf: tmux.conf
+    ~/Wallpapers: Wallpapers
     ~/.zshrc: zshrc
     ~/.config/lazygit: config/lazygit
     # ~/.Xresources: .Xresources
@@ -20,7 +21,9 @@
     # ~/.config/fish: config/fish
     # ~/.config/alacritty: config/alacritty
     # ~/.config/wezterm: config/wezterm
-    # ~/.config/hypr: config/hypr
+    ~/.config/hypr: config/hypr
+    ~/.config/kitty: config/kitty
+    ~/.config/waybar: config/waybar
     # ~/.config/picom.conf: config/picom.conf
     ~/.config/ranger: config/ranger
     # ~/.config/rofi: config/rofi
