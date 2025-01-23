@@ -16,14 +16,15 @@ compinit
 # 别名
 alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias v='nvim'
+alias vf='nvim $(fzf)'
 alias k='kubectl'
 alias lg="lazygit"
 alias gc="git clone "
 alias setproxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
 alias unproxy='unset http_proxy && unset https_proxy && unset all_proxy'
-
+alias linkredis='ssh -L 6379:localhost:6379 root@13.234.102.111'
 # 环境变量
-export PATH=/usr/local/go/bin:~/go/bin:~/.local/bin:~/.cargo/bin:/home/kk/.dotnet:$PATH
+export PATH=$PATH:/Applications/GoLand.app/Contents/MacOS:~/sdk/go1.23.4/bin:/usr/local/go/bin:~/go/bin:~/.local/bin:~/.cargo/bin
 export EDITOR=nvim
+setproxy
 # eval "$(pdm --pep582)"
-
