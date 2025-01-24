@@ -1,7 +1,10 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 local opt = vim.opt
 
 -- 状态栏
-opt.laststatus = 0
+opt.laststatus = 3
 opt.showmode = false
 opt.cmdheight = 0
 
@@ -44,3 +47,5 @@ opt.shortmess:append("I")
 -- 滚动而不是换行
 opt.wrap = false
 opt.scroll = 1
+
+opt.jumpoptions = "view" -- c-o跳转

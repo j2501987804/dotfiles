@@ -1,6 +1,6 @@
 return {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
+    -- tag = '0.1.8',
     dependencies = {
         {
             'nvim-telescope/telescope-fzf-native.nvim',
@@ -26,8 +26,18 @@ return {
             },
         },
         defaults = {
-            prompt_prefix = " ",
-            selection_caret = " ",
+            prompt_prefix = "   ",
+            selection_caret = " ",
+            entry_prefix = " ",
+            sorting_strategy = "ascending",
+            layout_config = {
+                horizontal = {
+                    prompt_position = "top",
+                    preview_width = 0.55,
+                },
+                width = 0.87,
+                height = 0.80,
+            },
             mappings = {
                 i = {
                     ["<C-n>"] = require "telescope.actions".cycle_history_next,
@@ -35,16 +45,6 @@ return {
                     ["<C-j>"] = require "telescope.actions".move_selection_next,
                     ["<C-k>"] = require "telescope.actions".move_selection_previous,
                 }
-            },
-            layout_config = {
-                horizontal = {
-                    prompt_position = "top",
-                    preview_width = 0.6,
-                    results_width = 0.8,
-                },
-                vertical = {
-                    mirror = false,
-                },
             },
         },
     },
@@ -56,6 +56,7 @@ return {
     keys = {
         { "<leader>f",        ":Telescope fd<cr>",                      desc = "search file" },
         { "<leader><leader>", ":Telescope buffers<cr>",                 desc = "search buffers" },
+        { "<leader>sd",       ":Telescope dap configurations<cr>",      desc = "search dap" },
         { "<leader>sw",       ":Telescope live_grep<cr>",               desc = "search word" },
         { "<leader>sm",       ":Telescope marks<cr>",                   desc = "search marks" },
         { "<leader>sq",       ":Telescope quickfix<cr>",                desc = "search quickfix" },

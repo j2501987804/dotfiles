@@ -1,77 +1,34 @@
-require 'options'
-require 'autocmds'
-local map = require 'keymaps'
-local conf = require 'conf'
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system { 'git', 'clone', '--filter=blob:none', 'https://github.com/folke/lazy.nvim.git', '--branch=stable',
-        lazypath }
+require("options")
+require("autocmds")
+require("keymaps")
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+			{ out, "WarningMsg" },
+			{ "\nPress any key to exit..." },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
+	end
 end
 vim.opt.rtp:prepend(lazypath)
-require('lazy').setup({
-    'nvim-lua/plenary.nvim',
-    "nvim-tree/nvim-web-devicons",
-    {
-        "catppuccin/nvim",
-        name = "catppuccin",
-        priority = 1000,
-        config = conf.theme,
-    },
 
-    {
-        'nvim-treesitter/nvim-treesitter',
-        build = ':TSUpdate',
-        event = { "BufReadPost", "BufNewFile" },
-        config = conf.treesitter,
-    },
-
-    {
-        "glepnir/lspsaga.nvim",
-        event = "LspAttach",
-        opts = {},
-        keys = map.lspsaga,
-    },
-
-    {
-        "RRethy/vim-illuminate",
-        event = { "BufReadPost", "BufNewFile" },
-        config = conf.illuminate,
-    },
-
-    {
-        'nvim-telescope/telescope.nvim',
-        dependencies = { "ahmedkhalf/project.nvim", "nvim-telescope/telescope-fzy-native.nvim" },
-        keys = map.telescope,
-        config = conf.telescope,
-    },
-
-    {
-        "nvim-tree/nvim-tree.lua",
-        keys = map.nvimtree,
-        opts = {
-            update_focused_file = {
-                enable = true,
-                update_cwd = true,
-            },
-        }
-    },
-
-    {
-        "folke/persistence.nvim",
-        event = "BufReadPre",
-        opts = {},
-        keys = map.session,
-    },
-
-    { "ggandor/leap.nvim",         keys = map.leap },
-    { "nvim-pack/nvim-spectre",    keys = map.specte },
-    { 'numToStr/Comment.nvim',     keys = map.comment, opts = {} },
-    { "folke/todo-comments.nvim",  keys = map.todo,    opts = {} },
-    { "NvChad/nvim-colorizer.lua", opts = {} },
-
-    { import = 'extra.cmp' },
-    { import = 'extra.lsp' },
-    { import = 'extra.ui' },
-    { import = 'extra.lang' },
-    { import = 'extra.dap' },
+-- Setup lazy.nvim
+require("lazy").setup({
+	spec = {
+		-- import your plugins
+		{ import = "plugins" },
+	},
+	-- Configure any other settings here. See the documentation for more details.
+	-- colorscheme that will be used when installing plugins.
+	install = { colorscheme = { "habamax" } },
+	-- automatically check for plugin updates
+	checker = { enabled = true },
 })
+
+vim.cmd.colorscheme("kanagawa")

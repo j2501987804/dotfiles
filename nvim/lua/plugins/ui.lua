@@ -4,7 +4,7 @@ return {
         "rebelot/kanagawa.nvim",
         priority = 1000,
         opts = {
-            commentStyle = { italic = true },
+            commentStyle = { italic = true, bold = false },
             overrides = function(colors)
                 local theme = colors.theme
                 return {
@@ -12,6 +12,8 @@ return {
                     FloatBorder = { bg = "none" },
                     FloatTitle = { bg = "none" },
 
+                    TelescopePreviewTitle = { bg = "#76946a", fg = "#ffffff" },
+                    TelescopePromptTitle = { bg = "#C34043", fg = "#ffffff" },
 
                     Pmenu = { bg = "none" },              -- add `blend = vim.o.pumblend` to enable transparency
                     BlinkCmpMenuBorder = { bg = "none" }, -- add `blend = vim.o.pumblend` to enable transparency
@@ -45,7 +47,8 @@ return {
                 },
                 lualine_c = {
                     { "fancy_diff" },
-                    { "fancy_cwd", substitute_home = true }
+                    -- { "fancy_cwd", substitute_home = true },
+                    { "filename",  path = 1 },
                 },
                 lualine_x = {
                     { "copilot" },

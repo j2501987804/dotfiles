@@ -1,120 +1,99 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 local map = vim.keymap.set
 
--- general mappings
-map("n", "<C-s>", "<cmd> w <CR>")
-map("i", "<C-s>", "<ESC><cmd> w <CR>")
-map("n", "<leader>q", "<cmd> q <CR>")
-map("n", "<leader>L", "<cmd> Lazy <CR>")
-map("n", "<leader>nf", "<cmd> enew <CR>")
-map("n", "<leader>x", "<cmd> bdelete! <CR>")
-map("n", "<Tab>", "<cmd> BufferLineCycleNext <CR>")
-map("n", "<S-Tab>", "<cmd> BufferLineCyclePrev <CR>")
-map("n", "<leader>nf", "<cmd> enew <CR>")
+map("n", "<leader>q", ":q<cr>", { desc = "quit", remap = true })
+
+-- Comment
+map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
+map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
+
 map("n", ";", ":")
 
--- Clear highlights
-map("n", "<ESC>", "<cmd>nohlsearch<CR>")
+map({ "n", "v", "x" }, "<S-h>", "^", { desc = "^" })
+map({ "n", "v", "x" }, "<S-l>", "$", { desc = "$" })
 
--- Better window navigation
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
-
--- Resize with arrows
-map("n", "<S-Up>", "<cmd>resize -2<CR>")
-map("n", "<S-Down>", "<cmd>resize +2<CR>")
-map("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
-map("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
-
--- Visual --
--- Stay in indent mode
-map("v", "<", "<gv")
-map("v", ">", ">gv")
-map("v", "p", '"_dP')
-map('v', 'H', '^')
-map('v', 'L', '$')
-map('n', 'H', '^')
-map('n', 'L', '$')
-
--- insert --
-map("i", "jk", "<ESC>")
 map("i", "<C-h>", "<Left>")
 map("i", "<C-j>", "<Down>")
 map("i", "<C-k>", "<Up>")
 map("i", "<C-l>", "<Right>")
 
-local M = {}
-M.telescope = {
-    { '<leader>f', '<cmd>Telescope fd<CR>',                                      desc = 'find file' },
-    { '<leader>p', '<cmd>Telescope projects theme=dropdown previewer=false<CR>', desc = 'projects' },
-    { '<leader>b', '<cmd>Telescope buffers<CR>',                                 desc = 'find buff' },
-    { '<leader>F', '<cmd>Telescope live_grep<CR>',                               desc = 'find word' },
-    { 'gr',        '<cmd>Telescope lsp_references<CR>',                          desc = 'lsp_references' },
-}
+-- Clear highlights
+map("n", "<ESC>", "<cmd>nohlsearch<CR>")
 
-M.nvimtree = {
-    { '<leader>e', '<cmd>NvimTreeToggle<CR>', desc = 'nvimtree' },
-}
+-- better up/down
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 
-M.comment = {
-    {
-        "<C-_>",
-        function()
-            require("Comment.api").toggle.linewise.current()
-        end,
-        desc = 'comment',
-        mode = { 'n', 'i' }
-    },
-    {
-        "<C-_>",
-        "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-        mode = 'v',
-        desc = 'comment'
-    },
-}
+-- Move to window using the <ctrl> hjkl keys
+map({ "n", "v", "x", "t" }, "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
+map({ "n", "v", "x", "t" }, "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
+map({ "n", "v", "x", "t" }, "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
+map({ "n", "v", "x", "t" }, "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
-M.lspsaga = {
-    { "K",          "<cmd>Lspsaga hover_doc<CR>",                  desc = 'lsp hover_doc' },
-    { "gh",         "<cmd>Lspsaga finder<CR>",                     desc = 'lsp finder' },
-    { "gd",         "<cmd>Lspsaga goto_definition<CR>",            desc = 'definition' },
-    { "<leader>la", "<cmd>Lspsaga code_action<CR>",                desc = 'code action' },
-    { "<leader>ln", "<cmd>Lspsaga rename<CR>",                     desc = 'rename' },
-    { "<leader>lo", "<cmd>Lspsaga outline<CR>",                    desc = 'outline' },
-    { "<leader>lw", "<cmd>Lspsaga show_workspace_diagnostics<CR>", desc = 'workspace diagnostics' },
-    { "<leader>lc", "<cmd>Lspsaga show_cursor_diagnostics<CR>",    desc = 'cursor diagnostics' },
-    { "<A-d>",      "<cmd>Lspsaga term_toggle<CR>",                mode = { 'n', 't', 'i' },      desc = 'term' },
-}
+-- Resize window using <ctrl> arrow keys
+map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
+map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
+map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
+map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 
-M.specte = {
-    {
-        "<leader>r",
-        "<cmd>lua require('spectre').open_visual({select_word=true}) <CR>",
-        desc = "Replace in projects",
-    },
-}
+-- Move Lines
+map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
+map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
+map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
+map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
 
-M.leap = {
-    {
-        "s",
-        function()
-            local current_window = vim.fn.win_getid()
-            require('leap').leap { target_windows = { current_window } }
-        end
-    }
-}
+-- buffers
+-- map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+-- map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+map("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
-M.gitsigns = {
-    { "[g",         '<cmd>Gitsigns preview_hunk<CR>', desc = 'preview_hunk' },
-    { "]g",         '<cmd>Gitsigns next_hunk<CR>',    desc = 'next_hunk' },
-    { "<leader>gb", '<cmd>Gitsigns blame_line<CR>',   desc = 'blame_line' },
-}
+-- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next Search Result" })
+map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
+map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
+map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev Search Result" })
+map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
+map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
 
-M.todo = { { '<leader>td', '<cmd>TodoTelescope<CR>', desc = 'todo' } }
+-- Add undo break-points
+map("i", ",", ",<c-g>u")
+map("i", ".", ".<c-g>u")
+map("i", ";", ";<c-g>u")
 
-M.session = { { '<leader>sl', '<cmd>lua require("persistence").load({ last = true })<CR>', desc = 'last session' } }
+-- save file
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
-return M
+-- better indenting
+map("v", "<", "<gv")
+map("v", ">", ">gv")
+
+-- new file
+map("n", "<leader>sn", "<cmd>enew<cr>", { desc = "New File" })
+
+map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
+map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
+
+map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
+map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
+
+-- diagnostic
+local diagnostic_goto = function(next, severity)
+    local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+    severity = severity and vim.diagnostic.severity[severity] or nil
+    return function()
+        go({ severity = severity })
+    end
+end
+map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
+map("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
+map("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
+map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
+map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
+map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })

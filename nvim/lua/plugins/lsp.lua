@@ -6,6 +6,7 @@ return {
                 "gopls",
                 "gofumpt", "goimports", -- format
                 "gomodifytags", "impl", -- code action
+                "gotests", "iferr", "json-to-struct",
             },
         },
         config = function(_, opts)
@@ -20,13 +21,17 @@ return {
     {
         "nvimtools/none-ls.nvim",
         opts = function(_, opts)
-            local nls = require("null-ls")
-            opts.sources = vim.list_extend(opts.sources or {}, {
-                nls.builtins.code_actions.gomodifytags,
-                nls.builtins.code_actions.impl,
-                nls.builtins.formatting.goimports,
-                nls.builtins.formatting.gofumpt,
-            })
+            local nls = require("null-ls").builtins
+            opts.sources = {
+                -- go
+                nls.code_actions.gomodifytags,
+                nls.code_actions.impl,
+                -- nls.code_actions.gotests,
+                -- nls.code_actions.iferr,
+                -- nls.code_actions.json_to_struct,
+                nls.formatting.goimports,
+                nls.formatting.gofumpt,
+            }
         end,
     },
     {
@@ -55,8 +60,10 @@ return {
                 -- buf_set_keymap('n', 'gI', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
                 -- 重命名
                 buf_set_keymap('n', '<leader>cr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
+                buf_set_keymap('v', '<leader>cr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
                 -- 代码操作
                 buf_set_keymap('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+                buf_set_keymap('v', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 
                 -- 启用自动格式化（在保存时触发）
                 if client.server_capabilities.documentFormattingProvider then
@@ -87,16 +94,31 @@ return {
                     },
                 },
                 gopls = {
-                    cmd = { "gopls" },                                        -- 使用 gopls 作为 Go LSP
-                    filetypes = { "go", "gomod" },                            -- 支持 Go 文件和 Go 模块
-                    root_dir = lspconfig.util.root_pattern("go.mod", ".git"), -- 自动识别项目根目录
                     settings = {
                         gopls = {
-                            analyses = {
-                                unusedparams = true, -- 启用未使用参数检查
-                                shadow = true,       -- 启用变量名冲突检查
+                            gofumpt = true,
+                            codelenses = {
+                                gc_details = false,
+                                generate = true,
+                                regenerate_cgo = true,
+                                run_govulncheck = true,
+                                test = true,
+                                tidy = true,
+                                upgrade_dependency = true,
+                                vendor = true,
                             },
-                            staticcheck = true,      -- 启用 Go 静态检查
+                            -- analyses = {
+                            --     fieldalignment = true,
+                            --     nilness = true,
+                            --     unusedparams = true,
+                            --     unusedwrite = true,
+                            --     useany = true,
+                            -- },
+                            usePlaceholders = true,
+                            completeUnimported = true,
+                            staticcheck = true,
+                            directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+                            semanticTokens = true,
                         },
                     },
                 },
