@@ -1,56 +1,57 @@
 return {
+    "tomasiser/vim-code-dark",
     -- "navarasu/onedark.nvim",
     -- { "EdenEast/nightfox.nvim" },
-    -- "sainnhe/everforest",
-    -- {
-    --     "LazyVim/LazyVim",
-    --     opts = {
-    --         colorscheme = "onedark",
-    --     },
-    -- },
-
+    "sainnhe/everforest",
     {
-        "folke/tokyonight.nvim",
+        "LazyVim/LazyVim",
         opts = {
-            styles = {
-                comments = { italic = true, bold = false },
-            },
-            on_highlights = function(hl, c)
-                local prompt = "#2d3149"
-                hl.TelescopeNormal = {
-                    bg = c.bg_dark,
-                    fg = c.fg_dark,
-                }
-                hl.TelescopeBorder = {
-                    bg = c.bg_dark,
-                    fg = c.bg_dark,
-                }
-                hl.TelescopePromptNormal = {
-                    bg = prompt,
-                }
-                hl.TelescopePromptBorder = {
-                    bg = prompt,
-                    fg = prompt,
-                }
-                hl.TelescopePromptTitle = {
-                    bg = prompt,
-                    fg = prompt,
-                }
-                hl.TelescopePreviewTitle = {
-                    bg = c.bg_dark,
-                    fg = c.bg_dark,
-                }
-                hl.TelescopeResultsTitle = {
-                    bg = c.bg_dark,
-                    fg = c.bg_dark,
-                }
-                hl.Pmenu = { bg = "none" }
-                hl.BlinkCmpMenuBorder = { bg = "none", fg = "#42464e" }
-                hl.BlinkCmpDocBorder = { bg = "none", fg = "#42464e" }
-                hl.BlinkCmpMenuSelection = { bg = "#82c092", fg = "black" }
-            end,
+            colorscheme = "everforest",
         },
     },
+
+    -- {
+    --     "folke/tokyonight.nvim",
+    --     opts = {
+    --         styles = {
+    --             comments = { italic = true, bold = false },
+    --         },
+    --         on_highlights = function(hl, c)
+    --             local prompt = "#2d3149"
+    --             hl.TelescopeNormal = {
+    --                 bg = c.bg_dark,
+    --                 fg = c.fg_dark,
+    --             }
+    --             hl.TelescopeBorder = {
+    --                 bg = c.bg_dark,
+    --                 fg = c.bg_dark,
+    --             }
+    --             hl.TelescopePromptNormal = {
+    --                 bg = prompt,
+    --             }
+    --             hl.TelescopePromptBorder = {
+    --                 bg = prompt,
+    --                 fg = prompt,
+    --             }
+    --             hl.TelescopePromptTitle = {
+    --                 bg = prompt,
+    --                 fg = prompt,
+    --             }
+    --             hl.TelescopePreviewTitle = {
+    --                 bg = c.bg_dark,
+    --                 fg = c.bg_dark,
+    --             }
+    --             hl.TelescopeResultsTitle = {
+    --                 bg = c.bg_dark,
+    --                 fg = c.bg_dark,
+    --             }
+    --             hl.Pmenu = { bg = "none" }
+    --             hl.BlinkCmpMenuBorder = { bg = "none", fg = "#42464e" }
+    --             hl.BlinkCmpDocBorder = { bg = "none", fg = "#42464e" }
+    --             hl.BlinkCmpMenuSelection = { bg = "#82c092", fg = "black" }
+    --         end,
+    --     },
+    -- },
     {
         "zbirenbaum/copilot.lua",
         opts = {
@@ -89,16 +90,17 @@ return {
                     enabled = true,
                     min_width = 30,
                     max_height = 10,
-                    border = {
-                        "♥",
-                        "─",
-                        "╮",
-                        "│",
-                        "╯",
-                        "─",
-                        "╰",
-                        "│",
-                    },
+                    border = "rounded",
+                    -- border = {
+                    --     "♥",
+                    --     "─",
+                    --     "╮",
+                    --     "│",
+                    --     "╯",
+                    --     "─",
+                    --     "╰",
+                    --     "│",
+                    -- },
                     winblend = 10,
                     -- winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
                     auto_show = true,
@@ -153,6 +155,18 @@ return {
             -- disable a keymap
             keys[#keys + 1] = { "<c-k>", mode = "i", false }
         end,
+    },
+    {
+        "ibhagwan/fzf-lua",
+        keys = {
+            { "<leader>/", false },
+            { "<leader>,", false },
+            { "<leader>:", false },
+            { "<leader>sc", false },
+            { "<leader>sC", false },
+            { "<leader>sh", false },
+            { "<leader>sH", false },
+        },
     },
     {
         "stevearc/overseer.nvim",
