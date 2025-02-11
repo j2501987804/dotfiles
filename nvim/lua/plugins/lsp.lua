@@ -1,133 +1,141 @@
 return {
-    {
-        'williamboman/mason.nvim',
-        opts = {
-            ensure_installed = {
-                "gopls",
-                "gofumpt", "goimports", -- format
-                "gomodifytags", "impl", -- code action
-                "gotests", "iferr", "json-to-struct",
-            },
-        },
-        config = function(_, opts)
-            -- 创建自定义命令 :MasonInstallAll
-            vim.api.nvim_create_user_command('MasonInstallAll', function()
-                -- 拼接工具列表并执行 MasonInstall 命令
-                vim.cmd('MasonInstall ' .. table.concat(opts.ensure_installed, ' '))
-            end, {})
-            require("mason").setup()
-        end,
-    },
-    {
-        "nvimtools/none-ls.nvim",
-        opts = function(_, opts)
-            local nls = require("null-ls").builtins
-            opts.sources = {
-                -- go
-                nls.code_actions.gomodifytags,
-                nls.code_actions.impl,
-                -- nls.code_actions.gotests,
-                -- nls.code_actions.iferr,
-                -- nls.code_actions.json_to_struct,
-                nls.formatting.goimports,
-                nls.formatting.gofumpt,
-            }
-        end,
-    },
-    {
-        'neovim/nvim-lspconfig',
-        dependencies = { 'saghen/blink.cmp' },
-        init = function()
-            -- 配置 LSP
-            local lspconfig = require('lspconfig')
+	"neovim/nvim-lspconfig",
+	dependencies = {
+		{
+			"williamboman/mason.nvim",
+			opts_extend = { "ensure_installed" },
+			opts = {
+                -- stylua: ignore
+				ensure_installed = {
+                    "lua-language-server","stylua",
+					"gomodifytags", "impl", "goimports", "gofumpt","gopls",
+				},
+			},
+			config = function(_, opts)
+				require("mason").setup(opts)
+				local mr = require("mason-registry")
+				mr:on("package:install:success", function()
+					vim.defer_fn(function()
+						-- trigger FileType event to possibly load this newly installed LSP server
+						require("lazy.core.handler.event").trigger({
+							event = "FileType",
+							buf = vim.api.nvim_get_current_buf(),
+						})
+					end, 100)
+				end)
 
-            local on_attach = function(client, bufnr)
-                -- 设置 LSP 相关快捷键
-                local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-                local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+				mr.refresh(function()
+					for _, tool in ipairs(opts.ensure_installed) do
+						local p = mr.get_package(tool)
+						if not p:is_installed() then
+							p:install()
+						end
+					end
+				end)
+			end,
+		},
+		-- "williamboman/mason-lspconfig.nvim",
+		-- "WhoIsSethDaniel/mason-tool-installer.nvim",
 
-                buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+		-- Useful status updates for LSP.
+		{ "j-hui/fidget.nvim", opts = {} },
+		-- { "saghen/blink.cmp" },
 
-                local opts = { noremap = true, silent = true }
+		-- Allows extra capabilities provided by nvim-cmp
+		-- 'hrsh7th/cmp-nvim-lsp',
+	},
+	config = function()
+		local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
+		local diagnostic_signs = {}
+		for type, icon in pairs(signs) do
+			diagnostic_signs[vim.diagnostic.severity[type]] = icon
+		end
+		vim.diagnostic.config({ signs = { text = diagnostic_signs } })
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		local servers = {
+			-- clangd = {},
+			gopls = {
+				settings = {
+					gopls = {
+						gofumpt = true,
+						codelenses = {
+							gc_details = false,
+							generate = true,
+							regenerate_cgo = true,
+							run_govulncheck = true,
+							test = true,
+							tidy = true,
+							upgrade_dependency = true,
+							vendor = true,
+						},
+						hints = {
+							assignVariableTypes = true,
+							compositeLiteralFields = true,
+							compositeLiteralTypes = true,
+							constantValues = true,
+							functionTypeParameters = true,
+							parameterNames = true,
+							rangeVariableTypes = true,
+						},
+						-- analyses = {
+						-- 	fieldalignment = true,
+						-- 	nilness = true,
+						-- 	unusedparams = true,
+						-- 	unusedwrite = true,
+						-- 	useany = true,
+						-- },
+						usePlaceholders = true,
+						completeUnimported = true,
+						staticcheck = true,
+						directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+						semanticTokens = true,
+					},
+				},
+			},
+			pyright = {},
+			rust_analyzer = {},
+			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
+			--
+			-- Some languages (like typescript) have entire language plugins that can be useful:
+			--    https://github.com/pmizio/typescript-tools.nvim
+			--
+			-- But for many setups, the LSP (`ts_ls`) will work just fine
+			-- ts_ls = {},
+			--
 
-                -- 跳转到定义
-                buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-                -- 显示悬浮文档
-                buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-                -- 查看引用
-                -- buf_set_keymap('n', 'gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
-                -- 查看实现
-                -- buf_set_keymap('n', 'gI', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-                -- 重命名
-                buf_set_keymap('n', '<leader>cr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
-                buf_set_keymap('v', '<leader>cr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
-                -- 代码操作
-                buf_set_keymap('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-                buf_set_keymap('v', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-
-                -- 启用自动格式化（在保存时触发）
-                if client.server_capabilities.documentFormattingProvider then
-                    -- 设置自动格式化触发时机
-                    vim.api.nvim_exec([[
-                        augroup LspFormatting
-                            autocmd! * <buffer>
-                            autocmd BufWritePre <buffer> lua vim.lsp.buf.format{focus=true}
-                        augroup END
-                    ]], true)
-                end
-            end
-
-            local servers = {
-                lua_ls = {
-                    settings = {
-                        Lua = {
-                            diagnostics = {
-                                globals = { "vim" }, -- 允许全局变量 vim
-                            },
-                            workspace = {
-                                library = vim.api.nvim_get_runtime_file("", true), -- 自动检测 Neovim 运行时库
-                            },
-                            telemetry = {
-                                enable = false, -- 禁用遥测信息
-                            },
-                        },
-                    },
-                },
-                gopls = {
-                    settings = {
-                        gopls = {
-                            gofumpt = true,
-                            codelenses = {
-                                gc_details = false,
-                                generate = true,
-                                regenerate_cgo = true,
-                                run_govulncheck = true,
-                                test = true,
-                                tidy = true,
-                                upgrade_dependency = true,
-                                vendor = true,
-                            },
-                            -- analyses = {
-                            --     fieldalignment = true,
-                            --     nilness = true,
-                            --     unusedparams = true,
-                            --     unusedwrite = true,
-                            --     useany = true,
-                            -- },
-                            usePlaceholders = true,
-                            completeUnimported = true,
-                            staticcheck = true,
-                            directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-                            semanticTokens = true,
-                        },
-                    },
-                },
-            }
-            for server, config in pairs(servers) do
-                config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-                config.on_attach = on_attach
-                lspconfig[server].setup(config)
-            end
-        end,
-    },
+			lua_ls = {
+				-- cmd = { ... },
+				-- filetypes = { ... },
+				-- capabilities = {},
+				settings = {
+					Lua = {
+						workspace = {
+							checkThirdParty = false,
+						},
+						codeLens = {
+							enable = true,
+						},
+						completion = {
+							callSnippet = "Replace",
+						},
+						doc = {
+							privateName = { "^_" },
+						},
+						hint = {
+							enable = true,
+							setType = false,
+							paramType = true,
+							paramName = "Disable",
+							semicolon = "Disable",
+							arrayIndex = "Disable",
+						},
+					},
+				},
+			},
+		}
+		for server, server_opts in pairs(servers) do
+			server_opts.capabilities = capabilities
+			require("lspconfig")[server].setup(server_opts)
+		end
+	end,
 }
