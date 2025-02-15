@@ -1,4 +1,5 @@
 return {
+	-- ai
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
@@ -27,6 +28,10 @@ return {
 		opts_extend = { "sources.default" },
 		dependencies = {
 			"rafamadriz/friendly-snippets",
+			{
+				"windwp/nvim-autopairs",
+				config = true,
+			},
 		},
 		event = "InsertEnter",
 		opts = {
@@ -51,35 +56,30 @@ return {
 				end,
 			},
 			completion = {
-				list = { selection = { preselect = false, auto_insert = true } },
+				list = { selection = { preselect = true, auto_insert = true } },
 				menu = {
 					enabled = true,
 					min_width = 30,
 					max_height = 10,
-					border = "rounded",
-					-- border = {
-					--     "♥",
-					--     "─",
-					--     "╮",
-					--     "│",
-					--     "╯",
-					--     "─",
-					--     "╰",
-					--     "│",
-					-- },
+					-- border = "rounded",
+					border = {
+						"󱐋",
+						"─",
+						"╮",
+						"│",
+						"╯",
+						"─",
+						"╰",
+						"│",
+					},
 					winblend = 10,
 					-- winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
 					auto_show = true,
 				},
 				documentation = {
-					-- -- Controls whether the documentation window will automatically show when selecting a completion item
-					-- auto_show = true,
-					-- -- Delay before showing the documentation window
-					-- auto_show_delay_ms = 500,
-					-- -- Delay before updating the documentation window when selecting a new item,
-					-- -- while an existing item is still visible
-					-- update_delay_ms = 50,
-					-- -- Whether to use treesitter highlighting, disable if you run into performance issues
+					auto_show = true,
+					auto_show_delay_ms = 500,
+					update_delay_ms = 50,
 					treesitter_highlighting = true,
 					window = {
 						min_width = 10,
@@ -88,11 +88,11 @@ return {
 						border = "rounded",
 						winblend = 10,
 						-- winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc",
-						-- scrollbar = true,
-						-- direction_priority = {
-						--     menu_north = { "e", "w", "n", "s" },
-						--     menu_south = { "e", "w", "s", "n" },
-						-- },
+						scrollbar = true,
+						direction_priority = {
+							menu_north = { "e", "w", "n", "s" },
+							menu_south = { "e", "w", "s", "n" },
+						},
 					},
 				},
 			},

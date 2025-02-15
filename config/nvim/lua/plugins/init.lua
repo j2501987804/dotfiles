@@ -2,68 +2,68 @@ return {
     -- "tomasiser/vim-code-dark",
     -- "navarasu/onedark.nvim",
     -- { "EdenEast/nightfox.nvim" },
-    {
-        "sainnhe/everforest",
-        lazy = false,
-        priority = 1000,
-        config = function()
-            -- Optionally configure and load the colorscheme
-            -- directly inside the plugin declaration.
-            vim.g.everforest_enable_italic = true
-            -- vim.cmd.colorscheme("everforest")
-        end,
-    },
-    {
-        "LazyVim/LazyVim",
-        opts = {
-            colorscheme = "everforest",
-        },
-    },
+    -- {
+    --     "sainnhe/everforest",
+    --     lazy = false,
+    --     priority = 1000,
+    --     config = function()
+    --         -- Optionally configure and load the colorscheme
+    --         -- directly inside the plugin declaration.
+    --         vim.g.everforest_enable_italic = true
+    --         -- vim.cmd.colorscheme("everforest")
+    --     end,
+    -- },
+    -- {
+    --     "LazyVim/LazyVim",
+    --     opts = {
+    --         colorscheme = "everforest",
+    --     },
+    -- },
 
     -- tab单独buff
     { "tiagovla/scope.nvim", config = true },
-    -- {
-    --     "folke/tokyonight.nvim",
-    --     opts = {
-    --         styles = {
-    --             comments = { italic = true, bold = false },
-    --         },
-    --         on_highlights = function(hl, c)
-    --             local prompt = "#2d3149"
-    --             hl.TelescopeNormal = {
-    --                 bg = c.bg_dark,
-    --                 fg = c.fg_dark,
-    --             }
-    --             hl.TelescopeBorder = {
-    --                 bg = c.bg_dark,
-    --                 fg = c.bg_dark,
-    --             }
-    --             hl.TelescopePromptNormal = {
-    --                 bg = prompt,
-    --             }
-    --             hl.TelescopePromptBorder = {
-    --                 bg = prompt,
-    --                 fg = prompt,
-    --             }
-    --             hl.TelescopePromptTitle = {
-    --                 bg = prompt,
-    --                 fg = prompt,
-    --             }
-    --             hl.TelescopePreviewTitle = {
-    --                 bg = c.bg_dark,
-    --                 fg = c.bg_dark,
-    --             }
-    --             hl.TelescopeResultsTitle = {
-    --                 bg = c.bg_dark,
-    --                 fg = c.bg_dark,
-    --             }
-    --             hl.Pmenu = { bg = "none" }
-    --             hl.BlinkCmpMenuBorder = { bg = "none", fg = "#42464e" }
-    --             hl.BlinkCmpDocBorder = { bg = "none", fg = "#42464e" }
-    --             hl.BlinkCmpMenuSelection = { bg = "#82c092", fg = "black" }
-    --         end,
-    --     },
-    -- },
+    {
+        "folke/tokyonight.nvim",
+        opts = {
+            styles = {
+                comments = { italic = true, bold = false },
+            },
+            on_highlights = function(hl, c)
+                local prompt = "#2d3149"
+                hl.TelescopeNormal = {
+                    bg = c.bg_dark,
+                    fg = c.fg_dark,
+                }
+                hl.TelescopeBorder = {
+                    bg = c.bg_dark,
+                    fg = c.bg_dark,
+                }
+                hl.TelescopePromptNormal = {
+                    bg = prompt,
+                }
+                hl.TelescopePromptBorder = {
+                    bg = prompt,
+                    fg = prompt,
+                }
+                hl.TelescopePromptTitle = {
+                    bg = prompt,
+                    fg = prompt,
+                }
+                hl.TelescopePreviewTitle = {
+                    bg = c.bg_dark,
+                    fg = c.bg_dark,
+                }
+                hl.TelescopeResultsTitle = {
+                    bg = c.bg_dark,
+                    fg = c.bg_dark,
+                }
+                hl.Pmenu = { bg = "none" }
+                hl.BlinkCmpMenuBorder = { bg = "none", fg = "#42464e" }
+                hl.BlinkCmpDocBorder = { bg = "none", fg = "#42464e" }
+                hl.BlinkCmpMenuSelection = { bg = "#82c092", fg = "black" }
+            end,
+        },
+    },
     {
         "zbirenbaum/copilot.lua",
         opts = {

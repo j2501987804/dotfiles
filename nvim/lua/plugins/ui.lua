@@ -12,20 +12,19 @@ return {
 		},
 		opts = {},
 	},
+
+	-- 浮动标签名
 	{
 		"b0o/incline.nvim",
-		config = function()
-			require("incline").setup()
-		end,
-		-- Optional: Lazy load Incline
 		event = "VeryLazy",
+		config = true,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 			"meuter/lualine-so-fancy.nvim",
-			{ "AndreM222/copilot-lualine" },
+			"AndreM222/copilot-lualine",
 		},
 		opts = {
 			options = {
@@ -69,62 +68,38 @@ return {
 	{ "tiagovla/scope.nvim", config = true },
 
 	{
-		"nvim-pack/nvim-spectre",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = true,
-        -- stylua: ignore
-		keys = {
-            {"<leader>sr", "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>",  desc = "查找当前单词" },
-            {"<leader>sr", "<cmd>lua require('spectre').open_file_search()<CR>",  desc = "查找当前单词" ,mode="v"},
-            {"<leader>sR", "<cmd>lua require('spectre').open_visual()<CR>",  desc = "全局查找" ,mode="v"},
-            {"<leader>sR", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>",  desc = "全局查找" },
-        },
-	},
-
-	{
-		"folke/trouble.nvim",
-		cmd = { "Trouble" },
+		"folke/which-key.nvim",
+		event = "VeryLazy",
 		opts = {
-			modes = {
-				lsp = {
-					win = { position = "right" },
+			preset = "helix",
+			spec = {
+				{
+					mode = { "n", "v" },
+					{ "<leader><tab>", group = "tabs" },
+					{ "<leader>c", group = "code" },
+					{ "<leader>d", group = "debug" },
+					{ "<leader>b", group = "buff" },
+					{ "<leader>dp", group = "profiler" },
+					{ "<leader>f", group = "file/find" },
+					{ "<leader>g", group = "git" },
+					-- { "<leader>gh", group = "hunks" },
+					{ "<leader>q", group = "quit/session" },
+					{ "<leader>s", group = "search" },
+					{ "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
+					{ "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
+					{ "[", group = "prev" },
+					{ "]", group = "next" },
+					{ "g", group = "goto" },
 				},
 			},
 		},
 		keys = {
-			{ "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
-			{ "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" },
-			{ "<leader>cs", "<cmd>Trouble symbols toggle<cr>", desc = "Symbols (Trouble)" },
-			{ "<leader>cS", "<cmd>Trouble lsp toggle<cr>", desc = "LSP references/definitions/... (Trouble)" },
-			{ "<leader>xL", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
-			{ "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
 			{
-				"[q",
+				"<leader>?",
 				function()
-					if require("trouble").is_open() then
-						require("trouble").prev({ skip_groups = true, jump = true })
-					else
-						local ok, err = pcall(vim.cmd.cprev)
-						if not ok then
-							vim.notify(err, vim.log.levels.ERROR)
-						end
-					end
+					require("which-key").show({ global = false })
 				end,
-				desc = "Previous Trouble/Quickfix Item",
-			},
-			{
-				"]q",
-				function()
-					if require("trouble").is_open() then
-						require("trouble").next({ skip_groups = true, jump = true })
-					else
-						local ok, err = pcall(vim.cmd.cnext)
-						if not ok then
-							vim.notify(err, vim.log.levels.ERROR)
-						end
-					end
-				end,
-				desc = "Next Trouble/Quickfix Item",
+				desc = "Buffer Local Keymaps (which-key)",
 			},
 		},
 	},

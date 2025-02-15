@@ -23,6 +23,7 @@ map("i", "<c-j>", "<down>")
 map("i", "<c-k>", "<up>")
 map("i", "<c-h>", "<left>")
 map("i", "<c-l>", "<right>")
+map("i", "jk", "<esc>")
 
 -- Move to window using the <ctrl> hjkl keys
 map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })

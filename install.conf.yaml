@@ -15,8 +15,9 @@
     ~/Wallpapers: Wallpapers
     ~/.zshrc: zshrc
     ~/.config/lazygit: config/lazygit
+    ~/.config/awesome: config/awesome
     # ~/.Xresources: .Xresources
-    ~/.config/nvim: config/nvim
+    ~/.config/nvim: nvim
     # ~/.config/gtk-3.0: config/gtk-3.0
     # ~/.config/fish: config/fish
     # ~/.config/alacritty: config/alacritty
