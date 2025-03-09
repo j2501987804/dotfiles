@@ -1,0 +1,32 @@
+# Catppuccin Mocha 主题风格
+indicator-caps-lock
+ignore-empty-password
+show-failed-attempts
+
+# 外观设置
+color=#1e1e2e
+font=JetBrains Mono
+indicator-radius=100
+indicator-thickness=10
+
+# 键盘布局颜色
+key-hl-color=#f5e0dc
+bs-hl-color=#f38ba8
+caps-lock-key-hl-color=#fab387
+caps-lock-bs-hl-color=#f38ba8
+
+# 圆圈颜色
+inside-color=#313244
+inside-clear-color=#a6e3a1
+inside-ver-color=#89b4fa
+inside-wrong-color=#f38ba8
+
+ring-color=#45475a
+ring-clear-color=#a6e3a1
+ring-ver-color=#89b4fa
+ring-wrong-color=#f38ba8
+
+line-color=#585b70
+line-clear-color=#a6e3a1
+line-ver-color=#89b4fa
+line-wrong-color=#f38ba8

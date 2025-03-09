@@ -16,8 +16,9 @@
     ~/.zshrc: zshrc
     ~/.config/lazygit: config/lazygit
     ~/.config/awesome: config/awesome
+    ~/.config/mako: config/mako
     # ~/.Xresources: .Xresources
-    ~/.config/nvim: nvim
+    ~/.config/nvim: config/nvim
     # ~/.config/gtk-3.0: config/gtk-3.0
     # ~/.config/fish: config/fish
     # ~/.config/alacritty: config/alacritty

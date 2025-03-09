@@ -7,7 +7,7 @@
 
 #waybar {
     background: #1e1e2e;
-    min-height: 20px;
+    /*min-height: 20px;*/
     border-radius: 0px;
     color: white;
 }
@@ -96,7 +96,7 @@ window#waybar {
     border-radius: 5px;
     transition: none;
     color: white;
-    font-size: 22px;
+    /*font-size: 22px;*/
     font-family: Fira Code;
     background: transparent;
 }
@@ -130,7 +130,7 @@ window#waybar {
 }
 
 #custom-launcher {
-    font-size: 24px;
+    /*font-size: 24px;*/
     margin: 6px;
     padding-left: 5px;
     padding-right: 5px;

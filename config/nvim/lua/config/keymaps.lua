@@ -2,8 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 local map = vim.keymap.set
-
-map("n", "<leader>q", ":q<cr>", { desc = "quit", remap = true })
+map("n", "<leader>qt", ":q<cr>", { desc = "quit", remap = true })
 
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })

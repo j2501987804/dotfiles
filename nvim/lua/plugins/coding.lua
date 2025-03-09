@@ -32,6 +32,7 @@ return {
 				"windwp/nvim-autopairs",
 				config = true,
 			},
+			-- "echasnovski/mini.icons",
 		},
 		event = "InsertEnter",
 		opts = {
@@ -59,7 +60,7 @@ return {
 				list = { selection = { preselect = true, auto_insert = true } },
 				menu = {
 					enabled = true,
-					min_width = 30,
+					-- min_width = 30,
 					max_height = 10,
 					-- border = "rounded",
 					border = {
@@ -75,6 +76,10 @@ return {
 					winblend = 10,
 					-- winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
 					auto_show = true,
+					draw = {
+						treesitter = { "lsp" },
+						columns = { { "kind_icon", "label", "label_description", gap = 1 }, { "kind" } },
+					},
 				},
 				documentation = {
 					auto_show = true,
