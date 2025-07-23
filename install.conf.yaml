@@ -17,6 +17,7 @@
     ~/.config/lazygit: config/lazygit
     ~/.config/awesome: config/awesome
     ~/.config/mako: config/mako
+    ~/.config/niri: config/niri
     # ~/.Xresources: .Xresources
     ~/.config/nvim: config/nvim
     # ~/.config/gtk-3.0: config/gtk-3.0
