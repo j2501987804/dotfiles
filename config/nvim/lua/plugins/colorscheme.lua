@@ -1,19 +1,95 @@
 return {
-    "folke/tokyonight.nvim",
-    opts = {
-        transparent = true,
-        styles = {
-            comments = { italic = true, bold = false },
-            sidebars = "transparent",
-            floats = "transparent",
-        },
-        on_highlights = function(hl, _)
-            hl.Pmenu = { bg = "none" }
-            hl.BlinkCmpMenu = { bg = "none", fg = "#42464e" }
-            hl.BlinkCmpDoc = { bg = "none", fg = "#42464e" }
-            hl.BlinkCmpMenuBorder = { bg = "none", fg = "#42464e" }
-            hl.BlinkCmpDocBorder = { bg = "none", fg = "#42464e" }
-            hl.BlinkCmpMenuSelection = { bg = "#82c092", fg = "black" }
-        end,
+    -- { 'akinsho/bufferline.nvim', version = "*", opts = {} },
+    { "tiagovla/scope.nvim", opts = {} },
+    -- {
+    --     {
+    --         'romgrk/barbar.nvim',
+    --         init = function() vim.g.barbar_auto_setup = false end,
+    --         opts = {
+    --             -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+    --             -- animation = true,
+    --             -- insert_at_start = true,
+    --             -- …etc.
+    --         },
+    --         version = '^1.0.0', -- optional: only update when a new 1.x version is released
+    --     },
+    -- },
+    -- {
+    --     "nvim-lualine/lualine.nvim",
+    --     dependencies = {
+    --         "meuter/lualine-so-fancy.nvim",
+    --     },
+    --     opts = {
+    --         options = {
+    --             component_separators = { left = "│", right = "│" },
+    --             section_separators = { left = "", right = "" },
+    --             globalstatus = true,
+    --             refresh = {
+    --                 statusline = 100,
+    --             },
+    --         },
+    --         sections = {
+    --             lualine_a = {
+    --                 { "fancy_mode", width = 3 }
+    --             },
+    --             lualine_b = {
+    --                 { "fancy_branch" },
+    --                 { "fancy_diff" },
+    --             },
+    --             lualine_c = {
+    --                 { "fancy_cwd", substitute_home = true }
+    --             },
+    --             lualine_x = {
+    --                 { "fancy_macro" },
+    --                 { "fancy_diagnostics" },
+    --                 { "fancy_searchcount" },
+    --                 { "fancy_location" },
+    --             },
+    --             lualine_y = {
+    --                 { "fancy_filetype", ts_icon = "" }
+    --             },
+    --             lualine_z = {
+    --                 { "fancy_lsp_servers" }
+    --             },
+    --         }
+    --     },
+    -- },
+
+    -- {
+    --     "folke/noice.nvim",
+    --     event = "VeryLazy",
+    --     opts = {
+    --         lsp = {
+    --             override = {
+    --                 ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+    --                 ["vim.lsp.util.stylize_markdown"] = true,
+    --                 ["cmp.entry.get_documentation"] = true,
+    --             },
+    --         },
+    --         routes = {
+    --             {
+    --                 filter = {
+    --                     event = "msg_show",
+    --                     any = {
+    --                         { find = "%d+L, %d+B" },
+    --                         { find = "; after #%d+" },
+    --                         { find = "; before #%d+" },
+    --                     },
+    --                 },
+    --                 view = "mini",
+    --             },
+    --         },
+    --         presets = {
+    --             bottom_search = true,
+    --             command_palette = true,
+    --             long_message_to_split = true,
+    --         },
+    --     },
+    -- },
+
+    -- 'vimpostor/vim-tpipeline',
+    {
+        "esmuellert/vscode-diff.nvim",
+        dependencies = { "MunifTanjim/nui.nvim" },
     },
 }
