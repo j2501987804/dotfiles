@@ -1,95 +1,71 @@
--- 缩进与制表符
-vim.opt.tabstop = 4        -- 一个 Tab 显示为 2 个空格宽度
-vim.opt.shiftwidth = 4     -- 自动缩进宽度为 2 个空格
-vim.opt.expandtab = true   -- 将 Tab 转换为空格
-vim.opt.smartindent = true -- 智能缩进（比如在函数或 if 内自动缩进）
+local map = vim.keymap.set
 
--- 显示相关
-vim.opt.number = true         -- 显示行号
-vim.opt.relativenumber = true -- 显示相对行号（便于跳转）
-vim.opt.cursorline = true     -- 高亮当前行
-vim.opt.signcolumn = "yes"    -- 始终显示符号栏（诊断提示等）
-vim.opt.termguicolors = true  -- 启用真彩色显示
-vim.opt.wrap = false          -- 不自动换行
-vim.opt.scrolloff = 5         -- 光标上下保留 5 行滚动边距
 
--- 搜索相关
-vim.opt.ignorecase = true -- 搜索时忽略大小写
-vim.opt.smartcase = true  -- 如果包含大写，则区分大小写
-vim.opt.hlsearch = true   -- 高亮搜索结果
-vim.opt.incsearch = true  -- 实时显示搜索结果
+-- 基础快捷键
+map("n", "<esc>", ":nohl<CR><esc>", { desc = "清除搜索高亮", silent = true })
+map({ "n", "v", "x" }, "<s-h>", "^", { desc = "^" })
+map({ "n", "v", "x" }, "<s-l>", "$", { desc = "$" })
+map("n", ";", ":")
 
--- 系统交互
-vim.opt.clipboard = "unnamedplus" -- 使用系统剪贴板
-vim.opt.mouse = "a"               -- 启用鼠标支持
-vim.opt.confirm = true            -- 保存前确认
+-- 窗口管理
+map("n", "<leader>w|", "<C-w>v", { desc = "垂直分割窗口" })
+map("n", "<leader>w-", "<C-w>s", { desc = "水平分割窗口" })
+map("n", "<leader>we", "<C-w>=", { desc = "平均调整窗口大小" })
+map("n", "<leader>wx", ":close<CR>", { desc = "关闭当前窗口" })
 
--- 性能优化
-vim.opt.lazyredraw = true -- 执行宏时不刷新界面，加快性能
-vim.opt.updatetime = 300  -- CursorHold 事件触发时间，默认 4000ms
-vim.opt.timeoutlen = 400  -- 按键组合等待时间（默认 1000ms）
-vim.opt.swapfile = false  -- 禁用交换文件
-vim.opt.backup = false    -- 禁用备份文件
-vim.opt.undofile = true   -- 启用持久化撤销（退出后也能撤销）
+-- 标签页管理
+map("n", "<leader><tab>c", ":tabnew<CR>", { desc = "打开新标签页" })
+map("n", "<leader><tab>d", ":tabclose<CR>", { desc = "关闭当前标签页" })
+map("n", "<leader><tab>n", ":tabn<CR>", { desc = "下一个标签页" })
+map("n", "<leader><tab>p", ":tabp<CR>", { desc = "上一个标签页" })
 
--- 文件与编码
-vim.opt.encoding = "utf-8"                     -- 设置内部编码
-vim.opt.fileencoding = "utf-8"                 -- 文件保存编码
-vim.opt.fileformats = { "unix", "dos", "mac" } -- 自动识别文件换行符
+-- 窗口切换
+map("n", "<C-h>", "<C-w>h", { desc = "切换到左边窗口" })
+map("n", "<C-j>", "<C-w>j", { desc = "切换到下边窗口" })
+map("n", "<C-k>", "<C-w>k", { desc = "切换到上边窗口" })
+map("n", "<C-l>", "<C-w>l", { desc = "切换到右边窗口" })
 
--- 命令行与界面
-vim.opt.cmdheight = 1     -- 命令行高度
-vim.opt.laststatus = 3    -- 全局状态栏（Neovim 0.7+）
-vim.opt.showmode = false  -- 不在状态栏显示 -- INSERT --
-vim.opt.splitbelow = true -- 新窗口默认在下方打开
-vim.opt.splitright = true -- 新窗口默认在右侧打开
+-- buffer 切换
+map("n", "<tab>", ":bnext<CR>", { desc = "下一个 buffer" })
+map("n", "<S-tab>", ":bprevious<CR>", { desc = "上一个 buffer" })
 
--- 自动补全与 LSP 体验优化
-vim.opt.completeopt = { "menu", "menuone", "noselect" } -- 补全行为优化
-vim.opt.signcolumn = "yes"                              -- 显示诊断图标列
-vim.opt.shortmess:append("c")                           -- 补全时不显示多余信息
+-- 保存/退出
+map("n", "<c-s>", ":w<CR>", { desc = "保存文件" })
+map("n", "<leader>q", ":q<CR>", { desc = "退出文件" })
 
--- 折叠设置（推荐配合 LSP 或 treesitter）
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = false -- 默认不折叠
-vim.opt.foldlevel = 99     -- 打开文件时展开所有折叠
+-- 插入模式退出
+map("i", "jk", "<ESC>", { desc = "插入模式快速退出" })
+map("i", "<C-h>", "<left>")
+map("i", "<C-j>", "<down>")
+map("i", "<C-k>", "<up>")
+map("i", "<C-l>", "<right>")
 
--- 其他偏好
-vim.opt.autoread = true -- 文件在外部修改时自动重新加载
-vim.opt.hidden = true   -- 允许在未保存时切换 buffer
-vim.opt.pumheight = 10  -- 补全菜单最大显示项数
-vim.opt.showtabline = 1 -- 仅在多标签时显示标签栏
-vim.o.winborder = "single"
-vim.g.tpipeline_autoembed = 0
+-- 可视模式缩进保持选中
+map("v", "<", "<gv", { desc = "左缩进" })
+map("v", ">", ">gv", { desc = "右缩进" })
 
--- 设置空格为 leader 键
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- 上下移动代码
+map("x", "J", ":move '>+1<CR>gv=gv")
+map("x", "K", ":move '<-2<CR>gv=gv")
 
-vim.diagnostic.config {
-    severity_sort = true,
-    float = { border = 'rounded', source = 'if_many' },
-    underline = { severity = vim.diagnostic.severity.ERROR },
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = '󰅚 ',
-            [vim.diagnostic.severity.WARN] = '󰀪 ',
-            [vim.diagnostic.severity.INFO] = '󰋽 ',
-            [vim.diagnostic.severity.HINT] = '󰌶 ',
-        },
-    },
-    -- virtual_text = {
-    --     source = 'if_many',
-    --     spacing = 2,
-    --     format = function(diagnostic)
-    --         local diagnostic_message = {
-    --             [vim.diagnostic.severity.ERROR] = diagnostic.message,
-    --             [vim.diagnostic.severity.WARN] = diagnostic.message,
-    --             [vim.diagnostic.severity.INFO] = diagnostic.message,
-    --             [vim.diagnostic.severity.HINT] = diagnostic.message,
-    --         }
-    --         return diagnostic_message[diagnostic.severity]
-    --     end,
-    -- },
-}
+
+-- lsp
+map("n", "K", vim.lsp.buf.hover, { desc = "悬浮文档" })
+map("i", "<C-s>", vim.lsp.buf.signature_help, { desc = "函数签名帮助" })
+map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "重命名符号" })
+map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "代码修复" })
+map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "浮动诊断信息" })
+map("n", "<leader>cf", function()
+    vim.lsp.buf.format({ async = true })
+end, { desc = "格式化代码" })
+
+
+-- overseer
+map("n", "<leader>oo", "<cmd>OverseerRun<cr>", { desc = "运行任务" })
+map("n", "<leader>op", "<cmd>OverseerOpen<cr>", { desc = "任务面板" })
+map("n", "<leader>ol", "<cmd>OverseerLoadBundle<cr>", { desc = "加载任务列表" })
+map("n", "<leader>oq", "<cmd>OverseerQuickAction<cr>", { desc = "任务修复" })
+
+
+map("i", "jk", "<Esc>")
+map("n", ";", ":")
