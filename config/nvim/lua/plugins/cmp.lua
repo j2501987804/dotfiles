@@ -4,7 +4,6 @@ return {
         version = '1.7.*',
         event = { "InsertEnter", "CmdlineEnter" },
         dependencies = {
-            "windwp/nvim-autopairs",
             'rafamadriz/friendly-snippets',
         },
         opts = {

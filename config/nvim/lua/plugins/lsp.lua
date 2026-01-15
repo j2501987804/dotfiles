@@ -16,7 +16,7 @@ return {
                     -- sh
                     "bash-language-server", "shfmt",
                     -- go
-                    "delve", "gopls", "gomodifytags", "impl", "goimports", "gofumpt",
+                    "gopls", "gomodifytags", "impl", "goimports", "gofumpt",
                 }
 
                 for _, tool in ipairs(ensure_installed) do

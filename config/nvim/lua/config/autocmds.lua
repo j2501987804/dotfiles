@@ -1,3 +1,30 @@
+vim.diagnostic.config {
+    severity_sort = true,
+    float = { border = 'rounded', source = 'if_many' },
+    underline = { severity = vim.diagnostic.severity.ERROR },
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = '󰅚 ',
+            [vim.diagnostic.severity.WARN] = '󰀪 ',
+            [vim.diagnostic.severity.INFO] = '󰋽 ',
+            [vim.diagnostic.severity.HINT] = '󰌶 ',
+        },
+    },
+    virtual_text = {
+        source = 'if_many',
+        spacing = 2,
+        format = function(diagnostic)
+            local diagnostic_message = {
+                [vim.diagnostic.severity.ERROR] = diagnostic.message,
+                [vim.diagnostic.severity.WARN] = diagnostic.message,
+                [vim.diagnostic.severity.INFO] = diagnostic.message,
+                [vim.diagnostic.severity.HINT] = diagnostic.message,
+            }
+            return diagnostic_message[diagnostic.severity]
+        end,
+    },
+}
+
 if vim.fn.has("wsl") == 1 then
     vim.g.clipboard = {
         name = "WslClipboard",
@@ -41,13 +68,13 @@ vim.api.nvim_create_autocmd("BufLeave", {
         local bufname = vim.api.nvim_buf_get_name(bufnr)
         -- 排除特殊缓冲区（无文件名/终端等）
         if
-            vim.api.nvim_buf_get_option(bufnr, "modified") -- 检查是否被修改
-            and vim.api.nvim_buf_get_option(bufnr, "modifiable") -- 检查可修改性
-            and not vim.api.nvim_buf_get_option(bufnr, "readonly") -- 检查只读状态
-            and bufname ~= ""                              -- 排除无名缓冲区
+            vim.api.nvim_buf_get_option(bufnr, "modified")          -- 检查是否被修改
+            and vim.api.nvim_buf_get_option(bufnr, "modifiable")    -- 检查可修改性
+            and not vim.api.nvim_buf_get_option(bufnr, "readonly")  -- 检查只读状态
+            and bufname ~= ""                                       -- 排除无名缓冲区
             and vim.api.nvim_buf_get_option(bufnr, "buftype") == "" -- 排除特殊类型（终端等）
         then
-            vim.cmd("silent! update")                      -- 静默保存（仅在修改时写入）
+            vim.cmd("silent! update")                               -- 静默保存（仅在修改时写入）
         end
     end,
 })
