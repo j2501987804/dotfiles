@@ -30,7 +30,7 @@ return {
             highlights = {
                 -- 当前 buffer：只显示 underline
                 buffer_selected = {
-                    bold = true,
+                    bold = false,
                     italic = false,
                 },
 
