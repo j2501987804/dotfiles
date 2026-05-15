@@ -1,54 +1,25 @@
-vim.api.nvim_create_autocmd('PackChanged', {
-    callback = function(ev)
-        local name = ev.data.spec.name
-        local kind = ev.data.kind
-        if kind ~= 'install' and kind ~= 'update' then return end
-
-        if name == 'nvim-treesitter' then
-            if not ev.data.active then vim.cmd.packadd 'nvim-treesitter' end
-            vim.cmd 'TSUpdate'
-            return
-        end
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function()
+        pcall(vim.treesitter.start)
     end,
 })
 
--- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
---     vim.lsp.handlers.signature_help,
---     {
---         border = "rounded",
---         focusable = false,
---         close_events = {
---             "CursorMoved",
---             "BufHidden",
---             "InsertCharPre",
---         },
---         max_width = 80,
---         max_height = 12,
---         hint_enable = true,
---     }
--- )
-
--- LSP 诊断
-vim.diagnostic.config({
-    virtual_text = {
-        spacing = 4,
-        prefix = "●",
-        severity = {
-            min = vim.diagnostic.severity.WARN,
-        },
-    },
-    underline = true,
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = "✘",
-            [vim.diagnostic.severity.WARN] = "▲",
-            [vim.diagnostic.severity.INFO] = "●",
-            [vim.diagnostic.severity.HINT] = "⚑",
-        },
-    },
-    update_in_insert = false,
-    severity_sort = true,
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+        local bufnr = args.buf
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.format({
+                    bufnr = bufnr,
+                    timeout_ms = 3000,
+                })
+            end,
+        })
+    end,
 })
+
 
 -- 自动保存
 vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost' }, {
@@ -66,7 +37,7 @@ vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost' }, {
 -- This file is automatically loaded by lazyvim.config.init.
 
 local function augroup(name)
-    return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
+    return vim.api.nvim_create_augroup("nv" .. name, { clear = true })
 end
 
 -- Check if we need to reload the file when it changed
@@ -135,6 +106,8 @@ vim.api.nvim_create_autocmd("FileType", {
         "spectre_panel",
         "startuptime",
         "tsplayground",
+        "avante",
+        "AvanteInput",
     },
     callback = function(event)
         vim.bo[event.buf].buflisted = false
